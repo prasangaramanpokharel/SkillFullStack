@@ -1,0 +1,213 @@
+{
+  "$schema": "./schema.json",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "name": "shadcn-ui",
+      "taxonomy": "frontend",
+      "path": "skills/frontend/shadcn-ui",
+      "description": "High-density guide and automation for shadcn/ui v4. Supports adding atomic primitives, complex blocks, direct component MDX retrieval, and CVA composition. Use when building or styling UI with React, Next.js, and Tailwind CSS.",
+      "version": "v4",
+      "docs": "https://ui.shadcn.com/docs",
+      "verified_date": "2026-11-15"
+    },
+    {
+      "name": "upstash",
+      "taxonomy": "backend",
+      "path": "skills/backend/upstash",
+      "description": "Production serverless Redis, Vector, QStash messaging, durable Workflows, and Ratelimit. Use when implementing serverless caching, rate limiting LLM APIs, queuing asynchronous background tasks, or building durable step-function workflows.",
+      "version": "2026.x",
+      "docs": "https://upstash.com/docs",
+      "verified_date": "2026-11-15"
+    },
+    {
+      "name": "mcpServerDevelopment",
+      "taxonomy": "dataAi",
+      "path": "skills/dataAi/mcpServerDevelopment",
+      "description": "Build Model Context Protocol (MCP) servers exposing tools, resources, and prompt templates to AI agents. Use when connecting Claude, Cursor, or custom agents to databases, APIs, and local services via stdio or SSE.",
+      "version": "1.x",
+      "docs": "https://modelcontextprotocol.io",
+      "verified_date": "2026-11-15"
+    },
+    {
+      "name": "ragPipelineProduction",
+      "taxonomy": "dataAi",
+      "path": "skills/dataAi/ragPipelineProduction",
+      "description": "Production-grade RAG pipeline implementing BM25 and dense vector hybrid search, Reciprocal Rank Fusion (RRF), cross-encoder reranking (Cohere/BGE), and semantic caching. Use when building reliable, hallucination-resistant retrieval systems.",
+      "version": "2.x",
+      "docs": "https://docs.cohere.com/docs/reranking",
+      "verified_date": "2026-11-15"
+    },
+    {
+      "name": "generativeUi",
+      "taxonomy": "frontend",
+      "path": "skills/frontend/generativeUi",
+      "description": "Stream interactive React components from LLMs using Vercel AI SDK, tool invocations, and createDataStreamResponse. Use when replacing text-only chat with dynamic charts, cards, confirmation forms, and interactive UI widgets.",
+      "version": "v4",
+      "docs": "https://sdk.vercel.ai/docs",
+      "verified_date": "2026-11-15"
+    },
+    {
+      "name": "durableBackgroundJobs",
+      "taxonomy": "backend",
+      "path": "skills/backend/durableBackgroundJobs",
+      "description": "Durable background execution, long-running agent workflows, and zero-timeout event orchestration with Inngest, Trigger.dev v3, and Upstash Workflow. Use when running multi-step AI tasks, retries, and sleep delays in serverless environments.",
+      "version": "3.x",
+      "docs": "https://www.inngest.com/docs",
+      "verified_date": "2026-11-15"
+    },
+    {
+      "name": "llmSecurityRedteaming",
+      "taxonomy": "securityQa",
+      "path": "skills/securityQa/llmSecurityRedteaming",
+      "description": "Defend and red-team LLM applications against OWASP Top 10 vulnerabilities, direct/indirect prompt injection, excessive agency (LLM03), PII leakage, and data exfiltration. Use when hardening agentic tool calling and user prompts in production.",
+      "version": "2026.x",
+      "docs": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+      "verified_date": "2026-11-15"
+    },
+    {
+      "name": "promptEvalTesting",
+      "taxonomy": "foundation",
+      "path": "skills/foundation/promptEvalTesting",
+      "description": "CI/CD prompt regression testing, evaluation harnesses, and LLM-as-a-judge metrics with Promptfoo and DeepEval. Use when testing prompt changes, preventing regressions, and asserting accuracy before merging.",
+      "version": "latest",
+      "docs": "https://www.promptfoo.dev/docs",
+      "verified_date": "2026-11-15"
+    },
+    {
+      "name": "golangStandard",
+      "taxonomy": "backend",
+      "path": "skills/backend/golangStandard",
+      "description": "Production-grade Go engineering standards. Implements log/slog structured logging, context propagation, explicit error wrapping with %w, errgroup structured concurrency, and clean internal domain layouts.",
+      "version": "1.23+",
+      "docs": "https://go.dev/doc/",
+      "verified_date": "2026-11-16"
+    },
+    {
+      "name": "pythonStandard",
+      "taxonomy": "backend",
+      "path": "skills/backend/pythonStandard",
+      "description": "Modern production Python engineering standards with Astral uv toolchain, Ruff linter/formatter, Pydantic v2 core models, strict mypy type checking, and asyncio.TaskGroup structured concurrency.",
+      "version": "3.12+",
+      "docs": "https://docs.astral.sh/uv/",
+      "verified_date": "2026-11-16"
+    },
+    {
+      "name": "tsxReactStandard",
+      "taxonomy": "frontend",
+      "path": "skills/frontend/tsxReactStandard",
+      "description": "Modern TypeScript and React 19 production engineering standards. Implements strict discriminated unions for state, native ref props (no forwardRef), Server Actions, strict tsconfig rules, and discards React.FC and TS enums.",
+      "version": "React 19 / TS 5+",
+      "docs": "https://react.dev/",
+      "verified_date": "2026-11-16"
+    },
+    {
+      "name": "nextjs",
+      "taxonomy": "frontend",
+      "path": "skills/frontend/nextjs",
+      "description": "Production Next.js App Router engineering and readiness checklist. Covers Server Components vs Client boundaries, Data Access Layer (DAL), taint APIs, CSP security headers, metadata SEO, OpenTelemetry, bundle optimization, and standalone Docker deployment.",
+      "version": "15.x",
+      "docs": "https://nextjs.org/docs/app/guides/production-checklist",
+      "verified_date": "2026-11-16"
+    },
+    {
+      "name": "githubAction",
+      "taxonomy": "github",
+      "path": "skills/github/githubAction",
+      "description": "Design and implement production GitHub Actions CI/CD workflows. Supports matrix builds, concurrency cancelation, dependency caching, least-privilege permissions, and commit SHA action pinning. Commands: /github-action, /github-ci, /github-cd.",
+      "version": "v2",
+      "docs": "https://docs.github.com/en/actions",
+      "verified_date": "2026-11-16"
+    },
+    {
+      "name": "githubSetup",
+      "taxonomy": "github",
+      "path": "skills/github/githubSetup",
+      "description": "Audit, initialize, and configure GitHub repositories, modern rulesets, branch protections, and organization foundations. Commands: /github-setup, /github-repository, /github-ruleset.",
+      "version": "v2",
+      "docs": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets",
+      "verified_date": "2026-11-16"
+    },
+    {
+      "name": "githubSecurity",
+      "taxonomy": "github",
+      "path": "skills/github/githubSecurity",
+      "description": "Secure repositories and software supply chains. Automates Dependabot grouping, CodeQL static analysis matrix, secret scanning push protection, and security advisories. Commands: /github-security, /github-codeql, /github-dependabot, /github-secrets.",
+      "version": "v2",
+      "docs": "https://docs.github.com/en/code-security",
+      "verified_date": "2026-11-16"
+    },
+    {
+      "name": "githubQuality",
+      "taxonomy": "github",
+      "path": "skills/github/githubQuality",
+      "description": "Enforce engineering quality, pull request standards, structured code reviews, and CODEOWNERS rules. Commands: /github-quality, /github-pr, /github-codeowners.",
+      "version": "v2",
+      "docs": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners",
+      "verified_date": "2026-11-16"
+    },
+    {
+      "name": "githubTeam",
+      "taxonomy": "github",
+      "path": "skills/github/githubTeam",
+      "description": "Design and manage professional engineering team structures, permission hierarchies, onboarding checklists, and automated code review routing. Commands: /github-team, /github-team-onboarding, /github-team-roles.",
+      "version": "v2",
+      "docs": "https://docs.github.com/en/organizations/organizing-members-into-teams/about-teams",
+      "verified_date": "2026-11-16"
+    },
+    {
+      "name": "gitWorkflow",
+      "taxonomy": "gitVersionControl",
+      "path": "skills/gitVersionControl/gitWorkflow",
+      "description": "Universal Git workflows, DAG manipulation, branching strategies, interactive rebasing, bisect, and conflict resolution",
+      "version": "latest",
+      "docs": "",
+      "verified_date": "2026-11-16"
+    },
+    {
+      "name": "testDrivenDevelopment",
+      "taxonomy": "testing",
+      "path": "skills/testing/testDrivenDevelopment",
+      "description": "Production Test-Driven Development, test pyramid design, test doubles (mocks/stubs/fakes), and boundary value analysis",
+      "version": "latest",
+      "docs": "",
+      "verified_date": "2026-11-16"
+    },
+    {
+      "name": "requirementsEngineering",
+      "taxonomy": "softwareDevelopment",
+      "path": "skills/softwareDevelopment/requirementsEngineering",
+      "description": "User story derivation (INVEST), BDD acceptance criteria (Given/When/Then), MoSCoW prioritization, and attack trees",
+      "version": "latest",
+      "docs": "",
+      "verified_date": "2026-11-16"
+    },
+    {
+      "name": "cicdPipeline",
+      "taxonomy": "cicdDevops",
+      "path": "skills/cicdDevops/cicdPipeline",
+      "description": "Production CI/CD pipelines, containerization, build/test matrices, and zero-downtime deployment strategies",
+      "version": "latest",
+      "docs": "",
+      "verified_date": "2026-11-16"
+    },
+    {
+      "name": "apiEngineering",
+      "taxonomy": "backend",
+      "path": "skills/backend/apiEngineering",
+      "description": "Enterprise API engineering framework covering contract-first OpenAPI 3.2.1, RFC 9457 errors, IETF Idempotency-Key, OWASP API Top 10, and breaking-change detection",
+      "version": "latest",
+      "docs": "",
+      "verified_date": "2026-11-16"
+    },
+    {
+      "name": "databaseArchitecture",
+      "taxonomy": "backend",
+      "path": "skills/backend/databaseArchitecture",
+      "description": "Universal database architecture system: relational normalization, NoSQL/OLAP selection, sharding, ACID concurrency, and zero-downtime schema migrations",
+      "version": "latest",
+      "docs": "",
+      "verified_date": "2026-11-16"
+    }
+  ]
+}

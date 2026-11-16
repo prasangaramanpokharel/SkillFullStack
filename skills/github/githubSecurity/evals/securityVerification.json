@@ -1,0 +1,14 @@
+{
+  "evals": [
+    {
+      "name": "dependabot-grouped-config",
+      "prompt": "Configure dependabot.yml with weekly checks and grouped minor and patch updates for npm.",
+      "expectedPattern": "groups:[\\s\\S]*dependency-type:\\s*[\"']production[\"'][\\s\\S]*update-types:[\\s\\S]*patch"
+    },
+    {
+      "name": "codeql-security-extended",
+      "prompt": "Show how to configure the CodeQL init action with the security-extended query suite.",
+      "expectedPattern": "uses:\\s*github/codeql-action/init@v3[\\s\\S]*queries:\\s*security-extended"
+    }
+  ]
+}

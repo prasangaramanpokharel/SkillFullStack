@@ -1,0 +1,47 @@
+{
+  "openapi": "3.2.1",
+  "info": {
+    "title": "Valid Customer API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/v1/customers": {
+      "get": {
+        "summary": "List customers",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

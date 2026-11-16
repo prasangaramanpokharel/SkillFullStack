@@ -1,0 +1,14 @@
+{
+  "evals": [
+    {
+      "name": "ruleset-json-required-pr",
+      "prompt": "Create a GitHub Ruleset rule configuration enforcing pull request reviews with dismissal of stale approvals.",
+      "expectedPattern": "\"type\":\\s*\"pull_request\"[\\s\\S]*\"dismiss_stale_reviews_on_push\":\\s*true"
+    },
+    {
+      "name": "gh-repo-squash-only",
+      "prompt": "Write the gh repo edit command to enforce squash merge and delete head branches on merge.",
+      "expectedPattern": "gh repo edit.*--enable-squash-merge=true.*--delete-branch-on-merge=true"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "evals": [
+    {
+      "name": "react-19-ref-prop",
+      "prompt": "Create an input component in React 19 with a ref prop without using forwardRef.",
+      "expectedPattern": "interface .*\\{[\\s\\S]*ref\\?:\\s*React\\.RefObject[\\s\\S]*export function"
+    },
+    {
+      "name": "discriminated-union-state",
+      "prompt": "Define a type AsyncState with idle, loading, success, and error variants.",
+      "expectedPattern": "type AsyncState<T>\\s*=[\\s\\S]*status:\\s*[\"']idle[\"'][\\s\\S]*status:\\s*[\"']loading[\"'][\\s\\S]*status:\\s*[\"']success[\"'][\\s\\S]*status:\\s*[\"']error[\"']"
+    }
+  ]
+}

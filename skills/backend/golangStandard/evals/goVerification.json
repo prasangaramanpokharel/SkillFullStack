@@ -1,0 +1,14 @@
+{
+  "evals": [
+    {
+      "name": "slog-json-handler",
+      "prompt": "Initialize an slog logger in Go with JSONHandler for production environments.",
+      "expectedPattern": "slog\\.NewJSONHandler\\(os\\.Stdout"
+    },
+    {
+      "name": "errgroup-bounded-concurrency",
+      "prompt": "Show how to use golang.org/x/sync/errgroup with a concurrency limit and context cancellation.",
+      "expectedPattern": "errgroup\\.WithContext\\([\\s\\S]*g\\.SetLimit\\([0-9]+\\)"
+    }
+  ]
+}

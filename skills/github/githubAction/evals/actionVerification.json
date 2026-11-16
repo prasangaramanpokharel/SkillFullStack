@@ -1,0 +1,14 @@
+{
+  "evals": [
+    {
+      "name": "least-privilege-permissions",
+      "prompt": "Write the permissions block for a CI workflow that only needs to read repository contents.",
+      "expectedPattern": "permissions:\\s*\\n\\s*contents:\\s*read"
+    },
+    {
+      "name": "concurrency-cancel-in-progress",
+      "prompt": "Configure concurrency cancellation for pull requests while preserving runs on the main branch.",
+      "expectedPattern": "concurrency:[\\s\\S]*cancel-in-progress:\\s*\\$\\{\\{\\s*github\\.ref\\s*!=\\s*['\"]refs/heads/main['\"]\\s*\\}\\}"
+    }
+  ]
+}

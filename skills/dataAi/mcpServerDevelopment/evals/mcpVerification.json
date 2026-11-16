@@ -1,0 +1,14 @@
+{
+  "evals": [
+    {
+      "name": "fastmcp-tool-definition",
+      "prompt": "Create a FastMCP tool in Python named calculate_tax with rate and amount parameters.",
+      "expectedPattern": "@mcp\\.tool\\(\\)[\\s\\S]*def calculate_tax"
+    },
+    {
+      "name": "mcp-resource-uri",
+      "prompt": "Expose an MCP resource for customer records using a valid custom URI scheme.",
+      "expectedPattern": "@mcp\\.resource\\([\"']customer://.*[\"']\\)"
+    }
+  ]
+}

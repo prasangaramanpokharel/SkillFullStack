@@ -1,0 +1,14 @@
+{
+  "evals": [
+    {
+      "name": "data-stream-response",
+      "prompt": "Create a Next.js route handler using createDataStreamResponse with a weather tool.",
+      "expectedPattern": "createDataStreamResponse\\([\\s\\S]*result\\.mergeIntoDataStream\\(dataStream\\)"
+    },
+    {
+      "name": "tool-invocation-render",
+      "prompt": "Show how to render a component based on toolInvocation.state in useChat.",
+      "expectedPattern": "state === [\"']result[\"'][\\s\\S]*return <.*Card"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "evals": [
+    {
+      "name": "inngest-step-pattern",
+      "prompt": "Write an Inngest function that fetches data in step 1, sleeps 15 minutes, and saves in step 2.",
+      "expectedPattern": "step\\.run\\([\"']fetch.*step\\.sleep\\([\"']15m[\"'].*step\\.run\\([\"']save"
+    },
+    {
+      "name": "trigger-dev-task",
+      "prompt": "Define a Trigger.dev v3 background task with retry configuration.",
+      "expectedPattern": "task\\(\\{[\\s\\S]*retry:\\s*\\{\\s*maxAttempts:"
+    }
+  ]
+}

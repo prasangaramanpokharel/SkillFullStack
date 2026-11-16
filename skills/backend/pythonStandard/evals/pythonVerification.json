@@ -1,0 +1,14 @@
+{
+  "evals": [
+    {
+      "name": "pep-604-union-typing",
+      "prompt": "Write a function signature accepting an optional string and returning a dictionary using modern Python 3.12 syntax.",
+      "expectedPattern": "def [a-zA-Z0-9_]+\\([a-zA-Z0-9_]+:\\s*str\\s*\\|\\s*None.*\\)\\s*->\\s*dict\\["
+    },
+    {
+      "name": "pydantic-v2-model-config",
+      "prompt": "Create an immutable Pydantic v2 model using model_config.",
+      "expectedPattern": "model_config\\s*=\\s*\\{\\s*[\"']frozen[\"']:\\s*True"
+    }
+  ]
+}

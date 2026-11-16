@@ -1,0 +1,14 @@
+{
+  "evals": [
+    {
+      "name": "promptfoo-llm-rubric",
+      "prompt": "Create a Promptfoo assertion that verifies tone using an llm-rubric.",
+      "expectedPattern": "type:\\s*llm-rubric"
+    },
+    {
+      "name": "deepeval-faithfulness",
+      "prompt": "Define a DeepEval test case checking FaithfulnessMetric with threshold 0.8.",
+      "expectedPattern": "FaithfulnessMetric\\(threshold=0\\.8\\)"
+    }
+  ]
+}

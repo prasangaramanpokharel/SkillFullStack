@@ -1,0 +1,577 @@
+You want to create a reusable, production-grade `/api-engineering`**&#x20;command/skill** that acts as an API architect and engineering standard for projects.
+
+The goal is not simply to generate CRUD endpoints. It should establish a complete API engineering methodology covering architecture, standards, versioning, security, scalability, performance, documentation, testing, and maintainability.
+
+I would structure it as a standalone, stack-independent engineering skill that can be applied to PHP, Python, Node.js, Next.js, Go, Java, and other backend technologies.
+
+# **Proposed&#x20;**`/api-engineering`**&#x20;skill**
+
+**/api-engineering**
+
+2026 standards
+
+# **API Engineering System**
+
+A reusable engineering framework for designing, building, reviewing, and maintaining production APIs.
+
+1. Research-first API architecture
+2. Standards and protocol compliance
+3. REST, CRUD, RPC, GraphQL and event-driven APIs
+4. Versioning and backward compatibility
+5. Security and authentication
+6. Scalability and performance engineering
+7. Testing, observability and documentation
+8. Production readiness and API auditing
+
+## **1. Research-backed standards for 2026**
+
+I checked the official specifications and engineering references. These should form the foundation of the skill.
+
+| Standard / reference                                                                                                                          | What the skill must enforce                          |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| [OpenAPI 3.2.1](https://spec.openapis.org/oas/v3.2?utm_source=chatgpt.com)                                                                    | API contracts and machine-readable documentation     |
+| [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html?utm_source=chatgpt.com)                                                                | HTTP semantics, methods, status codes, idempotency   |
+| [RFC 9457](https://www.rfc-editor.org/rfc/rfc9457.html?utm_source=chatgpt.com)                                                                | Standardized API error responses                     |
+| [OWASP API Security Top 10](https://devguide.owasp.org/en/07-training-education/07-api-top-ten/?utm_source=chatgpt.com)                       | API-specific security threats                        |
+| [OWASP Top 10 2025](https://owasp.org/projects/top-ten?lang=en\&tab=about-the-owasp-top-10\&utm_source=chatgpt.com)                           | General application security                         |
+| [Microsoft REST API Design](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design?utm_source=chatgpt.com)            | Resource modeling, pagination, filtering, versioning |
+| [Microsoft API Implementation](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-implementation?utm_source=chatgpt.com) | Reliability, implementation, testing and monitoring  |
+| [RFC 9745](https://datatracker.ietf.org/doc/html/rfc9745?utm_source=chatgpt.com)                                                              | HTTP API deprecation lifecycle                       |
+| [AsyncAPI 3.1](https://github.com/asyncapi/spec/blob/master/README.md?utm_source=chatgpt.com)                                                 | Event-driven and asynchronous API contracts          |
+
+Important discovery
+
+As of November 16, 2026, the official OpenAPI specification lists **3.2.1**, released September 10, 2026. The skill should recognize this as the latest specification while checking compatibility with the actual tooling used by each project.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://spec.openapis.org\&sz=32)
+
+OpenAPI Initiative Publications+1
+
+
+
+One important distinction: OWASP API Security Top 10 2023 and OWASP Top 10 2025 are separate references. Your skill should use both rather than confusing their scopes.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://devguide.owasp.org\&sz=32)
+
+OWASP Developer Guide+1
+
+
+
+## **2. Recommended project structure**
+
+I recommend separating the command interface, engineering knowledge, methods, principles, and version-specific standards.
+
+**api-engineering/**
+
+Proposed standalone skill repository
+
+```
+
+api-engineering/
+│
+├── COMMAND.md
+├── SKILL.md
+├── README.md
+├── AGENTS.md
+│
+├── version/
+│   ├── VERSION
+│   ├── compatibility.md
+│   ├── changelog.md
+│   └── 2026.11/
+│       ├── standards.md
+│       ├── protocols.md
+│       └── compatibility.md
+│
+├── skill/
+│   ├── workflow.md
+│   ├── research-first.md
+│   ├── architecture-selection.md
+│   ├── implementation.md
+│   ├── review.md
+│   └── production-readiness.md
+│
+├── methods/
+│   ├── resource-modeling.md
+│   ├── crud-design.md
+│   ├── request-response-design.md
+│   ├── validation.md
+│   ├── pagination.md
+│   ├── filtering-sorting.md
+│   ├── versioning.md
+│   ├── authentication.md
+│   ├── authorization.md
+│   ├── idempotency.md
+│   ├── caching.md
+│   ├── rate-limiting.md
+│   ├── transactions.md
+│   ├── asynchronous-processing.md
+│   ├── webhooks.md
+│   └── error-handling.md
+│
+├── principles/
+│   ├── api-first.md
+│   ├── contract-first.md
+│   ├── backward-compatibility.md
+│   ├── separation-of-concerns.md
+│   ├── statelessness.md
+│   ├── least-privilege.md
+│   ├── fail-safe-design.md
+│   ├── idempotent-design.md
+│   ├── scalability.md
+│   ├── observability.md
+│   ├── maintainability.md
+│   ├── simplicity.md
+│   └── security-by-design.md
+│
+├── standards/
+│   ├── http/
+│   ├── rest/
+│   ├── openapi/
+│   ├── json-schema/
+│   ├── oauth-oidc/
+│   ├── security/
+│   ├── asyncapi/
+│   └── error-formats/
+│
+├── architecture/
+│   ├── monolith.md
+│   ├── modular-monolith.md
+│   ├── microservices.md
+│   ├── serverless.md
+│   ├── api-gateway.md
+│   └── distributed-systems.md
+│
+├── security/
+│   ├── threat-modeling.md
+│   ├── authentication.md
+│   ├── object-authorization.md
+│   ├── input-security.md
+│   ├── injection-prevention.md
+│   ├── cors-csrf.md
+│   ├── secrets-management.md
+│   ├── ssrf.md
+│   └── security-audit.md
+│
+├── performance/
+│   ├── database-optimization.md
+│   ├── caching-strategy.md
+│   ├── connection-pooling.md
+│   ├── concurrency.md
+│   ├── horizontal-scaling.md
+│   ├── load-shedding.md
+│   └── benchmarking.md
+│
+├── testing/
+│   ├── unit-testing.md
+│   ├── integration-testing.md
+│   ├── contract-testing.md
+│   ├── schema-validation.md
+│   ├── security-testing.md
+│   ├── load-testing.md
+│   └── regression-testing.md
+│
+├── documentation/
+│   ├── openapi-documentation.md
+│   ├── endpoint-reference.md
+│   ├── authentication-guide.md
+│   ├── examples.md
+│   └── changelog.md
+│
+├── observability/
+│   ├── structured-logging.md
+│   ├── distributed-tracing.md
+│   ├── metrics.md
+│   ├── alerting.md
+│   └── health-checks.md
+│
+├── templates/
+│   ├── api-requirements.md
+│   ├── endpoint-specification.md
+│   ├── openapi-template.yaml
+│   ├── api-review.md
+│   ├── threat-model.md
+│   └── production-checklist.md
+│
+└── references/
+    ├── official-standards.md
+    ├── research-sources.md
+    └── terminology.md
+  
+```
+
+This is a knowledge architecture, not a framework-specific source-code architecture. Each project can use its own folder conventions.
+
+## **3. Complete API engineering coverage**
+
+These are the subjects the skill should understand and apply.
+
+### **A. CRUD and HTTP method engineering**
+
+CRUD is the foundation, but the skill must understand proper HTTP semantics.
+
+| Operation        | HTTP method | Example                 |
+| ---------------- | ----------- | ----------------------- |
+| Create           | POST        | `POST /v1/users`        |
+| Read collection  | GET         | `GET /v1/users`         |
+| Read resource    | GET         | `GET /v1/users/{id}`    |
+| Full replacement | PUT         | `PUT /v1/users/{id}`    |
+| Partial update   | PATCH       | `PATCH /v1/users/{id}`  |
+| Delete           | DELETE      | `DELETE /v1/users/{id}` |
+
+Additional methods and behaviors:
+
+- HEAD — retrieve headers without a response body.
+- OPTIONS — discover communication options.
+- POST actions — execute operations that don't naturally map to resource CRUD.
+- Bulk operations — safely process multiple resources.
+- Batch operations — coordinate multiple requests where appropriate.
+
+The skill must never assume that every operation should become CRUD. Business actions such as payments, deployments, transfers and subscriptions often need explicit action-oriented endpoints.
+
+### **B. API design methods**
+
+| Method            | Required engineering knowledge        |
+| ----------------- | ------------------------------------- |
+| Resource modeling | Nouns, relationships, identifiers     |
+| URI design        | Naming, hierarchy, canonical URLs     |
+| DTO design        | Request and response separation       |
+| Schema design     | Types, constraints, nullable fields   |
+| Validation        | Boundary and business-rule validation |
+| Pagination        | Cursor and offset pagination          |
+| Filtering         | Allowlisted filter parameters         |
+| Sorting           | Safe, deterministic sorting           |
+| Searching         | Search query design                   |
+| Projection        | Field selection and response size     |
+| Bulk processing   | Limits and partial failures           |
+| Error handling    | Consistent machine-readable errors    |
+| Versioning        | Compatibility and migration           |
+| Idempotency       | Safe retries and duplicate prevention |
+
+### **C. Production scalability methods**
+
+The skill must understand these patterns before recommending them.
+
+| Category            | Methods and patterns                                       |
+| ------------------- | ---------------------------------------------------------- |
+| Database            | Indexing, query planning, transactions, connection pooling |
+| Caching             | HTTP caching, ETags, Redis, CDN                            |
+| Concurrency         | Optimistic locking, pessimistic locking                    |
+| Distributed systems | Timeouts, retries, circuit breakers                        |
+| Reliability         | Graceful degradation, backpressure                         |
+| Scaling             | Horizontal scaling, stateless services                     |
+| Asynchronous        | Queues, workers, event-driven processing                   |
+| Performance         | Batching, compression, streaming                           |
+| Resilience          | Bulkheads, bounded retries, load shedding                  |
+| Multi-tenancy       | Tenant isolation, resource quotas                          |
+
+**Important:** Microservices, Kubernetes, Redis and message queues must not be mandatory defaults. The skill should select architecture based on actual requirements and measured bottlenecks.
+
+### **D. Security engineering**
+
+The API skill should enforce:
+
+1. Authentication and authorization separation.
+2. Object-level authorization on every protected resource.
+3. Function-level authorization.
+4. Property-level access control.
+5. Input validation and output encoding.
+6. SQL/NoSQL injection prevention.
+7. Rate limiting and resource quotas.
+8. SSRF protection.
+9. Secure secret management.
+10. CORS and CSRF considerations.
+11. OAuth 2.0 and OpenID Connect where appropriate.
+12. Audit logs and sensitive-data protection.
+13. API inventory and endpoint lifecycle management.
+14. Dependency and supply-chain security.
+
+Use OWASP API Security Top 10 as a mandatory threat-model checklist, not merely a reading reference.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://api-security.owasp.org\&sz=32)
+
+OWASP API Security Top 10+1
+
+
+
+## **4. API versioning and compatibility engineering**
+
+Versioning deserves its own dedicated module because poorly managed API changes break integrations.
+
+The skill should support:
+
+| Strategy              | Example                               | Use                                             |
+| --------------------- | ------------------------------------- | ----------------------------------------------- |
+| URI versioning        | `/v1/users`                           | Public APIs, simple adoption                    |
+| Header versioning     | `API-Version: 2026-11`                | Explicit negotiated versions                    |
+| Media-type versioning | `Accept: application/vnd.app.v2+json` | Representation evolution                        |
+| Query versioning      | `?version=2`                          | Legacy integrations; generally avoid as default |
+
+Required principles:
+
+- Semantic versioning for released SDKs and API tooling.
+- Additive changes by default.
+- Never silently change existing response meanings.
+- Deprecation announcements.
+- Migration documentation.
+- Breaking-change detection in CI.
+- Defined support and sunset periods.
+- Compatibility testing against previous contracts.
+
+Use RFC 9745 for HTTP deprecation signaling.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://datatracker.ietf.org\&sz=32)
+
+The Deprecation HTTP Response Header Field+1
+
+
+
+## **5. API engineering principles**
+
+These should be independent reference documents, not just a checklist inside `SKILL.md`.
+
+| Principle              | Engineering requirement                            |
+| ---------------------- | -------------------------------------------------- |
+| API-first              | Define the API contract before implementation      |
+| Contract-first         | Treat the API specification as a source of truth   |
+| Separation of concerns | Separate transport, business logic and persistence |
+| Single responsibility  | Keep modules focused                               |
+| Statelessness          | Avoid unnecessary server-side session coupling     |
+| Least privilege        | Grant minimum required permissions                 |
+| Fail securely          | Default to denying unauthorized operations         |
+| Idempotency            | Make retries safe where required                   |
+| Backward compatibility | Protect existing consumers                         |
+| Explicit contracts     | Avoid undocumented behavior                        |
+| Defense in depth       | Apply multiple security controls                   |
+| Observability          | Logs, metrics and traces                           |
+| Bounded resources      | Limit payloads, queries and execution              |
+| Graceful degradation   | Preserve critical functionality                    |
+| Simplicity             | Avoid unnecessary abstractions                     |
+| Testability            | Make behavior independently verifiable             |
+
+## **6. Required API response standards**
+
+The skill should establish a consistent response contract.
+
+For example, successful resource creation:
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json
+Location: /v1/users/usr_123
+```
+
+```
+{
+  "data": {
+    "id": "usr_123",
+    "name": "Example User",
+    "createdAt": "2026-11-16T06:00:00Z"
+  }
+}
+```
+
+For errors, follow RFC 9457 Problem Details:
+
+```
+HTTP/1.1 422 Unprocessable Content
+Content-Type: application/problem+json
+```
+
+```
+{
+  "type": "https://api.example.com/problems/validation-error",
+  "title": "Validation failed",
+  "status": 422,
+  "detail": "The submitted information is invalid.",
+  "instance": "/v1/users",
+  "errors": [
+    {
+      "field": "email",
+      "code": "invalid_format",
+      "message": "Enter a valid email address."
+    }
+  ]
+}
+```
+
+The `errors` field here is an application-defined extension.
+
+### **HTTP status code coverage**
+
+| Code      | Meaning                |
+| --------- | ---------------------- |
+| 200       | OK                     |
+| 201       | Created                |
+| 202       | Accepted               |
+| 204       | No Content             |
+| 301 / 308 | Redirect               |
+| 304       | Not Modified           |
+| 400       | Bad Request            |
+| 401       | Unauthorized           |
+| 403       | Forbidden              |
+| 404       | Not Found              |
+| 405       | Method Not Allowed     |
+| 409       | Conflict               |
+| 412       | Precondition Failed    |
+| 413       | Content Too Large      |
+| 415       | Unsupported Media Type |
+| 422       | Unprocessable Content  |
+| 429       | Too Many Requests      |
+| 500       | Internal Server Error  |
+| 502       | Bad Gateway            |
+| 503       | Service Unavailable    |
+| 504       | Gateway Timeout        |
+
+The skill must select codes based on actual HTTP semantics, not force every error into `200 OK`.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://www.rfc-editor.org\&sz=32)
+
+rfc-editor.org+1
+
+
+
+## **7. How&#x20;**`/api-engineering`**&#x20;should operate**
+
+This is the most important part. The command should behave like an engineering agent, not a code generator.
+
+## **Execution lifecycle**
+
+1. **Research first**
+
+   Identify current official standards, documentation, security recommendations and framework-specific guidance.
+2. **Understand the project**
+
+   Inspect existing source code, repository conventions, dependencies, database schema and architecture.
+3. **Select technology**
+
+   If implementation is requested, ask for missing stack information before choosing technologies.
+4. **Design the contract**
+
+   Define resources, endpoints, schemas, status codes, authentication and authorization.
+5. **Review architecture**
+
+   Assess scalability, security, maintainability, performance and failure scenarios.
+6. **Implement**
+
+   Follow existing project conventions and separate responsibilities into appropriate modules.
+7. **Verify**
+
+   Run tests, contract validation, security checks, regression checks and performance tests where appropriate.
+8. **Document**
+
+   Produce API specifications, endpoint references, examples and migration documentation.
+9. **Production readiness**
+
+   Audit the finished implementation against the engineering checklist.
+
+## **8. Command behavior and subcommands**
+
+I recommend one primary command with optional specialized modes.
+
+| Command                          | Purpose                               |
+| -------------------------------- | ------------------------------------- |
+| `/api-engineering`               | Full API engineering workflow         |
+| `/api-engineering design`        | Design API architecture and contracts |
+| `/api-engineering crud`          | Design and implement CRUD             |
+| `/api-engineering audit`         | Audit an existing API                 |
+| `/api-engineering security`      | Security assessment                   |
+| `/api-engineering scalability`   | Scalability assessment                |
+| `/api-engineering version`       | Versioning and compatibility          |
+| `/api-engineering documentation` | Generate API documentation            |
+| `/api-engineering testing`       | Build API testing strategy            |
+| `/api-engineering optimize`      | Performance optimization              |
+| `/api-engineering review`        | Review API implementation             |
+| `/api-engineering migrate`       | API migration planning                |
+
+## **9. Mandatory rules inside SKILL.md**
+
+I would make these non-negotiable instructions:
+
+1. Never implement an API without understanding its requirements.
+2. Never assume a particular programming language or framework.
+3. Never invent standards or claim unsupported compliance.
+4. Research the latest applicable official documentation before implementation.
+5. Inspect existing project architecture before modifying anything.
+6. Never put business logic inside route handlers.
+7. Never expose database entities directly as public API contracts without an explicit security and contract review.
+8. Never trust client-supplied identifiers or permissions.
+9. Never implement unbounded collection endpoints.
+10. Never ignore pagination, rate limiting and resource consumption.
+11. Never expose stack traces, secrets or internal infrastructure details.
+12. Never introduce unnecessary dependencies or microservices.
+13. Never break existing API contracts without an explicit migration strategy.
+14. Never claim production readiness without verification.
+15. Never replace working project logic unnecessarily.
+
+## **10. Final architecture recommendation**
+
+I would build this as a **versioned, modular, stack-independent API engineering knowledge system**.
+
+## **API Engineering**
+
+Recommended architecture
+
+**COMMAND LAYER**
+
+/api-engineering
+
+**ENGINEERING ORCHESTRATOR**
+
+Research → Analyze → Design → Implement → Verify
+
+**Standards**
+
+Protocols and specifications
+
+**Principles**
+
+Engineering rules
+
+**Methods**
+
+Implementation techniques
+
+**Architecture**
+
+System design
+
+**Security**
+
+Threat prevention
+
+**Performance**
+
+Scalability and reliability
+
+**Testing**
+
+Verification and contracts
+
+**Versioning**
+
+Compatibility lifecycle
+
+**PRODUCTION API**
+
+Documented · Tested · Secure · Maintainable · Scalable
+
+### **My recommendation for the implementation order**
+
+| Priority | Module                                    |
+| -------- | ----------------------------------------- |
+| P0       | COMMAND.md, SKILL.md, versioning          |
+| P0       | Standards, principles, methods            |
+| P1       | CRUD, resource modeling, validation       |
+| P1       | Authentication, authorization, security   |
+| P1       | Pagination, filtering, error handling     |
+| P1       | OpenAPI and documentation                 |
+| P2       | Performance, caching, scalability         |
+| P2       | Testing and observability                 |
+| P3       | Distributed systems and advanced patterns |
+
+**One important architectural decision:** Don't put the entire engineering knowledge base into a single `SKILL.md`. Keep it as a lightweight orchestrator that loads relevant reference documents based on the current task. This makes it easier to maintain, extend and update as standards evolve.
+
+The first implementation milestone should be the complete `COMMAND.md`, `SKILL.md`, `version/2026.11/`, `principles/` and `methods/` with actual engineering rules, not empty placeholder files.
+
+That gives you a reusable API engineering system rather than another generic CRUD-generation prompt.

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RFC9457ProblemDetails",
+  "description": "Standard Problem Details for HTTP APIs (RFC 9457)",
+  "type": "object",
+  "required": ["type", "title", "status"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "format": "uri",
+      "description": "URI reference that identifies the problem type"
+    },
+    "title": {
+      "type": "string",
+      "description": "Short, human-readable summary of the problem type"
+    },
+    "status": {
+      "type": "integer",
+      "description": "HTTP status code"
+    },
+    "detail": {
+      "type": "string",
+      "description": "Human-readable explanation specific to this occurrence"
+    },
+    "instance": {
+      "type": "string",
+      "format": "uri-reference",
+      "description": "URI reference that identifies the specific occurrence"
+    },
+    "errors": {
+      "type": "array",
+      "description": "Extension array of field-level validation errors",
+      "items": {
+        "type": "object",
+        "required": ["field", "message"],
+        "properties": {
+          "field": { "type": "string" },
+          "code": { "type": "string" },
+          "message": { "type": "string" }
+        }
+      }
+    }
+  }
+}

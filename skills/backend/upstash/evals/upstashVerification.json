@@ -1,0 +1,14 @@
+{
+  "evals": [
+    {
+      "name": "rate-limit-sliding-window",
+      "prompt": "Create an Upstash Ratelimit configuration for an AI route allowing 20 requests per minute with dynamicLimits enabled.",
+      "expectedPattern": "Ratelimit.slidingWindow(20, \"1m\").*dynamicLimits: true"
+    },
+    {
+      "name": "durable-workflow-sleep",
+      "prompt": "Write an Upstash Workflow step that pauses durable execution for 2 hours.",
+      "expectedPattern": "await context.sleep(\".*\", 7200)"
+    }
+  ]
+}

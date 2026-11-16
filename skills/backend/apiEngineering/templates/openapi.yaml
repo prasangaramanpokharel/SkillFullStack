@@ -1,0 +1,125 @@
+openapi: 3.2.1
+$self: https://api.example.com/openapi/v1.yaml
+info:
+  title: Production Service API
+  version: 1.0.0
+  description: Enterprise API conforming to RFC 9110, RFC 9457, and OpenAPI 3.2.1.
+servers:
+  - url: https://api.example.com/v1
+    description: Production Server
+
+paths:
+  /users:
+    get:
+      summary: List users with contextual pagination
+      tags:
+        - Users
+      parameters:
+        - name: cursor
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Opaque pagination cursor token
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 20
+            maximum: 100
+          description: Max items to return
+      responses:
+        '200':
+          description: Paginated users collection
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCollectionResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+components:
+  schemas:
+    ProblemDetails:
+      type: object
+      required:
+        - type
+        - title
+        - status
+      properties:
+        type:
+          type: string
+          format: uri
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              code:
+                type: string
+              message:
+                type: string
+
+    User:
+      type: object
+      required:
+        - id
+        - email
+        - status
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+          format: email
+        status:
+          type: string
+          enum: [active, suspended]
+
+    UserCollectionResponse:
+      type: object
+      required:
+        - data
+        - meta
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        meta:
+          type: object
+          properties:
+            cursor:
+              type: [string, "null"]
+            hasNextPage:
+              type: boolean
+            limit:
+              type: integer
+
+  responses:
+    UnauthorizedError:
+      description: Missing or invalid authentication token
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+
+    ValidationError:
+      description: Input validation failed
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'

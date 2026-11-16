@@ -1,0 +1,1485 @@
+# **Database Architecture Engineering — 2026**
+
+I recommend creating a separate, comprehensive `databaseArchitecture`**&#x20;engineering skill** inside `SkillFullStack`, following the same philosophy as your `apiEngineering` skill.
+
+The objective is to build a database architect that understands database design, data modeling, normalization, storage engines, distributed databases, scalability, performance, consistency and data governance.
+
+It must work across **all database categories**, not just PostgreSQL, MySQL or SQL databases.
+
+It should be capable of recommending the right database architecture for:
+
+- Small applications and large enterprise systems.
+- SaaS platforms and multi-tenant applications.
+- Financial and payment systems.
+- E-commerce and inventory systems.
+- Analytics and data-intensive applications.
+- Decentralized and distributed applications.
+- Real-time applications.
+- AI, vector search and machine-learning systems.
+- High-throughput and globally distributed platforms.
+
+**Most important principle:** The skill must not recommend a database simply because it is popular. It must understand the data, workload, consistency requirements, access patterns, growth expectations and operational constraints before making a recommendation.
+
+## **1. Proposed skill identity**
+
+# **databaseArchitecture**
+
+2026 engineering
+
+Database Architecture & Data Engineering Intelligence
+
+**Primary responsibility**
+
+Design, evaluate, optimize and govern database architectures across relational, non-relational, distributed, analytical and specialized data systems.
+
+| Property       | Definition                                         |
+| -------------- | -------------------------------------------------- |
+| Skill category | Backend / Database                                 |
+| Architecture   | Stack and vendor independent                       |
+| Methodology    | Workload-first, data-first                         |
+| Design         | Conceptual → Logical → Physical                    |
+| Core focus     | Integrity, consistency, scalability                |
+| Output         | Database architecture and implementation plan      |
+| Verification   | Schema audits, query analysis and workload testing |
+
+## **2. Core architectural philosophy**
+
+The skill should be based on these fundamental principles.
+
+| Principle                 | Meaning                                           |
+| ------------------------- | ------------------------------------------------- |
+| Data integrity first      | Protect correctness of stored data                |
+| Workload-driven design    | Design around actual access patterns              |
+| Normalization by default  | Reduce duplication and update anomalies           |
+| Justified denormalization | Optimize measured read/write bottlenecks          |
+| Explicit consistency      | Define acceptable consistency guarantees          |
+| Access-pattern awareness  | Understand how data will be queried               |
+| Predictable scalability   | Identify bottlenecks before they become critical  |
+| Controlled complexity     | Avoid unnecessary distributed infrastructure      |
+| Data lifecycle awareness  | Plan retention, archival and deletion             |
+| Security by design        | Protect data at every layer                       |
+| Recoverability            | Design backups and recovery before production     |
+| Vendor independence       | Separate database principles from vendor features |
+
+The skill must distinguish between three different things:
+
+1. **Database theory:** Why a data model or operation behaves as it does.
+2. **Database architecture:** How the complete data system is structured.
+3. **Database implementation:** How that architecture is implemented using a particular engine.
+
+These must not be mixed into one generic collection of database recommendations.
+
+## **3. Database types and architecture selection**
+
+This is a mandatory part of the skill. It must understand the strengths, limitations and suitable workloads of each database family.
+
+### **3.1 Database taxonomy**
+
+## **Database ecosystem**
+
+**Relational databases**
+
+Structured records, relationships, transactions and constraints
+
+PostgreSQL, MySQL, MariaDB, SQLite, Oracle, SQL Server
+
+**Document databases**
+
+Flexible documents and nested data
+
+MongoDB, Couchbase, Firestore
+
+**Key-value databases**
+
+Fast key-based reads, writes and caching
+
+Redis, Valkey, DynamoDB
+
+**Wide-column databases**
+
+Distributed, high-throughput workloads
+
+Cassandra, ScyllaDB, HBase
+
+**Graph databases**
+
+Relationship traversal and graph queries
+
+Neo4j, Amazon Neptune, JanusGraph
+
+**Time-series databases**
+
+Timestamped measurements and telemetry
+
+TimescaleDB, InfluxDB, VictoriaMetrics
+
+**Columnar / OLAP databases**
+
+Analytical queries over large datasets
+
+ClickHouse, DuckDB, BigQuery, Snowflake
+
+**Search databases**
+
+Full-text retrieval and relevance ranking
+
+Elasticsearch, OpenSearch, Solr
+
+**Vector databases**
+
+Similarity search over embeddings
+
+Milvus, Qdrant, Weaviate, pgvector
+
+**Object storage**
+
+Large binary objects and unstructured files
+
+S3-compatible storage, MinIO
+
+**Ledger databases**
+
+Verifiable, append-oriented records
+
+Amazon QLDB alternatives, blockchain-based ledgers
+
+**In-memory databases**
+
+Low-latency data processing
+
+Redis, Valkey, SAP HANA
+
+**Embedded databases**
+
+Local application persistence
+
+SQLite, DuckDB, RocksDB, LMDB
+
+This taxonomy is not a list of mutually exclusive categories. Some systems support multiple workload types. For example, PostgreSQL supports relational workloads and extensions for vector search, while MongoDB supports document, search, time-series and vector workloads.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://www.postgresql.org\&sz=32)
+
+PostgreSQL+2
+
+
+
+### **3.2 Database selection decision matrix**
+
+The skill must compare database options using actual requirements.
+
+| Requirement                            | Candidate architecture             |
+| -------------------------------------- | ---------------------------------- |
+| Complex relationships and transactions | Relational                         |
+| Flexible nested documents              | Document                           |
+| Very fast key-based retrieval          | Key-value                          |
+| Massive distributed write workloads    | Wide-column                        |
+| Deep relationship traversal            | Graph                              |
+| Time-based measurements                | Time-series                        |
+| Large-scale aggregations               | Columnar OLAP                      |
+| Full-text search                       | Search engine                      |
+| Semantic similarity                    | Vector                             |
+| Large files and media                  | Object storage                     |
+| Local application storage              | Embedded                           |
+| Verifiable append-only records         | Ledger or append-only architecture |
+
+It must also evaluate hybrid architectures.
+
+For example:
+
+- PostgreSQL for transactional records.
+- Redis for caching.
+- Object storage for files.
+- OpenSearch for full-text search.
+- ClickHouse for analytics.
+- A vector index for semantic retrieval.
+
+However, each additional database introduces synchronization, operational, security and consistency costs. The skill should justify polyglot persistence rather than recommend it by default.
+
+## **4. Normalization and relational data theory**
+
+This deserves a dedicated `normalization/` directory.
+
+Normalization is one of the most important subjects in relational database architecture, but the skill must not incorrectly apply relational normal forms to every type of database.
+
+### **4.1 Normal forms**
+
+| Normal form | Main principle                                                                                |
+| ----------- | --------------------------------------------------------------------------------------------- |
+| 1NF         | Atomic attribute values and valid relational structure                                        |
+| 2NF         | No partial dependency of non-prime attributes on candidate keys                               |
+| 3NF         | Eliminate inappropriate transitive functional dependencies                                    |
+| BCNF        | Every determinant is a superkey                                                               |
+| 4NF         | Eliminate non-trivial multivalued dependencies                                                |
+| 5NF         | Eliminate problematic join dependencies                                                       |
+| 6NF         | Decompose relations to irreducible join dependencies; useful in specialized temporal modeling |
+| DKNF        | Constraints are consequences of domain and key constraints                                    |
+
+The skill must understand that normalization is based on functional dependencies, candidate keys, multivalued dependencies and join dependencies—not simply splitting large tables into smaller tables.
+
+Reference: [Relational database normalization overview](https://openstax.org/books/introduction-computer-science/pages/8-3-relational-database-management-systems?utm_source=chatgpt.com).
+
+### **4.2 Anomalies normalization prevents**
+
+The knowledge base must teach:
+
+1. Insertion anomalies.
+2. Update anomalies.
+3. Deletion anomalies.
+4. Duplicate facts.
+5. Inconsistent attributes.
+6. Unclear ownership of data.
+
+### **4.3 Functional dependencies**
+
+Teach:
+
+- Functional dependency.
+- Full functional dependency.
+- Partial dependency.
+- Transitive dependency.
+- Candidate keys.
+- Superkeys.
+- Prime attributes.
+- Composite keys.
+- Determinants.
+- Attribute closure.
+- Lossless decomposition.
+- Dependency preservation.
+
+### **4.4 Normalization workflow**
+
+## **Relational normalization process**
+
+1. Identify entities, attributes and business facts.
+2. Identify candidate keys and functional dependencies.
+3. Establish first normal form.
+4. Remove partial dependencies to achieve 2NF.
+5. Remove inappropriate transitive dependencies to achieve 3NF.
+6. Evaluate BCNF and higher normal forms where required.
+7. Verify lossless decomposition and dependency preservation.
+8. Evaluate the resulting design against actual query workloads.
+
+### **4.5 Example: poorly normalized database**
+
+Illustrative unnormalized order data
+
+| order_id | customer | email             | product_1 | product_2 |
+| -------- | -------- | ----------------- | --------- | --------- |
+| 1001     | Alex     | alex\@example.com | Laptop    | Mouse     |
+| 1002     | Alex     | alex\@example.com | Keyboard  | —         |
+
+Problems:
+
+- Repeated customer information.
+- Repeating product columns.
+- Difficult product expansion.
+- Update anomalies.
+- Difficult order-item relationships.
+
+A normalized relational design:
+
+```
+
+CREATE TABLE customers (
+    customer_id BIGINT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE
+);
+
+CREATE TABLE orders (
+    order_id BIGINT PRIMARY KEY,
+    customer_id BIGINT NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    FOREIGN KEY (customer_id)
+        REFERENCES customers(customer_id)
+);
+
+CREATE TABLE products (
+    product_id BIGINT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL
+);
+
+CREATE TABLE order_items (
+    order_id BIGINT NOT NULL,
+    product_id BIGINT NOT NULL,
+    quantity INTEGER NOT NULL CHECK (quantity > 0),
+    PRIMARY KEY (order_id, product_id),
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+```
+
+This is a starting relational model. A real implementation must also decide how to preserve historical product descriptions, prices, discounts and tax information on the order itself.
+
+### **4.6 Denormalization principles**
+
+Normalization must be the default for relational transactional models, not an absolute prohibition against duplication.
+
+The skill must understand:
+
+- Controlled duplication.
+- Materialized views.
+- Read models.
+- CQRS projections.
+- Cached aggregates.
+- Snapshot data.
+- Historical snapshots.
+- Event-sourced projections.
+- Query-driven data duplication.
+
+It must document how duplicated data remains consistent and which copy is authoritative.
+
+The distinction between relational normalization and query-driven denormalization is particularly important: Cassandra explicitly designs tables around query patterns, while MongoDB provides embedding and referencing strategies based on access patterns and consistency needs.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://cassandra.apache.org\&sz=32)
+
+Apache Cassandra Documentation+2
+
+
+
+## **5. Data modeling and schema architecture**
+
+The skill must understand the complete lifecycle of data modeling.
+
+### **5.1 Three modeling levels**
+
+| Level      | Purpose                             | Output                                      |
+| ---------- | ----------------------------------- | ------------------------------------------- |
+| Conceptual | Understand business concepts        | Entity relationship overview                |
+| Logical    | Define relationships and attributes | Logical data model                          |
+| Physical   | Define implementation details       | Tables, indexes, constraints and partitions |
+
+### **5.2 Data modeling principles**
+
+- Entity identification.
+- Attribute classification.
+- Primary-key selection.
+- Foreign-key design.
+- Composite keys.
+- Natural versus surrogate keys.
+- One-to-one relationships.
+- One-to-many relationships.
+- Many-to-many relationships.
+- Self-referencing relationships.
+- Hierarchical modeling.
+- Polymorphic relationships.
+- Inheritance mapping.
+- Junction tables.
+- Referential integrity.
+- Schema evolution.
+
+### **5.3 Identifier engineering**
+
+This needs its own detailed methodology.
+
+Compare:
+
+| Identifier         | Characteristics                       |
+| ------------------ | ------------------------------------- |
+| Sequential integer | Compact and simple                    |
+| BIGINT             | Large sequential identifier space     |
+| UUID v4            | Random, distributed generation        |
+| UUID v7            | Time-ordered UUID                     |
+| ULID               | Time-oriented identifier              |
+| Snowflake-style ID | Distributed, time-based ID            |
+| Natural key        | Derived from meaningful business data |
+
+The skill must evaluate index locality, uniqueness, predictability, information leakage, distributed generation and storage overhead.
+
+A business email or username should not automatically become a permanent primary key.
+
+### **5.4 Schema evolution**
+
+Include:
+
+- Expand-and-contract migrations.
+- Backward-compatible migrations.
+- Forward-compatible readers.
+- Online schema changes.
+- Large-table migration strategies.
+- Backfills.
+- Dual-write hazards.
+- Shadow reads.
+- Migration rollback.
+- Schema versioning.
+- Data transformation.
+- Zero-downtime deployment planning.
+
+## **6. Database scalability architecture**
+
+This is one of the most important modules in the entire skill.
+
+### **6.1 Scaling strategies**
+
+| Strategy           | Description                                               |
+| ------------------ | --------------------------------------------------------- |
+| Vertical scaling   | Increase resources on a database node                     |
+| Read replicas      | Distribute read workload                                  |
+| Write scaling      | Distribute write workload through supported architectures |
+| Partitioning       | Divide one logical dataset into smaller partitions        |
+| Sharding           | Distribute data across independent nodes                  |
+| Replication        | Maintain multiple copies                                  |
+| Caching            | Avoid repeated expensive retrieval                        |
+| Connection pooling | Reuse database connections                                |
+| Query optimization | Reduce execution cost                                     |
+| Archival           | Move cold data to appropriate storage                     |
+
+### **6.2 Partitioning versus sharding**
+
+The skill must never treat these as interchangeable.
+
+| Feature      | Partitioning                      | Sharding                              |
+| ------------ | --------------------------------- | ------------------------------------- |
+| Purpose      | Split a logical dataset           | Distribute datasets across nodes      |
+| Placement    | Often within one database system  | Across multiple nodes or databases    |
+| Management   | Often engine-managed              | Requires distribution strategy        |
+| Main concern | Partition pruning and maintenance | Routing, distribution and rebalancing |
+| Complexity   | Usually lower                     | Usually higher                        |
+
+Teach partition strategies:
+
+- Range partitioning.
+- List partitioning.
+- Hash partitioning.
+- Composite partitioning.
+- Time-based partitioning.
+- Tenant-based partitioning.
+
+PostgreSQL's official documentation describes partitioning as splitting a logically large table into smaller physical pieces and explains partition pruning.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://www.postgresql.org\&sz=32)
+
+PostgreSQL
+
+
+
+### **6.3 Sharding engineering**
+
+Include:
+
+- Shard-key selection.
+- Hash distribution.
+- Range distribution.
+- Tenant distribution.
+- Geographic distribution.
+- Hot partition prevention.
+- Rebalancing.
+- Resharding.
+- Cross-shard queries.
+- Cross-shard transactions.
+- Distributed uniqueness.
+- Shard routing.
+- Data migration between shards.
+
+### **6.4 Replication architecture**
+
+Include:
+
+- Primary-replica.
+- Multi-primary.
+- Leader-follower.
+- Synchronous replication.
+- Asynchronous replication.
+- Quorum replication.
+- Read-after-write guarantees.
+- Replica lag.
+- Failover.
+- Split-brain prevention.
+- Conflict resolution.
+
+### **6.5 Distributed database theory**
+
+Create dedicated documents for:
+
+- CAP theorem.
+- PACELC.
+- Consistency models.
+- Linearizability.
+- Sequential consistency.
+- Causal consistency.
+- Eventual consistency.
+- Read-your-writes consistency.
+- Monotonic reads.
+- Quorum reads and writes.
+- Consensus algorithms.
+- Raft.
+- Paxos.
+- Distributed transactions.
+- Two-phase commit.
+- Failure detection.
+
+Do not reduce CAP to the simplistic statement that a system can only ever choose two of three properties. Explain the network-partition assumption and the consistency/availability trade-off during partitions.
+
+### **6.6 Scalability decision rules**
+
+The skill must ask:
+
+- How many records are expected?
+- What is the read/write ratio?
+- What is the peak throughput?
+- What is the latency objective?
+- What is the data growth rate?
+- What is the tenant distribution?
+- What is the geographical distribution?
+- What consistency guarantees are required?
+- How much downtime is acceptable?
+
+If these are unknown, the skill should make assumptions explicit and recommend measurements rather than inventing capacity estimates.
+
+## **7. Indexing and query optimization**
+
+Create a dedicated `indexing/` and `queryOptimization/` knowledge area.
+
+### **7.1 Index types**
+
+The skill should understand:
+
+| Index                | Typical use                                    |
+| -------------------- | ---------------------------------------------- |
+| B-tree               | Equality, range and ordered lookups            |
+| Hash                 | Equality lookups where supported               |
+| Composite            | Queries over multiple columns                  |
+| Unique               | Enforce uniqueness                             |
+| Partial / filtered   | Index a subset of records                      |
+| Covering             | Reduce table lookups                           |
+| Expression           | Index calculated expressions                   |
+| Full-text            | Text retrieval                                 |
+| Spatial / geospatial | Location-based searches                        |
+| Bitmap               | Analytical workloads in suitable engines       |
+| BRIN                 | Large naturally ordered datasets in PostgreSQL |
+| Inverted             | Text and document retrieval                    |
+| HNSW                 | Approximate vector similarity                  |
+| IVFFlat              | Approximate vector similarity                  |
+
+Do not assume all engines support the same index types or execution semantics.
+
+### **7.2 Composite index principles**
+
+Teach:
+
+- Column ordering.
+- Equality and range predicates.
+- Selectivity.
+- Cardinality.
+- Index-only access.
+- Covering indexes.
+- Prefix behavior where applicable.
+- Sort and grouping support.
+- Write amplification.
+- Index maintenance.
+- Unused indexes.
+
+### **7.3 Query optimization methods**
+
+- Query execution plans.
+- Cost-based optimization.
+- Join algorithms.
+- Nested-loop joins.
+- Hash joins.
+- Merge joins.
+- Predicate pushdown.
+- Projection pushdown.
+- N+1 query detection.
+- Query rewriting.
+- Statistics and histograms.
+- Lock contention.
+- Slow query analysis.
+- Prepared statements.
+- Query parameterization.
+- Connection pool saturation.
+
+The skill should use actual query plans and workload measurements before suggesting an index.
+
+### **7.4 Database-specific query analysis**
+
+Separate vendor-specific references:
+
+```
+engines/
+├── postgresql/
+├── mysql/
+├── mongodb/
+├── redis/
+├── cassandra/
+├── sqlite/
+├── sqlserver/
+└── oracle/
+```
+
+These should explain implementation differences without changing the stack-independent principles.
+
+## **8. Storage engine and physical architecture**
+
+The skill should understand what happens beneath the database query interface.
+
+### **8.1 Storage fundamentals**
+
+- Pages and blocks.
+- Rows and records.
+- Heap storage.
+- B-tree storage.
+- Log-structured merge trees.
+- Write-ahead logging.
+- Append-only storage.
+- Buffer pools.
+- Page cache.
+- Memory management.
+- Disk I/O.
+- Sequential versus random I/O.
+- Compression.
+- Data encoding.
+- Checkpointing.
+- Compaction.
+- Garbage collection.
+- Vacuuming.
+- Tombstones.
+
+### **8.2 Storage engine comparisons**
+
+| Architecture | Key characteristics                    |
+| ------------ | -------------------------------------- |
+| B-tree       | Efficient ordered lookup and updates   |
+| LSM-tree     | Write-optimized design with compaction |
+| Heap         | Flexible row storage                   |
+| Columnar     | Efficient analytical scans             |
+| Append-only  | Sequential write-oriented storage      |
+| In-memory    | Memory-oriented low-latency access     |
+
+The skill should explain how these designs affect read performance, write performance, storage consumption and operational behavior.
+
+### **8.3 Memory and resource management**
+
+Include:
+
+- Buffer cache sizing.
+- Working-set estimation.
+- Memory pressure.
+- Connection limits.
+- Disk throughput.
+- IOPS.
+- Storage capacity planning.
+- Temp-file usage.
+- Compaction pressure.
+- Cache eviction.
+- CPU saturation.
+
+## **9. Transactions, concurrency and data integrity**
+
+This is a separate mandatory engineering area.
+
+### **9.1 ACID properties**
+
+| Property    | Requirement                                                |
+| ----------- | ---------------------------------------------------------- |
+| Atomicity   | All-or-nothing transaction behavior                        |
+| Consistency | Preserve defined integrity constraints                     |
+| Isolation   | Control interactions between concurrent transactions       |
+| Durability  | Committed data survives according to durability guarantees |
+
+### **9.2 Isolation levels**
+
+Teach the actual behavior of:
+
+- Read Uncommitted.
+- Read Committed.
+- Repeatable Read.
+- Serializable.
+
+Also teach:
+
+- Dirty reads.
+- Non-repeatable reads.
+- Phantom reads.
+- Lost updates.
+- Write skew.
+- Serialization failures.
+- Deadlocks.
+- Lock escalation.
+- MVCC.
+
+Do not assume that isolation-level names behave identically across every database engine.
+
+### **9.3 Concurrency control**
+
+- Optimistic locking.
+- Pessimistic locking.
+- Version columns.
+- Compare-and-swap.
+- Row-level locks.
+- Table-level locks.
+- Advisory locks.
+- Unique constraints.
+- Atomic increments.
+- Conflict detection.
+- Retry policies.
+
+### **9.4 Data integrity rules**
+
+Every database design should identify which constraints must be enforced at the database level.
+
+Examples:
+
+- Primary keys.
+- Foreign keys.
+- Unique constraints.
+- NOT NULL.
+- CHECK constraints.
+- Exclusion constraints where supported.
+- Referential actions.
+- Domain constraints.
+- Valid state transitions.
+
+Application validation is useful, but it must not be the only protection for critical data invariants.
+
+## **10. Analytical and specialized data architectures**
+
+Your skill should not limit database engineering to operational CRUD systems.
+
+### **10.1 OLTP versus OLAP**
+
+| Feature      | OLTP                | OLAP                         |
+| ------------ | ------------------- | ---------------------------- |
+| Workload     | Transactions        | Analytics                    |
+| Queries      | Frequent, selective | Large scans and aggregations |
+| Writes       | Continuous          | Batch or streaming ingestion |
+| Data model   | Often normalized    | Often dimensional            |
+| Optimization | Transaction latency | Query throughput             |
+
+### **10.2 Data warehouse architecture**
+
+Teach:
+
+- Data warehouse.
+- Data lake.
+- Lakehouse.
+- Data marts.
+- ETL.
+- ELT.
+- Batch processing.
+- Streaming ingestion.
+- CDC.
+- Data lineage.
+- Data quality.
+- Data catalog.
+- Schema registry.
+
+### **10.3 Dimensional modeling**
+
+Include:
+
+- Fact tables.
+- Dimension tables.
+- Star schema.
+- Snowflake schema.
+- Grain definition.
+- Surrogate keys.
+- Slowly changing dimensions (SCD Type 0–6, with practical emphasis on Types 1, 2 and 3).
+- Snapshot fact tables.
+- Accumulating snapshots.
+- Bridge tables.
+- Degenerate dimensions.
+
+Normalization and dimensional modeling should be separate subjects. A star schema intentionally uses controlled denormalization for analytical workloads.
+
+### **10.4 Specialized architectures**
+
+The knowledge base should also cover:
+
+| Architecture   | Key concepts                                  |
+| -------------- | --------------------------------------------- |
+| Graph          | Nodes, edges, traversal, graph partitioning   |
+| Time-series    | Retention, downsampling, aggregation          |
+| Search         | Inverted indexes, analyzers, relevance        |
+| Vector         | Embeddings, dimensions, ANN, recall           |
+| Geospatial     | Spatial indexes, geometry, coordinate systems |
+| Ledger         | Append-only records, integrity verification   |
+| Event store    | Immutable events and projections              |
+| Object storage | Metadata, lifecycle and content addressing    |
+
+For vector databases, include exact versus approximate nearest-neighbor search, recall/latency trade-offs, metadata filtering and index selection.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://github.com\&sz=32)
+
+GitHub+1
+
+
+
+## **11. Security, governance and data lifecycle**
+
+### **11.1 Database security**
+
+- Authentication.
+- Authorization.
+- Role-based access.
+- Least privilege.
+- Row-level security.
+- Column-level security.
+- Tenant isolation.
+- Encryption at rest.
+- Encryption in transit.
+- Key management.
+- Secret rotation.
+- Audit logging.
+- SQL injection prevention.
+- Database network isolation.
+- Privileged access management.
+
+### **11.2 Data governance**
+
+- Data classification.
+- Data ownership.
+- Data stewardship.
+- Data lineage.
+- Data cataloging.
+- Data quality.
+- Data retention.
+- Data residency.
+- Data deletion.
+- Data masking.
+- Pseudonymization.
+- Anonymization.
+- Sensitive-field classification.
+- Regulatory requirements where applicable.
+
+### **11.3 Backup and disaster recovery**
+
+This should be a mandatory production-readiness module.
+
+Include:
+
+- Full backups.
+- Incremental backups.
+- Differential backups.
+- Transaction-log backups.
+- Point-in-time recovery.
+- Logical backups.
+- Physical backups.
+- Snapshot consistency.
+- Replication versus backup.
+- Cross-region recovery.
+- Restore testing.
+- Backup encryption.
+- Retention policies.
+- RPO and RTO.
+
+A replica is not a backup. Accidental deletion and corruption can propagate to replicas.
+
+**Non-negotiable:** A backup strategy is incomplete until restore procedures have been tested.
+
+## **12. Database architecture principles**
+
+I recommend a dedicated `principles/` directory with individual documents.
+
+| Principle                  | What it teaches                       |
+| -------------------------- | ------------------------------------- |
+| Data integrity             | Correctness and validity of records   |
+| Normalization              | Controlled relational structure       |
+| Functional dependency      | Attribute relationships               |
+| Lossless decomposition     | Preserve reconstructable information  |
+| Dependency preservation    | Preserve important constraints        |
+| Referential integrity      | Valid entity relationships            |
+| Data locality              | Keep frequently accessed data close   |
+| Access-pattern design      | Model around workload                 |
+| Atomicity                  | Safe state transitions                |
+| Consistency                | Explicit correctness guarantees       |
+| Isolation                  | Concurrent operation safety           |
+| Durability                 | Persistence guarantees                |
+| Idempotent writes          | Safe repeated operations              |
+| Partition awareness        | Avoid uneven data distribution        |
+| Index selectivity          | Avoid inefficient index design        |
+| Denormalization discipline | Justified data duplication            |
+| Separation of concerns     | Distinguish storage from domain logic |
+| Schema evolution           | Safely change data structures         |
+| Least privilege            | Minimize data access rights           |
+| Recoverability             | Ensure recoverable systems            |
+| Observability              | Make database behavior measurable     |
+| Vendor independence        | Avoid unnecessary lock-in             |
+| Cost efficiency            | Optimize infrastructure economics     |
+| Simplicity                 | Avoid unnecessary complexity          |
+
+### **12.1 Anti-patterns the skill must detect**
+
+This is another area I would explicitly add.
+
+- One giant table containing unrelated entities.
+- EAV models without a justified use case.
+- Excessive normalization causing unnecessary complexity.
+- Premature denormalization.
+- JSON blobs used to avoid all schema design.
+- Unbounded collections.
+- Missing foreign keys where relational integrity is required.
+- Missing indexes on critical access paths.
+- Too many redundant indexes.
+- Sequential hot keys in distributed databases.
+- Timestamp-based hot partitions.
+- Random sharding without workload analysis.
+- Unbounded connection creation.
+- Long-running transactions.
+- N+1 queries.
+- Application-only integrity enforcement.
+- Uncontrolled cascading deletes.
+- Storing files directly in relational tables without justification.
+- Using cache as the only source of truth.
+- Replication mistaken for backup.
+- Premature microservices and database-per-service fragmentation.
+
+## **13. Proposed final repository structure**
+
+I recommend this target structure.
+
+```
+
+skills/backend/databaseArchitecture/
+│
+├── SKILL.md
+├── README.md
+├── CHANGELOG.md
+│
+├── commands/
+│   ├── database-architecture.md
+│   ├── database-design.md
+│   ├── database-normalization.md
+│   ├── database-audit.md
+│   ├── database-optimize.md
+│   ├── database-scalability.md
+│   ├── database-migration.md
+│   └── database-security.md
+│
+├── version/
+│   ├── VERSION
+│   ├── standards-registry.json
+│   ├── compatibility.md
+│   └── changelog.md
+│
+├── principles/
+│   ├── data-integrity.md
+│   ├── normalization.md
+│   ├── functional-dependency.md
+│   ├── lossless-decomposition.md
+│   ├── referential-integrity.md
+│   ├── data-locality.md
+│   ├── access-pattern-design.md
+│   ├── transaction-integrity.md
+│   ├── consistency.md
+│   ├── isolation.md
+│   ├── partition-awareness.md
+│   ├── denormalization.md
+│   ├── schema-evolution.md
+│   ├── least-privilege.md
+│   ├── recoverability.md
+│   └── vendor-independence.md
+│
+├── normalization/
+│   ├── fundamentals.md
+│   ├── functional-dependencies.md
+│   ├── candidate-keys.md
+│   ├── first-normal-form.md
+│   ├── second-normal-form.md
+│   ├── third-normal-form.md
+│   ├── bcnf.md
+│   ├── fourth-normal-form.md
+│   ├── fifth-normal-form.md
+│   ├── sixth-normal-form.md
+│   ├── dknf.md
+│   ├── lossless-decomposition.md
+│   ├── dependency-preservation.md
+│   ├── normalization-anomalies.md
+│   └── denormalization-strategies.md
+│
+├── modeling/
+│   ├── requirements-analysis.md
+│   ├── conceptual-modeling.md
+│   ├── logical-modeling.md
+│   ├── physical-modeling.md
+│   ├── entity-relationships.md
+│   ├── keys-and-identifiers.md
+│   ├── cardinality.md
+│   ├── relationship-design.md
+│   ├── inheritance.md
+│   ├── polymorphism.md
+│   ├── schema-design.md
+│   ├── schema-evolution.md
+│   └── data-dictionary.md
+│
+├── database-types/
+│   ├── database-taxonomy.md
+│   ├── relational.md
+│   ├── document.md
+│   ├── key-value.md
+│   ├── wide-column.md
+│   ├── graph.md
+│   ├── time-series.md
+│   ├── columnar.md
+│   ├── search.md
+│   ├── vector.md
+│   ├── object-storage.md
+│   ├── ledger.md
+│   ├── in-memory.md
+│   └── embedded.md
+│
+├── architecture/
+│   ├── architecture-selection.md
+│   ├── single-database.md
+│   ├── polyglot-persistence.md
+│   ├── distributed-databases.md
+│   ├── database-per-service.md
+│   ├── multi-tenant.md
+│   ├── multi-region.md
+│   ├── cqrs.md
+│   ├── event-sourcing.md
+│   └── data-platform.md
+│
+├── scalability/
+│   ├── capacity-planning.md
+│   ├── vertical-scaling.md
+│   ├── horizontal-scaling.md
+│   ├── partitioning.md
+│   ├── sharding.md
+│   ├── shard-key-selection.md
+│   ├── replication.md
+│   ├── read-replicas.md
+│   ├── rebalancing.md
+│   ├── hot-partitions.md
+│   ├── distributed-consistency.md
+│   └── multi-region.md
+│
+├── normalization/ 
+│   └── ...
+│
+├── indexing/
+│   ├── index-fundamentals.md
+│   ├── btree.md
+│   ├── hash.md
+│   ├── composite.md
+│   ├── covering.md
+│   ├── partial.md
+│   ├── full-text.md
+│   ├── spatial.md
+│   ├── vector.md
+│   ├── columnar.md
+│   └── index-maintenance.md
+│
+├── queryOptimization/
+│   ├── query-planning.md
+│   ├── execution-plans.md
+│   ├── join-algorithms.md
+│   ├── query-rewriting.md
+│   ├── n-plus-one.md
+│   ├── query-statistics.md
+│   ├── connection-pooling.md
+│   └── slow-query-analysis.md
+│
+├── transactions/
+│   ├── acid.md
+│   ├── isolation-levels.md
+│   ├── mvcc.md
+│   ├── locking.md
+│   ├── deadlocks.md
+│   ├── optimistic-concurrency.md
+│   ├── pessimistic-concurrency.md
+│   ├── distributed-transactions.md
+│   └── saga-pattern.md
+│
+├── storage-engines/
+│   ├── btree-storage.md
+│   ├── lsm-tree.md
+│   ├── heap-storage.md
+│   ├── columnar-storage.md
+│   ├── write-ahead-logging.md
+│   ├── buffer-pool.md
+│   ├── compaction.md
+│   └── compression.md
+│
+├── analytics/
+│   ├── oltp-vs-olap.md
+│   ├── data-warehouse.md
+│   ├── data-lake.md
+│   ├── lakehouse.md
+│   ├── etl-elt.md
+│   ├── cdc.md
+│   ├── dimensional-modeling.md
+│   ├── star-schema.md
+│   ├── snowflake-schema.md
+│   ├── fact-tables.md
+│   ├── dimension-tables.md
+│   └── slowly-changing-dimensions.md
+│
+├── security/
+│   ├── database-threat-modeling.md
+│   ├── authentication.md
+│   ├── authorization.md
+│   ├── encryption.md
+│   ├── row-level-security.md
+│   ├── tenant-isolation.md
+│   ├── secrets-management.md
+│   ├── audit-logging.md
+│   └── data-classification.md
+│
+├── reliability/
+│   ├── backup-strategy.md
+│   ├── point-in-time-recovery.md
+│   ├── disaster-recovery.md
+│   ├── high-availability.md
+│   ├── failover.md
+│   ├── consistency-recovery.md
+│   ├── replication-lag.md
+│   ├── rpo-rto.md
+│   └── restore-testing.md
+│
+├── performance/
+│   ├── benchmarking.md
+│   ├── profiling.md
+│   ├── memory-management.md
+│   ├── disk-io.md
+│   ├── caching.md
+│   ├── workload-analysis.md
+│   └── capacity-planning.md
+│
+├── governance/
+│   ├── data-ownership.md
+│   ├── data-lineage.md
+│   ├── data-quality.md
+│   ├── retention.md
+│   ├── archival.md
+│   ├── deletion.md
+│   ├── privacy.md
+│   └── compliance.md
+│
+├── migrations/
+│   ├── migration-strategy.md
+│   ├── expand-contract.md
+│   ├── zero-downtime.md
+│   ├── backfills.md
+│   ├── rollback.md
+│   └── schema-compatibility.md
+│
+├── engines/
+│   ├── postgresql/
+│   ├── mysql/
+│   ├── mongodb/
+│   ├── redis/
+│   ├── cassandra/
+│   ├── sqlite/
+│   └── other-engines.md
+│
+├── observability/
+│   ├── database-metrics.md
+│   ├── query-monitoring.md
+│   ├── connection-monitoring.md
+│   ├── replication-monitoring.md
+│   ├── alerting.md
+│   └── capacity-monitoring.md
+│
+├── policies/
+│   ├── mandatory.md
+│   ├── integrity.md
+│   ├── normalization.md
+│   ├── security.md
+│   ├── performance.md
+│   ├── migration.md
+│   └── recovery.md
+│
+├── templates/
+│   ├── requirements.md
+│   ├── architecture-decision.md
+│   ├── erd.md
+│   ├── data-dictionary.md
+│   ├── schema-review.md
+│   ├── migration-plan.md
+│   ├── capacity-plan.md
+│   ├── backup-plan.md
+│   └── production-checklist.md
+│
+├── scripts/
+│   ├── auditDatabaseSchema.py
+│   ├── analyzeMigration.py
+│   ├── inspectDatabaseIndexes.py
+│   └── reportDatabaseQuality.py
+│
+├── evals/
+│   ├── evalDatabaseArchitecture.py
+│   ├── fixtures/
+│   │   ├── valid/
+│   │   ├── invalid/
+│   │   ├── normalized/
+│   │   ├── denormalized/
+│   │   └── scalability/
+│   └── expected/
+│
+└── references/
+    ├── official-standards.md
+    ├── research-sources.md
+    └── terminology.md
+
+```
+
+**Structural correction:** The duplicated `normalization/` entry in the illustrative tree should exist only once. Also, directories such as `engines/` should be populated progressively, not created as empty placeholders.
+
+## **14. Database architecture execution workflow**
+
+The skill must operate like an experienced database architect.
+
+## **Database engineering lifecycle**
+
+1. **Research**
+
+   Research official database documentation, standards, engine capabilities and current limitations.
+2. **Understand requirements**
+
+   Identify business entities, relationships, data volume, workload and consistency requirements.
+3. **Inspect existing infrastructure**
+
+   Discover current database engines, schemas, indexes, migrations, query patterns and application dependencies.
+4. **Select database architecture**
+
+   Compare relational, document, graph, analytical, distributed and specialized options.
+5. **Design data models**
+
+   Create conceptual, logical and physical models. Apply normalization or query-driven modeling appropriately.
+6. **Design scalability**
+
+   Determine indexing, partitioning, replication, caching and capacity strategies.
+7. **Design security and reliability**
+
+   Establish access control, encryption, backup, recovery and data lifecycle requirements.
+8. **Implement**
+
+   Generate schemas, constraints, migrations, indexes and database integration code.
+9. **Validate**
+
+   Test integrity, query plans, concurrency, migrations, recovery and performance.
+10. **Report**
+
+    Deliver architecture decisions, ERDs, schema documentation, trade-offs and unresolved risks.
+
+## **15. Required architecture decision record**
+
+Every significant database architecture recommendation should produce an ADR.
+
+For example:
+
+```
+
+# ADR-001: Primary Database Selection
+
+## Context
+Describe the application and data requirements.
+
+## Workload
+- Expected records:
+- Read/write ratio:
+- Peak throughput:
+- Latency objectives:
+- Data growth:
+- Consistency requirements:
+
+## Candidates
+- PostgreSQL
+- MySQL
+- MongoDB
+
+## Evaluation
+Compare candidates against actual requirements.
+
+## Decision
+Explain the selected database and architecture.
+
+## Alternatives rejected
+Explain why other options were not selected.
+
+## Trade-offs
+- Performance
+- Scalability
+- Operational complexity
+- Cost
+- Vendor dependency
+
+## Migration strategy
+Describe implementation and rollback.
+
+## Verification
+Define benchmarks and acceptance criteria.
+
+```
+
+The skill must be able to recommend a single database, multiple databases or a hybrid architecture—but must explain why.
+
+## **16. Non-negotiable engineering policies**
+
+These should be enforced in `policies/mandatory.md`.
+
+1. Never select a database before understanding the workload.
+2. Never confuse relational normalization with document or distributed database modeling.
+3. Never denormalize without identifying the performance or architectural reason.
+4. Never ignore primary keys and data identity.
+5. Never leave critical data integrity dependent only on application validation.
+6. Never introduce unnecessary indexes.
+7. Never recommend sharding before evaluating simpler scaling approaches.
+8. Never assume replication provides backup protection.
+9. Never deploy a database without a recovery strategy.
+10. Never expose database credentials in source code.
+11. Never execute destructive migrations without an explicit migration and recovery plan.
+12. Never ignore transaction boundaries and concurrent writes.
+13. Never claim performance improvements without measurement.
+14. Never use database-specific functionality without identifying compatibility implications.
+15. Never recommend multiple database engines without explaining their operational and consistency costs.
+16. Never store unlimited data without a retention or lifecycle strategy.
+17. Never treat an approximate capacity estimate as a verified benchmark.
+18. Never claim production readiness without evidence.
+
+## **17. Automated tooling and evaluation**
+
+I recommend four primary Python utilities.
+
+| Utility                     | Responsibility                                          |
+| --------------------------- | ------------------------------------------------------- |
+| `auditDatabaseSchema.py`    | Inspect schemas, keys, constraints and structural risks |
+| `analyzeMigration.py`       | Identify risky migrations and compatibility problems    |
+| `inspectDatabaseIndexes.py` | Inspect index definitions and possible inefficiencies   |
+| `reportDatabaseQuality.py`  | Generate a structured database audit report             |
+
+These tools must use database-specific adapters rather than assuming all engines expose the same metadata.
+
+### **Evaluation categories**
+
+| Evaluation       | What it verifies                         |
+| ---------------- | ---------------------------------------- |
+| Normalization    | Functional dependencies and normal forms |
+| Schema integrity | Keys, relationships and constraints      |
+| Index design     | Access patterns and index suitability    |
+| Scalability      | Partition and shard design               |
+| Consistency      | Transaction and replication guarantees   |
+| Security         | Access control and data exposure         |
+| Migration        | Compatibility and rollback               |
+| Recovery         | Backup and restoration                   |
+| Performance      | Query plans and workload benchmarks      |
+| Architecture     | Database selection and trade-offs        |
+
+An automated schema linter cannot prove that a database is normalized simply by checking table count or foreign keys. Normalization evaluation requires dependency and key information.
+
+Similarly, a static audit cannot prove that a database will scale to millions of users. That requires representative workload tests.
+
+## **18. Implementation roadmap**
+
+Build this in stages rather than trying to write every reference at once.
+
+| Phase                | Priority | Deliverables                               |
+| -------------------- | -------- | ------------------------------------------ |
+| 0. Research          | Critical | Source analysis and standards registry     |
+| 1. Core architecture | Critical | SKILL.md and execution workflow            |
+| 2. Principles        | Critical | Database engineering principles            |
+| 3. Normalization     | Critical | Normal forms and dependency theory         |
+| 4. Modeling          | Critical | Conceptual, logical and physical design    |
+| 5. Database types    | Critical | Database taxonomy and selection            |
+| 6. Transactions      | Critical | ACID, isolation and concurrency            |
+| 7. Scalability       | High     | Partitioning, sharding and replication     |
+| 8. Indexing          | High     | Index design and query optimization        |
+| 9. Security          | High     | Governance, access and protection          |
+| 10. Reliability      | High     | Backup, recovery and availability          |
+| 11. Analytics        | Medium   | Warehousing and dimensional modeling       |
+| 12. Engine adapters  | Medium   | Vendor-specific guidance                   |
+| 13. Tooling          | Medium   | Audit and evaluation scripts               |
+| 14. Integration      | Critical | Skill registry and repository verification |
+
+### **Research references**
+
+These are useful starting points for the actual knowledge base:
+
+| Subject                           | Authoritative reference                                                                                                                                        |
+| --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Relational normalization          | [Relational database theory](https://openstax.org/books/introduction-computer-science/pages/8-3-relational-database-management-systems?utm_source=chatgpt.com) |
+| PostgreSQL architecture           | [PostgreSQL capabilities](https://www.postgresql.org/about/?utm_source=chatgpt.com)                                                                            |
+| Partitioning                      | [PostgreSQL partitioning](https://www.postgresql.org/docs/current/ddl-partitioning.html?utm_source=chatgpt.com)                                                |
+| Document modeling                 | [MongoDB data modeling](https://www.mongodb.com/docs/manual/data-modeling//?utm_source=chatgpt.com)                                                            |
+| Document denormalization          | [MongoDB modeling practices](https://www.mongodb.com/docs/manual/data-modeling/best-practices/?utm_source=chatgpt.com)                                         |
+| Distributed query-driven modeling | [Apache Cassandra modeling](https://cassandra.apache.org/doc/stable/cassandra/developing/data-modeling/intro.html?utm_source=chatgpt.com)                      |
+| Distributed architecture          | [Cassandra architecture](https://cassandra.apache.org/doc/stable/cassandra/architecture/overview.html?utm_source=chatgpt.com)                                  |
+| Vector indexing                   | [pgvector indexing](https://github.com/pgvector/pgvector/blob/master/README.md?plain=1\&utm_source=chatgpt.com)                                                |
+
+These are initial research references, not a complete or universal database standards registry.
+
+## **19. Final design decisions**
+
+# **Database Architecture Engineering**
+
+Recommended direction
+
+A universal database engineering knowledge system for production software.
+
+**Theory**
+
+Relational and database fundamentals
+
+**Principles**
+
+Integrity and architectural reasoning
+
+**Normalization**
+
+1NF through advanced normal forms
+
+**Modeling**
+
+Conceptual, logical and physical
+
+**Database types**
+
+SQL, NoSQL and specialized systems
+
+**Scalability**
+
+Replication, partitioning and sharding
+
+**Performance**
+
+Indexes, queries and storage
+
+**Transactions**
+
+ACID and concurrency
+
+**Security**
+
+Access and governance
+
+**Reliability**
+
+Backup and disaster recovery
+
+**Analytics**
+
+OLAP, warehouse and lakehouse
+
+**Evaluation**
+
+Automated audits and verification
+
+**Core design rule**
+
+The best database is not necessarily the fastest, newest or most distributed database. It is the architecture that satisfies the application's data requirements with acceptable correctness, performance, availability, cost and operational complexity.
+
+## **20. What I would prioritize first**
+
+My recommendation is to build the first release around these six pillars:
+
+1. **Database principles and theory** — relational algebra, keys, functional dependencies, integrity and normalization.
+2. **Data modeling** — conceptual, logical and physical architecture.
+3. **Database selection** — all database families and their appropriate workloads.
+4. **Scalability engineering** — indexing, partitioning, replication, sharding and distributed consistency.
+5. **Production reliability** — transactions, security, backups and recovery.
+6. **Evaluation** — database audits, schema reviews and workload benchmarks.
+
+This foundation is more valuable than creating 100 database-specific documents without a coherent methodology.
+
+**My strongest recommendation:** Keep `databaseArchitecture` independent from `apiEngineering`, but allow both skills to share concepts. API engineering should consume database contracts, transaction guarantees and persistence boundaries; database architecture should not become dependent on API-specific assumptions.
+
+For a future maintenance workflow, I would also schedule a monthly review of database standards, database-engine releases and architecture guidance.
+
+Review database standards monthly
+
+**Monthly review task created successfully.**
+
+🗄️Review database standards monthlyMonthly · ⁨1⁩st
+
+Run now

@@ -1,0 +1,14 @@
+{
+  "evals": [
+    {
+      "name": "data-instruction-separation",
+      "prompt": "Show how to structure user input inside system prompts to defend against indirect prompt injection.",
+      "expectedPattern": "<retrieved_data>[\\s\\S]*<\\/retrieved_data>"
+    },
+    {
+      "name": "pii-scrubbing-regex",
+      "prompt": "Write a regex-based PII scrubbing function for email addresses and credit cards.",
+      "expectedPattern": "re\\.sub\\(.*REDACTED_EMAIL"
+    }
+  ]
+}

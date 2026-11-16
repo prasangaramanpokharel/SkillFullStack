@@ -1,0 +1,14 @@
+{
+  "evals": [
+    {
+      "name": "rrf-formula-test",
+      "prompt": "Write the Python function to calculate reciprocal rank fusion for two lists with k=60.",
+      "expectedPattern": "1\\.0\\s*/\\s*\\(k\\s*\\+\\s*rank\\)"
+    },
+    {
+      "name": "cross-encoder-rerank",
+      "prompt": "Show how to use Cohere rerank to compress top-100 candidates to top-5 chunks.",
+      "expectedPattern": "co\\.rerank\\([\\s\\S]*model=[\"']rerank-v3"
+    }
+  ]
+}

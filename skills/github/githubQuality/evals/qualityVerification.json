@@ -1,0 +1,14 @@
+{
+  "evals": [
+    {
+      "name": "codeowners-precedence",
+      "prompt": "Create a CODEOWNERS file where @org/devops owns workflows and @org/security owns auth.",
+      "expectedPattern": "/\\.github/workflows/\\s*@org/devops[\\s\\S]*/src/auth/\\s*@org/security"
+    },
+    {
+      "name": "conventional-pr-create",
+      "prompt": "Write the gh pr create command using a conventional commit title.",
+      "expectedPattern": "gh pr create.*--title [\"'](feat|fix|refactor)\\("
+    }
+  ]
+}
