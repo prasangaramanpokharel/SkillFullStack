@@ -57,7 +57,24 @@ SkillFullStack/
 
 ## 📦 How to Install & Load Skills from GitHub
 
-You can load any skill from this repository directly into your agent environment (e.g. Antigravity, Claude Code, Cursor, Codex, or custom LLM tooling) using a **single raw URL**, **curl**, or **git clone**.
+You can load any skill from this repository directly into your agent environment (e.g. Antigravity, Claude Code, Cursor, Codex, or custom LLM tooling) using an **AI prompt**, a **raw URL**, **curl**, or **git clone**.
+
+### 🤖 One-Click AI Setup Prompt (Copy & Paste)
+
+Paste this prompt directly into your AI coding assistant (Antigravity, Claude Code, Cursor, Windsurf, Codex) to inspect the catalog and install the skills you need:
+
+```text
+Read the skills registry catalog from:
+https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/.skillsRegistry/catalog.json
+
+Show me all available skills and their slash commands, then install the skills needed for this project into `.agent/skills/<skill-name>/SKILL.md` by downloading their raw files from:
+https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/<path>/SKILL.md
+```
+
+> **Tip (Single Skill)**: To install a specific skill (e.g., `databaseArchitecture`), simply tell your AI:  
+> *"Install the `databaseArchitecture` skill into `.agent/skills/databaseArchitecture/SKILL.md` using https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/.skillsRegistry/catalog.json to locate its raw URL."*
+
+---
 
 ### Method 1: Direct Raw URL (Zero Clone / Single Skill)
 Every skill's primary definition is located at its raw GitHub URL:
