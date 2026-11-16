@@ -51,49 +51,105 @@ SkillFullStack/
 │   └── foundation/
 │       └── promptEvalTesting/    # Promptfoo & DeepEval CI/CD regression suites
 └── scripts/
-    └── scaffoldSkill.py          # Automated spec-compliant skill generator
+    ├── scaffoldSkill.py          # Automated spec-compliant skill generator
+    └── installSkill.sh           # One-liner skill installer via raw GitHub URL
 ```
+
+## 📦 How to Install & Load Skills from GitHub
+
+You can load any skill from this repository directly into your agent environment (e.g. Antigravity, Claude Code, Cursor, Codex, or custom LLM tooling) using a **single raw URL**, **curl**, or **git clone**.
+
+### Method 1: Direct Raw URL (Zero Clone / Single Skill)
+Every skill's primary definition is located at its raw GitHub URL:
+```text
+https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/<taxonomy>/<skillName>/SKILL.md
+```
+
+#### Quick `curl` Downloads:
+```bash
+# 1. Database Architecture (Multi-tenant RLS, composite FKs, GiST exclusion)
+mkdir -p .agent/skills/databaseArchitecture
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/databaseArchitecture/SKILL.md \
+  -o .agent/skills/databaseArchitecture/SKILL.md
+
+# 2. Production API Engineering (Contract-first OpenAPI 3.2.1, RFC 9457 errors)
+mkdir -p .agent/skills/apiEngineering
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/apiEngineering/SKILL.md \
+  -o .agent/skills/apiEngineering/SKILL.md
+
+# 3. Test-Driven Development (TDD cycle, test pyramid, test doubles)
+mkdir -p .agent/skills/testDrivenDevelopment
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/testing/testDrivenDevelopment/SKILL.md \
+  -o .agent/skills/testDrivenDevelopment/SKILL.md
+
+# 4. Next.js Production Standard (App router, DAL, taint API, CSP)
+mkdir -p .agent/skills/nextjs
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/frontend/nextjs/SKILL.md \
+  -o .agent/skills/nextjs/SKILL.md
+
+# 5. GitHub Actions Production Automation & Security
+mkdir -p .agent/skills/githubAction
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/github/githubAction/SKILL.md \
+  -o .agent/skills/githubAction/SKILL.md
+```
+
+### Method 2: One-Liner Installer Script
+Install any skill by name into your local `.agent/skills/` folder:
+```bash
+# Syntax:
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/scripts/installSkill.sh | bash -s <skill-name>
+
+# Example:
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/scripts/installSkill.sh | bash -s databaseArchitecture
+```
+
+### Method 3: Full Repository Clone
+```bash
+git clone https://github.com/prasangaramanpokharel/SkillFullStack.git
+```
+
+---
 
 ## Available Skills & Direct Links
 
 ### Software Engineering Curriculum Skills Ecosystem (Textbook Aligned)
 | Domain | Skill Name | Slash Commands | Guide & Specification | Key Capabilities |
 | :--- | :--- | :--- | :--- | :--- |
-| **`gitVersionControl`** | **`gitWorkflow`** | `/git-workflow`<br>`/git-rebase`<br>`/git-bisect`<br>`/git-conflict` | [SKILL.md](skills/gitVersionControl/gitWorkflow/SKILL.md) | Universal Git DAG manipulation, Trunk-based short-lived branches, interactive rebase, automated bisect debugging, and 3-way conflict resolution. |
-| **`testing`** | **`testDrivenDevelopment`** | `/tdd-cycle`<br>`/test-pyramid`<br>`/test-doubles`<br>`/test-boundary` | [SKILL.md](skills/testing/testDrivenDevelopment/SKILL.md) | Red-Green-Refactor enforcement, test pyramid auditing (70/20/10 ratio), test doubles classification (Mocks/Stubs/Fakes), and boundary value test matrices. |
-| **`softwareDevelopment`** | **`requirementsEngineering`** | `/story-format`<br>`/moscow-prioritize`<br>`/attack-tree`<br>`/kano-analysis` | [SKILL.md](skills/softwareDevelopment/requirementsEngineering/SKILL.md) | INVEST user stories, executable BDD criteria (Given/When/Then), MoSCoW & Kano prioritization, Shape Up appetite, and attack tree threat modeling. |
-| **`cicdDevops`** | **`cicdPipeline`** | `/cicd-pipeline`<br>`/dockerfile-audit`<br>`/deploy-strategy`<br>`/dora-metrics` | [SKILL.md](skills/cicdDevops/cicdPipeline/SKILL.md) | CI matrix automation, multi-stage non-root Docker hardening, zero-downtime deployment strategies (Canary/Blue-Green), and DORA velocity metrics. |
+| **`gitVersionControl`** | **`gitWorkflow`** | `/git-workflow`<br>`/git-rebase`<br>`/git-bisect`<br>`/git-conflict` | [SKILL.md](skills/gitVersionControl/gitWorkflow/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/gitVersionControl/gitWorkflow/SKILL.md) | Universal Git DAG manipulation, Trunk-based short-lived branches, interactive rebase, automated bisect debugging, and 3-way conflict resolution. |
+| **`testing`** | **`testDrivenDevelopment`** | `/tdd-cycle`<br>`/test-pyramid`<br>`/test-doubles`<br>`/test-boundary` | [SKILL.md](skills/testing/testDrivenDevelopment/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/testing/testDrivenDevelopment/SKILL.md) | Red-Green-Refactor enforcement, test pyramid auditing (70/20/10 ratio), test doubles classification (Mocks/Stubs/Fakes), and boundary value test matrices. |
+| **`softwareDevelopment`** | **`requirementsEngineering`** | `/story-format`<br>`/moscow-prioritize`<br>`/attack-tree`<br>`/kano-analysis` | [SKILL.md](skills/softwareDevelopment/requirementsEngineering/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/softwareDevelopment/requirementsEngineering/SKILL.md) | INVEST user stories, executable BDD criteria (Given/When/Then), MoSCoW & Kano prioritization, Shape Up appetite, and attack tree threat modeling. |
+| **`cicdDevops`** | **`cicdPipeline`** | `/cicd-pipeline`<br>`/dockerfile-audit`<br>`/deploy-strategy`<br>`/dora-metrics` | [SKILL.md](skills/cicdDevops/cicdPipeline/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/cicdDevops/cicdPipeline/SKILL.md) | CI matrix automation, multi-stage non-root Docker hardening, zero-downtime deployment strategies (Canary/Blue-Green), and DORA velocity metrics. |
 
 ---
 
 ### GitHub Engineering Skills Toolkit (`skills/github/*`)
 | Skill | Slash Commands | Guide & Specification | Key Capabilities |
 | :--- | :--- | :--- | :--- |
-| **`githubAction`** | `/github-action`<br>`/github-ci`<br>`/github-cd` | [SKILL.md](skills/github/githubAction/SKILL.md) | Matrix builds, concurrency cancelation, SHA action pinning, least-privilege token permissions, and YAML security linting. |
-| **`githubSetup`** | `/github-setup`<br>`/github-repository`<br>`/github-ruleset` | [SKILL.md](skills/github/githubSetup/SKILL.md) | Modern GitHub Rulesets (stale approval dismissal, status checks), squash-merge enforcement, and branch auto-deletion. |
-| **`githubSecurity`** | `/github-security`<br>`/github-codeql`<br>`/github-dependabot` | [SKILL.md](skills/github/githubSecurity/SKILL.md) | Grouped Dependabot updates (`minor`/`patch`), CodeQL multi-language matrix, secret scanning push protection. |
-| **`githubQuality`** | `/github-quality`<br>`/github-pr`<br>`/github-codeowners` | [SKILL.md](skills/github/githubQuality/SKILL.md) | Hierarchical `CODEOWNERS`, Conventional Commit enforcement (`type(scope): subject`), PR checklist validation. |
-| **`githubTeam`** | `/github-team`<br>`/github-team-onboarding`<br>`/github-team-roles` | [SKILL.md](skills/github/githubTeam/SKILL.md) | Nested team hierarchies, repository permission tiers (Triage/Write/Maintain), and automated round-robin review delegation. |
+| **`githubAction`** | `/github-action`<br>`/github-ci`<br>`/github-cd` | [SKILL.md](skills/github/githubAction/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/github/githubAction/SKILL.md) | Matrix builds, concurrency cancelation, SHA action pinning, least-privilege token permissions, and YAML security linting. |
+| **`githubSetup`** | `/github-setup`<br>`/github-repository`<br>`/github-ruleset` | [SKILL.md](skills/github/githubSetup/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/github/githubSetup/SKILL.md) | Modern GitHub Rulesets (stale approval dismissal, status checks), squash-merge enforcement, and branch auto-deletion. |
+| **`githubSecurity`** | `/github-security`<br>`/github-codeql`<br>`/github-dependabot` | [SKILL.md](skills/github/githubSecurity/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/github/githubSecurity/SKILL.md) | Grouped Dependabot updates (`minor`/`patch`), CodeQL multi-language matrix, secret scanning push protection. |
+| **`githubQuality`** | `/github-quality`<br>`/github-pr`<br>`/github-codeowners` | [SKILL.md](skills/github/githubQuality/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/github/githubQuality/SKILL.md) | Hierarchical `CODEOWNERS`, Conventional Commit enforcement (`type(scope): subject`), PR checklist validation. |
+| **`githubTeam`** | `/github-team`<br>`/github-team-onboarding`<br>`/github-team-roles` | [SKILL.md](skills/github/githubTeam/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/github/githubTeam/SKILL.md) | Nested team hierarchies, repository permission tiers (Triage/Write/Maintain), and automated round-robin review delegation. |
 
 ---
 
 ### Language Standards & Frameworks
 | Domain | Skill Name | Specification & Guide | Key Capabilities |
 | :--- | :--- | :--- | :--- |
-| **`frontend`** | **`nextjs`** | [SKILL.md](skills/frontend/nextjs/SKILL.md) | Official Next.js Production Checklist: RSC boundaries, Data Access Layer (DAL), Taint API, CSP nonces, Core Web Vitals, and Docker standalone. |
-| **`frontend`** | **`shadcn-ui`** | [SKILL.md](skills/frontend/shadcn-ui/SKILL.md) | Atomic primitives, blocks (`dashboard-01`), AI components (`@ai-elements`), and direct MDX fetching. |
-| **`frontend`** | **`generativeUi`** | [SKILL.md](skills/frontend/generativeUi/SKILL.md) | Streaming interactive React components, tools mapping, and `createDataStreamResponse`. |
-| **`frontend`** | **`tsxReactStandard`** | [SKILL.md](skills/frontend/tsxReactStandard/SKILL.md) | React 19 primitives (ref props, Server Actions, `use()`), discriminated unions, strict tsconfig, and no `React.FC`/enums. |
-| **`backend`** | **`databaseArchitecture`** | [SKILL.md](skills/backend/databaseArchitecture/SKILL.md) | Universal database architecture: relational normalization (1NF-BCNF), NoSQL/OLAP selection, sharding, ACID, and zero-downtime migrations. |
-| **`backend`** | **`apiEngineering`** | [SKILL.md](skills/backend/apiEngineering/SKILL.md) | Contract-first OpenAPI 3.2.1, RFC 9457 errors, IETF Idempotency-Key draft-08, contextual pagination, and breaking-change detection. |
-| **`backend`** | **`golangStandard`** | [SKILL.md](skills/backend/golangStandard/SKILL.md) | Standard `log/slog` (JSON/text), context propagation, `fmt.Errorf("%w")`, clean domain layout, and `errgroup`. |
-| **`backend`** | **`pythonStandard`** | [SKILL.md](skills/backend/pythonStandard/SKILL.md) | Astral `uv` toolchain, `Ruff` linter/formatter, PEP 585/604 modern typing, Pydantic v2 models, and `asyncio.TaskGroup`. |
-| **`backend`** | **`upstash`** | [SKILL.md](skills/backend/upstash/SKILL.md) | Serverless Redis, dynamic ratelimiting, durable workflows, and QStash flow control. |
-| **`backend`** | **`durableBackgroundJobs`**| [SKILL.md](skills/backend/durableBackgroundJobs/SKILL.md) | Inngest & Trigger.dev v3 step memoization, pauses, and zero-timeout execution. |
-| **`dataAi`** | **`mcpServerDevelopment`** | [SKILL.md](skills/dataAi/mcpServerDevelopment/SKILL.md) | FastMCP Python & TypeScript SDKs, Tools, Resources, Prompts, and stdio/SSE transports. |
-| **`dataAi`** | **`ragPipelineProduction`** | [SKILL.md](skills/dataAi/ragPipelineProduction/SKILL.md) | Dense Vector + BM25 Hybrid Retrieval, Reciprocal Rank Fusion (RRF), and Cohere rerankers. |
-| **`securityQa`** | **`llmSecurityRedteaming`** | [SKILL.md](skills/securityQa/llmSecurityRedteaming/SKILL.md) | OWASP LLM Top 10 defenses, data/instruction separation, PII scrubbing, and injection test harnesses. |
-| **`foundation`** | **`promptEvalTesting`** | [SKILL.md](skills/foundation/promptEvalTesting/SKILL.md) | CI/CD prompt regression testing with Promptfoo and DeepEval (LLM-as-a-judge). |
+| **`frontend`** | **`nextjs`** | [SKILL.md](skills/frontend/nextjs/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/frontend/nextjs/SKILL.md) | Official Next.js Production Checklist: RSC boundaries, Data Access Layer (DAL), Taint API, CSP nonces, Core Web Vitals, and Docker standalone. |
+| **`frontend`** | **`shadcn-ui`** | [SKILL.md](skills/frontend/shadcn-ui/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/frontend/shadcn-ui/SKILL.md) | Atomic primitives, blocks (`dashboard-01`), AI components (`@ai-elements`), and direct MDX fetching. |
+| **`frontend`** | **`generativeUi`** | [SKILL.md](skills/frontend/generativeUi/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/frontend/generativeUi/SKILL.md) | Streaming interactive React components, tools mapping, and `createDataStreamResponse`. |
+| **`frontend`** | **`tsxReactStandard`** | [SKILL.md](skills/frontend/tsxReactStandard/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/frontend/tsxReactStandard/SKILL.md) | React 19 primitives (ref props, Server Actions, `use()`), discriminated unions, strict tsconfig, and no `React.FC`/enums. |
+| **`backend`** | **`databaseArchitecture`** | [SKILL.md](skills/backend/databaseArchitecture/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/databaseArchitecture/SKILL.md) | Universal database architecture: relational normalization (1NF-BCNF), NoSQL/OLAP selection, sharding, ACID, and zero-downtime migrations. |
+| **`backend`** | **`apiEngineering`** | [SKILL.md](skills/backend/apiEngineering/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/apiEngineering/SKILL.md) | Contract-first OpenAPI 3.2.1, RFC 9457 errors, IETF Idempotency-Key draft-08, contextual pagination, and breaking-change detection. |
+| **`backend`** | **`golangStandard`** | [SKILL.md](skills/backend/golangStandard/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/golangStandard/SKILL.md) | Standard `log/slog` (JSON/text), context propagation, `fmt.Errorf("%w")`, clean domain layout, and `errgroup`. |
+| **`backend`** | **`pythonStandard`** | [SKILL.md](skills/backend/pythonStandard/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/pythonStandard/SKILL.md) | Astral `uv` toolchain, `Ruff` linter/formatter, PEP 585/604 modern typing, Pydantic v2 models, and `asyncio.TaskGroup`. |
+| **`backend`** | **`upstash`** | [SKILL.md](skills/backend/upstash/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/upstash/SKILL.md) | Serverless Redis, dynamic ratelimiting, durable workflows, and QStash flow control. |
+| **`backend`** | **`durableBackgroundJobs`**| [SKILL.md](skills/backend/durableBackgroundJobs/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/durableBackgroundJobs/SKILL.md) | Inngest & Trigger.dev v3 step memoization, pauses, and zero-timeout execution. |
+| **`dataAi`** | **`mcpServerDevelopment`** | [SKILL.md](skills/dataAi/mcpServerDevelopment/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/dataAi/mcpServerDevelopment/SKILL.md) | FastMCP Python & TypeScript SDKs, Tools, Resources, Prompts, and stdio/SSE transports. |
+| **`dataAi`** | **`ragPipelineProduction`** | [SKILL.md](skills/dataAi/ragPipelineProduction/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/dataAi/ragPipelineProduction/SKILL.md) | Dense Vector + BM25 Hybrid Retrieval, Reciprocal Rank Fusion (RRF), and Cohere rerankers. |
+| **`securityQa`** | **`llmSecurityRedteaming`** | [SKILL.md](skills/securityQa/llmSecurityRedteaming/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/securityQa/llmSecurityRedteaming/SKILL.md) | OWASP LLM Top 10 defenses, data/instruction separation, PII scrubbing, and injection test harnesses. |
+| **`foundation`** | **`promptEvalTesting`** | [SKILL.md](skills/foundation/promptEvalTesting/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/foundation/promptEvalTesting/SKILL.md) | CI/CD prompt regression testing with Promptfoo and DeepEval (LLM-as-a-judge). |
 
 ---
 

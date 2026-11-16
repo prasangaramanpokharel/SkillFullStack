@@ -15,3 +15,8 @@ Thumbs.db
 .env
 .env.local
 *.log
+
+# Research, drafts, and raw benchmark materials
+.research/
+*.tmp
+*.bak
