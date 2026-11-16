@@ -57,7 +57,9 @@ SkillFullStack/
 
 ## 📦 How to Install & Load Skills from GitHub
 
-You can load any skill from this repository directly into your agent environment (e.g. Antigravity, Claude Code, Cursor, Codex, or custom LLM tooling) using an **AI prompt**, a **raw URL**, **curl**, or **git clone**.
+You can load any skill from this repository directly into your agent environment (e.g. Google Antigravity, Claude Code, Cursor, Windsurf, Codex, or custom LLM tooling) using an **AI prompt**, a **raw URL**, **curl**, or **git clone**.
+
+> 📖 **Multi-Agent Setup & Slash Commands Guide**: For tool-specific setup instructions and how slash commands (`/db-architecture`, `/api-engineering`, `/tdd-cycle`, etc.) map natively into **Google Antigravity**, **Claude Code**, **Cursor**, and **Windsurf**, see our dedicated guide: **[SETUP.md](SETUP.md)**.
 
 ### 🤖 One-Click AI Setup Prompt (Copy & Paste)
 
@@ -111,13 +113,24 @@ curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStac
 ```
 
 ### Method 2: One-Liner Installer Script
-Install any skill by name into your local `.agent/skills/` folder:
+Install any skill directly into the appropriate folder for your AI environment:
 ```bash
-# Syntax:
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/scripts/installSkill.sh | bash -s <skill-name>
+# Syntax: curl ... | bash -s <skill-name> [antigravity|claude|cursor|windsurf|agent]
 
-# Example:
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/scripts/installSkill.sh | bash -s databaseArchitecture
+# 1. Google Antigravity (.gemini/antigravity/skills/):
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/scripts/installSkill.sh | bash -s databaseArchitecture antigravity
+
+# 2. Claude Code (.claude/commands/ and .claude/skills/):
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/scripts/installSkill.sh | bash -s apiEngineering claude
+
+# 3. Cursor (.cursor/rules/):
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/scripts/installSkill.sh | bash -s testDrivenDevelopment cursor
+
+# 4. Windsurf (.windsurf/skills/):
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/scripts/installSkill.sh | bash -s cicdPipeline windsurf
+
+# 5. Universal Agent (.agent/skills/):
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/scripts/installSkill.sh | bash -s githubAction agent
 ```
 
 ### Method 3: Full Repository Clone
