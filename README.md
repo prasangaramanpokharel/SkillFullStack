@@ -60,6 +60,7 @@ SkillFullStack/
 You can load any skill from this repository directly into your agent environment (e.g. Google Antigravity, Claude Code, Cursor, Windsurf, Codex, or custom LLM tooling) using an **AI prompt**, a **raw URL**, **curl**, or **git clone**.
 
 > 📖 **Multi-Agent Setup & Slash Commands Guide**: For tool-specific setup instructions and how slash commands (`/db-architecture`, `/api-engineering`, `/tdd-cycle`, etc.) map natively into **Google Antigravity**, **Claude Code**, **Cursor**, and **Windsurf**, see our dedicated guide: **[SETUP.md](SETUP.md)**.
+> 🤖 **Agent Execution & High-Accuracy Protocol**: For rules on leveraging local bundled documentation (`assets/`) for zero hallucination, see **[AGENTS.md](AGENTS.md)**.
 
 ### 🤖 One-Click AI Setup Prompt (Copy & Paste)
 

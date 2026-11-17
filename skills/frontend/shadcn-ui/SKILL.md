@@ -2,8 +2,21 @@
 name: shadcn-ui
 description: High-density guide and automation for shadcn/ui v4. Supports adding atomic primitives, composite blocks, direct component MDX retrieval, and CVA composition. Use when building, styling, or scaffolding UI with React, Next.js, and Tailwind CSS.
 version: v4
-last-verified: 2026-11-15
-compatibility: React 18+, Next.js 14/15, Tailwind CSS v3/v4, Vite
+last-verified: 2026-11-17
+compatibility: React 18+, Next.js 14/15/16, Tailwind CSS v3/v4, Vite
+slash-commands:
+  - command: /shadcn-add
+    description: Add atomic primitives or composite UI blocks via CLI
+    argument-hint: "<component|block-name> [--yes] [--overwrite]"
+  - command: /shadcn-ai
+    description: Scaffold agentic AI components (chat, reasoning, tool-call, prompt-input)
+    argument-hint: "<@ai-elements/name>"
+  - command: /shadcn-theme
+    description: Configure CSS variables, design tokens, and dark mode
+    argument-hint: "[--base-color=neutral|slate|zinc] [--css-vars]"
+  - command: /shadcn-diff
+    description: Inspect differences against upstream component registries
+    argument-hint: "[<component>]"
 ---
 
 # shadcn/ui Engineering Guide
@@ -81,6 +94,7 @@ When building complex screens:
 ---
 
 ## 6. References & Bundled Tools
+- **Complete shadcn/ui Offline Docs Library**: [assets/](assets/) — Exhaustive offline markdown docs covering 69 UI primitives, 22 AI elements, theming, CLI, forms, dark mode, and registry specifications.
 - Detailed command flags: [references/cliCommands.md](references/cliCommands.md)
 - AI components catalog: [references/aiComponentsCatalog.md](references/aiComponentsCatalog.md)
 - Block registries & sources: [references/blocksCatalog.md](references/blocksCatalog.md)
