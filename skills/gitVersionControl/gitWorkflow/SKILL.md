@@ -121,6 +121,7 @@ git rebase --continue # or git merge --continue
 
 ## 4. Helper Scripts & Deep References
 
+- **Official Git & GitHub CLI Offline Assets**: [assets/](assets/) — Official specifications for Git remotes, DAG concepts, credential caching, and full GitHub CLI (`gh`) reference manual.
 - Graph Diagnostics: `python3 scripts/diagnoseGitGraph.py`
 - Conflict Resolver Helper: `python3 scripts/resolveConflictHeuristics.py`
 - Reference: [references/branchingModels.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/gitVersionControl/gitWorkflow/references/branchingModels.md)

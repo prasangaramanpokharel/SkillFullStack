@@ -18,6 +18,8 @@ When working with any framework, library, or engineering domain covered by a ski
      - Security (CodeQL, Dependabot, Push Protection): [`skills/github/githubSecurity/assets/`](skills/github/githubSecurity/assets/)
      - Quality (PRs, Reviews, CODEOWNERS): [`skills/github/githubQuality/assets/`](skills/github/githubQuality/assets/)
      - Teams & Organizations: [`skills/github/githubTeam/assets/`](skills/github/githubTeam/assets/)
+   - Git Version Control & CLI:
+     - Git Remote Workflows & `gh` CLI: [`skills/gitVersionControl/gitWorkflow/assets/`](skills/gitVersionControl/gitWorkflow/assets/)
 2. **Zero-Hallucination Mandate**:
    - **Do NOT rely on pre-training weights** or outdated training data when local documentation exists. Framework APIs change rapidly (e.g., Next.js 16 `"use cache"`, React 19 Action states, Tailwind CSS v4 CSS-first theming, shadcn CLI v4).
    - Read the exact markdown specification in `assets/` before generating boilerplate, components, or configuration.
