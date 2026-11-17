@@ -1,14 +1,33 @@
 ---
 name: nextjs
 description: Production Next.js App Router engineering and readiness checklist. Covers Server Components vs Client boundaries, Data Access Layer (DAL), taint APIs, CSP security headers, metadata SEO, OpenTelemetry, bundle optimization, and standalone Docker deployment.
-version: 15.x
-last-verified: 2026-11-16
-compatibility: Next.js 14, Next.js 15, React 19, TypeScript 5+
+version: 16.x
+last-verified: 2026-11-17
+compatibility: Next.js 14, Next.js 15, Next.js 16, React 19, TypeScript 5+
+slash-commands:
+  - command: /nextjs-production
+    description: Full Next.js production architecture audit and readiness checklist
+    argument-hint: "[--feature=rsc|dal|csp|cwv] [--audit]"
+  - command: /nextjs-rsc
+    description: Server and Client Component boundary design and serialization triage
+    argument-hint: "[--component=Name] [--boundary=server|client]"
+  - command: /nextjs-dal
+    description: Data Access Layer pattern implementation with DTOs and security boundaries
+    argument-hint: "[--entity=Name]"
+  - command: /nextjs-security
+    description: CSP, taint API, and security headers configuration
+    argument-hint: "[--mode=strict|csp|taint]"
+  - command: /nextjs-metadata
+    description: SEO metadata and dynamic OG image generation with ImageResponse
+    argument-hint: "[--type=static|dynamic] [--page=route]"
+  - command: /nextjs-features
+    description: Direct lookup of official Next.js App Router features and raw docs
+    argument-hint: "[--query=keyword]"
 ---
 
 # Next.js App Router Production Engineering Guide
 
-Based on the official **Next.js Production Checklist** (`https://nextjs.org/docs/app/guides/production-checklist`).
+Based on the official **Next.js Production Checklist** and verified against Next.js App Router specifications (`https://nextjs.org/docs/app`).
 
 ## 1. Core Architecture & Architectural Boundaries
 
@@ -42,7 +61,7 @@ Based on the official **Next.js Production Checklist** (`https://nextjs.org/docs
    import "server-only";
    import { db } from "@/lib/connection";
    ```
-2. **Data Access Layer (DAL)**: Never run ad-hoc raw queries inside random UI components. Centralize authentication and database queries in `src/data-access/` with Data Transfer Objects (DTOs).
+2. **Data Access Layer (DAL)**: Never run ad-hoc raw queries inside random UI components. Centralize authentication and database queries in `src/data-access/` with Data Transfer Objects (DTOs). See [references/dataAccessLayer.md](references/dataAccessLayer.md).
 3. **React Taint API**: Prevent secret strings or tokens from reaching client components:
    ```typescript
    import { experimental_taintUniqueValue } from "react";
@@ -83,7 +102,7 @@ Based on the official **Next.js Production Checklist** (`https://nextjs.org/docs
 2. **Automated Search Engine Files**:
    - `app/sitemap.ts`: Dynamic XML sitemap generator.
    - `app/robots.ts`: Crawling rules for search bots.
-   - `app/opengraph-image.tsx`: Dynamic social card generator via `@vercel/og`.
+   - `app/opengraph-image.tsx`: Dynamic social card generator via `@vercel/og` or `ImageResponse`.
 
 ### E. Build & Deployment Optimization
 1. **Standalone Output**: Essential for Docker and self-hosted Kubernetes containers:
@@ -111,6 +130,7 @@ Based on the official **Next.js Production Checklist** (`https://nextjs.org/docs
 ---
 
 ## 4. References & Bundled Utilities
+- **Complete Next.js Feature Map (v16.4.6)**: [references/nextjsFeatureMap.md](references/nextjsFeatureMap.md) — Exhaustive map of all 18 Getting Started modules, 40+ Guides, and 200+ API references with raw documentation URLs.
 - Comprehensive production audit checklist: [references/productionChecklist.md](references/productionChecklist.md)
 - Security headers and CSP nonce middleware: [references/securityHeadersCsp.md](references/securityHeadersCsp.md)
 - Data Access Layer (DAL) implementation: [references/dataAccessLayer.md](references/dataAccessLayer.md)

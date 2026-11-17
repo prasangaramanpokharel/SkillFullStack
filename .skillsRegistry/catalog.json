@@ -106,9 +106,9 @@
       "taxonomy": "frontend",
       "path": "skills/frontend/nextjs",
       "description": "Production Next.js App Router engineering and readiness checklist. Covers Server Components vs Client boundaries, Data Access Layer (DAL), taint APIs, CSP security headers, metadata SEO, OpenTelemetry, bundle optimization, and standalone Docker deployment.",
-      "version": "15.x",
-      "docs": "https://nextjs.org/docs/app/guides/production-checklist",
-      "verified_date": "2026-11-16"
+      "version": "16.x",
+      "docs": "https://nextjs.org/docs/app",
+      "verified_date": "2026-11-17"
     },
     {
       "name": "githubAction",
