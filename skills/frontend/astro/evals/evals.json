@@ -1,0 +1,66 @@
+{
+  "skill": "astro",
+  "version": "5.x",
+  "evaluations": [
+    {
+      "id": "astro-eval-01-islands-optimization",
+      "scenario": "A developer wants to add an interactive carousel and a comments section to a product page in Astro.",
+      "prompt": "How should I import and hydrate a React carousel that appears halfway down the page and a comment box at the bottom?",
+      "expected_output_patterns": [
+        "client:visible",
+        "do not use client:load",
+        "Zero JS",
+        "IntersectionObserver"
+      ],
+      "forbidden_patterns": [
+        "client:load for the comments",
+        "use client directive in astro frontmatter"
+      ]
+    },
+    {
+      "id": "astro-eval-02-server-islands",
+      "scenario": "An e-commerce site on Astro 5 wants to keep its product page statically cached at the CDN edge while showing personalized user cart count and loyalty badge dynamically.",
+      "prompt": "How do I implement deferred dynamic components on a static page using Astro 5 Server Islands?",
+      "expected_output_patterns": [
+        "server:defer",
+        "slot=\"fallback\"",
+        "export const prerender = true",
+        "Astro.session or Astro.cookies"
+      ]
+    },
+    {
+      "id": "astro-eval-03-content-collections",
+      "scenario": "Defining a blog collection schema with Astro 5 Content Collections.",
+      "prompt": "Create an Astro 5 content.config.ts file that defines a blog collection loaded from Markdown files with title, pubDate, coverImage, and tags.",
+      "expected_output_patterns": [
+        "defineCollection",
+        "glob",
+        "astro:content",
+        "schema: ({ image })",
+        "z.object"
+      ]
+    },
+    {
+      "id": "astro-eval-04-type-safe-actions",
+      "scenario": "Implementing a contact form submission using Astro Actions instead of an API route.",
+      "prompt": "Write an Astro Action in src/actions/index.ts that validates email and message with Zod and returns a success response or ActionError.",
+      "expected_output_patterns": [
+        "defineAction",
+        "ActionError",
+        "accept: 'form'",
+        "astro:actions",
+        "z.object"
+      ]
+    },
+    {
+      "id": "astro-eval-05-hybrid-ssr",
+      "scenario": "Configuring Astro for Node.js hybrid rendering where most pages are static and API routes are dynamic.",
+      "prompt": "How do I configure hybrid rendering in astro.config.mjs with Node standalone adapter and prerender flags?",
+      "expected_output_patterns": [
+        "adapter: node",
+        "output: 'static' or output: 'server'",
+        "export const prerender"
+      ]
+    }
+  ]
+}

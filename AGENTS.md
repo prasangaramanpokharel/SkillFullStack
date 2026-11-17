@@ -10,6 +10,7 @@
 When working with any framework, library, or engineering domain covered by a skill:
 1. **Check for Bundled Assets First**: Check if the skill contains an `assets/` directory:
    - Next.js App Router: [`skills/frontend/nextjs/assets/`](skills/frontend/nextjs/assets/)
+   - Astro 5.x: [`skills/frontend/astro/assets/`](skills/frontend/astro/assets/)
    - shadcn/ui: [`skills/frontend/shadcn-ui/assets/`](skills/frontend/shadcn-ui/assets/)
    - GitHub Platform & Actions:
      - Shared REST API: [`skills/github/assets/rest-api/`](skills/github/assets/rest-api/)

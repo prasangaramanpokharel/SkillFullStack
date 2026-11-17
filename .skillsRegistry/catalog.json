@@ -208,6 +208,15 @@
       "version": "latest",
       "docs": "",
       "verified_date": "2026-11-16"
+    },
+    {
+      "name": "astro",
+      "taxonomy": "frontend",
+      "path": "skills/frontend/astro",
+      "description": "High-performance Astro 5.x engineering guide. Covers Islands architecture, Server Islands, Content Collections, Astro Actions, View Transitions, SSR/Hybrid routing, and Zero-JS baseline.",
+      "version": "5.x",
+      "docs": "https://docs.astro.build",
+      "verified_date": "2026-11-17"
     }
   ]
 }

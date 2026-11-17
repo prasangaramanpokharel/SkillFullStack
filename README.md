@@ -35,6 +35,7 @@ SkillFullStack/
 │   │   └── durableBackgroundJobs/# Inngest & Trigger.dev v3 zero-timeout step functions
 │   ├── frontend/
 │   │   ├── nextjs/               # Next.js App Router production checklist & architecture
+│   │   ├── astro/                # Astro 5.x Islands architecture, Server Islands, & Actions
 │   │   ├── shadcn-ui/            # shadcn v4 primitives, blocks, & AI elements
 │   │   ├── generativeUi/         # Streaming interactive React UI via Vercel AI SDK
 │   │   └── tsxReactStandard/     # React 19, discriminated unions, strict TypeScript
@@ -107,6 +108,11 @@ mkdir -p .agent/skills/nextjs
 curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/frontend/nextjs/SKILL.md \
   -o .agent/skills/nextjs/SKILL.md
 
+# 5. Astro 5.x Production Engineering (Islands, Server Islands, Actions)
+mkdir -p .agent/skills/astro
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/frontend/astro/SKILL.md \
+  -o .agent/skills/astro/SKILL.md
+
 # 5. GitHub Actions Production Automation & Security
 mkdir -p .agent/skills/githubAction
 curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/github/githubAction/SKILL.md \
@@ -168,6 +174,7 @@ git clone https://github.com/prasangaramanpokharel/SkillFullStack.git
 | Domain | Skill Name | Specification & Guide | Key Capabilities |
 | :--- | :--- | :--- | :--- |
 | **`frontend`** | **`nextjs`** | [SKILL.md](skills/frontend/nextjs/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/frontend/nextjs/SKILL.md) | Official Next.js Production Checklist: RSC boundaries, Data Access Layer (DAL), Taint API, CSP nonces, Core Web Vitals, and Docker standalone. |
+| **`frontend`** | **`astro`** | [SKILL.md](skills/frontend/astro/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/frontend/astro/SKILL.md) | Astro 5.x Islands Architecture, Server Islands (`server:defer`), Content Collections with Zod schemas, and type-safe `astro:actions`. |
 | **`frontend`** | **`shadcn-ui`** | [SKILL.md](skills/frontend/shadcn-ui/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/frontend/shadcn-ui/SKILL.md) | Atomic primitives, blocks (`dashboard-01`), AI components (`@ai-elements`), and direct MDX fetching. |
 | **`frontend`** | **`generativeUi`** | [SKILL.md](skills/frontend/generativeUi/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/frontend/generativeUi/SKILL.md) | Streaming interactive React components, tools mapping, and `createDataStreamResponse`. |
 | **`frontend`** | **`tsxReactStandard`** | [SKILL.md](skills/frontend/tsxReactStandard/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/frontend/tsxReactStandard/SKILL.md) | React 19 primitives (ref props, Server Actions, `use()`), discriminated unions, strict tsconfig, and no `React.FC`/enums. |
