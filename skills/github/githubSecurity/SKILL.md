@@ -1,15 +1,22 @@
 ---
 name: githubSecurity
 description: Secure repositories and software supply chains. Automates Dependabot grouping, CodeQL static analysis matrix, secret scanning push protection, and security advisories. Commands: /github-security, /github-codeql, /github-dependabot, /github-secrets.
-argument-hint: "[audit | codeql | dependabot | secret-scanning]"
-commands:
-  - /github-security
-  - /github-codeql
-  - /github-dependabot
-  - /github-secrets
 version: v2
-last-verified: 2026-11-16
+last-verified: 2026-11-17
 compatibility: GitHub Advanced Security (GHAS), GitHub Free/Pro, GitHub CLI 2.40+
+slash-commands:
+  - command: /github-security
+    description: Run repository security audit across CodeQL, Dependabot, and Secret Scanning
+    argument-hint: "[audit | codeql | dependabot | secret-scanning]"
+  - command: /github-codeql
+    description: Generate and tune CodeQL static analysis matrix workflows
+    argument-hint: "[--languages=javascript,typescript,python,go]"
+  - command: /github-dependabot
+    description: Scaffold grouped Dependabot configuration for zero PR spam
+    argument-hint: "[--ecosystem=npm|pip|gomod|cargo|docker]"
+  - command: /github-secrets
+    description: Configure Secret Scanning Push Protection and bypass auditing
+    argument-hint: "[--enforce=strict]"
 ---
 
 # GitHub Code & Supply Chain Security Guide
@@ -157,6 +164,7 @@ python3 skills/github/githubSecurity/scripts/auditRepoSecurity.py --repo owner/r
 ---
 
 ## 6. References & Bundled Utilities
+- **Official Security Documentation Assets**: [assets/](assets/) — Official specifications for CodeQL scanning, dependabot.yml schema, secret scanning push protection, and security REST APIs.
 - Grouped Dependabot blueprint: [references/dependabotConfig.yml](references/dependabotConfig.yml)
 - Production CodeQL matrix workflow: [references/codeqlAnalysis.yml](references/codeqlAnalysis.yml)
 - Security audit scanner: [scripts/auditRepoSecurity.py](scripts/auditRepoSecurity.py)

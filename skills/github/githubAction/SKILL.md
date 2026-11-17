@@ -1,14 +1,19 @@
 ---
 name: githubAction
 description: Design and implement production GitHub Actions CI/CD workflows. Supports matrix builds, concurrency cancelation, dependency caching, least-privilege permissions, and commit SHA action pinning. Commands: /github-action, /github-ci, /github-cd.
-argument-hint: "[workflow-name | lint | test | build | deploy]"
-commands:
-  - /github-action
-  - /github-ci
-  - /github-cd
 version: v2
-last-verified: 2026-11-16
+last-verified: 2026-11-17
 compatibility: GitHub Actions, GitHub CLI 2.40+, act, YAML 1.2
+slash-commands:
+  - command: /github-action
+    description: Generate or audit modular GitHub Actions workflows
+    argument-hint: "[workflow-name | lint | test | build | deploy]"
+  - command: /github-ci
+    description: Scaffold multi-platform matrix CI pipelines with dependency caching
+    argument-hint: "[--lang=node|python|go|rust|docker]"
+  - command: /github-cd
+    description: Implement automated production deployment workflows with concurrency control
+    argument-hint: "[--target=cloud|registry]"
 ---
 
 # GitHub Actions CI/CD Engineering Guide
@@ -149,5 +154,6 @@ python3 skills/github/githubAction/scripts/validateWorkflowYaml.py --file .githu
 ---
 
 ## 5. References & Bundled Utilities
+- **Official Starter Workflows & Syntax Specs**: [assets/](assets/) — Bundled official workflows (`node.js.yml`, `python-app.yml`, `go.yml`, `rust.yml`, `codeql.yml`) and workflow syntax specifications.
 - Production CI, CD, and Docker build-push templates: [references/workflowPatterns.md](references/workflowPatterns.md)
 - Automated workflow security linter: [scripts/validateWorkflowYaml.py](scripts/validateWorkflowYaml.py)

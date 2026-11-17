@@ -11,6 +11,13 @@ When working with any framework, library, or engineering domain covered by a ski
 1. **Check for Bundled Assets First**: Check if the skill contains an `assets/` directory:
    - Next.js App Router: [`skills/frontend/nextjs/assets/`](skills/frontend/nextjs/assets/)
    - shadcn/ui: [`skills/frontend/shadcn-ui/assets/`](skills/frontend/shadcn-ui/assets/)
+   - GitHub Platform & Actions:
+     - Shared REST API: [`skills/github/assets/rest-api/`](skills/github/assets/rest-api/)
+     - Setup & Rulesets: [`skills/github/githubSetup/assets/`](skills/github/githubSetup/assets/)
+     - Actions & Starter Workflows: [`skills/github/githubAction/assets/`](skills/github/githubAction/assets/)
+     - Security (CodeQL, Dependabot, Push Protection): [`skills/github/githubSecurity/assets/`](skills/github/githubSecurity/assets/)
+     - Quality (PRs, Reviews, CODEOWNERS): [`skills/github/githubQuality/assets/`](skills/github/githubQuality/assets/)
+     - Teams & Organizations: [`skills/github/githubTeam/assets/`](skills/github/githubTeam/assets/)
 2. **Zero-Hallucination Mandate**:
    - **Do NOT rely on pre-training weights** or outdated training data when local documentation exists. Framework APIs change rapidly (e.g., Next.js 16 `"use cache"`, React 19 Action states, Tailwind CSS v4 CSS-first theming, shadcn CLI v4).
    - Read the exact markdown specification in `assets/` before generating boilerplate, components, or configuration.

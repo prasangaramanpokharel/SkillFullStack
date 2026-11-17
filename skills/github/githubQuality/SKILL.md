@@ -1,14 +1,19 @@
 ---
 name: githubQuality
 description: Enforce engineering quality, pull request standards, structured code reviews, and CODEOWNERS rules. Commands: /github-quality, /github-pr, /github-codeowners.
-argument-hint: "[pr-template | codeowners | review-checklist | contributing]"
-commands:
-  - /github-quality
-  - /github-pr
-  - /github-codeowners
 version: v2
-last-verified: 2026-11-16
+last-verified: 2026-11-17
 compatibility: GitHub CLI 2.40+, Markdown, Git
+slash-commands:
+  - command: /github-quality
+    description: Audit engineering quality gates and pull request standards
+    argument-hint: "[pr-template | codeowners | review-checklist | contributing]"
+  - command: /github-pr
+    description: Generate production pull request templates and review checklists
+    argument-hint: "[--type=feature|bugfix|refactor]"
+  - command: /github-codeowners
+    description: Generate and validate team-based CODEOWNERS routing definitions
+    argument-hint: "[--validate]"
 ---
 
 # GitHub Code Quality & Pull Request Engineering Guide
@@ -125,6 +130,7 @@ python3 skills/github/githubQuality/scripts/auditPrQuality.py --pr 42
 ---
 
 ## 6. References & Bundled Utilities
+- **Official PR & Code Quality Assets**: [assets/](assets/) — Comprehensive offline guides for PR authoring, review standards, merge queue mechanics, and checks/pulls REST APIs.
 - Production PR template: [references/prTemplate.md](references/prTemplate.md)
 - Multi-team CODEOWNERS patterns: [references/codeownersExample.md](references/codeownersExample.md)
 - PR quality validation script: [scripts/auditPrQuality.py](scripts/auditPrQuality.py)

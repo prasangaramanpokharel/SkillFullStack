@@ -1,14 +1,19 @@
 ---
 name: githubSetup
 description: Audit, initialize, and configure GitHub repositories, modern rulesets, branch protections, and organization foundations. Commands: /github-setup, /github-repository, /github-ruleset.
-argument-hint: "[init | ruleset | branches | settings]"
-commands:
-  - /github-setup
-  - /github-repository
-  - /github-ruleset
 version: v2
-last-verified: 2026-11-16
+last-verified: 2026-11-17
 compatibility: GitHub Enterprise, GitHub Free/Pro, GitHub CLI 2.40+
+slash-commands:
+  - command: /github-setup
+    description: Audit or initialize repository configuration
+    argument-hint: "[init | ruleset | branches | settings]"
+  - command: /github-repository
+    description: Configure repository settings and visibility
+    argument-hint: "[--name=<repo>] [--visibility=public|private]"
+  - command: /github-ruleset
+    description: Create and enforce modern repository rulesets
+    argument-hint: "[--target=branch|tag] [--enforce=active|evaluate]"
 ---
 
 # GitHub Setup & Repository Architecture Guide
@@ -126,6 +131,7 @@ python3 skills/github/githubSetup/scripts/configureRepoBaseline.py --repo owner/
 ---
 
 ## 5. References & Bundled Utilities
+- **Official Offline Documentation Assets**: [assets/](assets/) — Comprehensive offline guides for repository creation, settings, branch management, rulesets, and REST endpoints.
 - Ruleset template JSON: [references/rulesetTemplates.json](references/rulesetTemplates.json)
 - Repository settings blueprint: [references/repoSettingsBlueprint.md](references/repoSettingsBlueprint.md)
 - Automated configuration script: [scripts/configureRepoBaseline.py](scripts/configureRepoBaseline.py)

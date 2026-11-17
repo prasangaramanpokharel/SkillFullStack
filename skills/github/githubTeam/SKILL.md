@@ -1,14 +1,19 @@
 ---
 name: githubTeam
 description: Design and manage professional engineering team structures, permission hierarchies, onboarding checklists, and automated code review routing. Commands: /github-team, /github-team-onboarding, /github-team-roles.
-argument-hint: "[structure | onboarding | roles | permissions]"
-commands:
-  - /github-team
-  - /github-team-onboarding
-  - /github-team-roles
 version: v2
-last-verified: 2026-11-16
+last-verified: 2026-11-17
 compatibility: GitHub Organizations, GitHub Enterprise, GitHub CLI 2.40+
+slash-commands:
+  - command: /github-team
+    description: Audit organizational team topologies and code review routing
+    argument-hint: "[structure | onboarding | roles | permissions]"
+  - command: /github-team-onboarding
+    description: Scaffold developer onboarding checklists and access matrix
+    argument-hint: "[--role=frontend|backend|devops]"
+  - command: /github-team-roles
+    description: Configure least-privilege repository permission hierarchies
+    argument-hint: "[--team=<slug>] [--role=read|triage|write|maintain|admin]"
 ---
 
 # GitHub Team Architecture & Permission Engineering Guide
@@ -104,6 +109,7 @@ python3 skills/github/githubTeam/scripts/manageTeamSync.py --org my-org
 ---
 
 ## 5. References & Bundled Utilities
+- **Official Organization & Team Assets**: [assets/](assets/) — Comprehensive offline guides for organization governance, team hierarchies, and teams/orgs REST APIs.
 - Permission tier specifications: [references/permissionMatrix.md](references/permissionMatrix.md)
 - Automated round-robin reviewer configuration: [references/reviewAssignment.md](references/reviewAssignment.md)
 - Team sync script: [scripts/manageTeamSync.py](scripts/manageTeamSync.py)
