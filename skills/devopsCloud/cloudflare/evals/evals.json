@@ -1,0 +1,75 @@
+{
+  "skill": "cloudflare",
+  "version": "2026.x",
+  "evaluations": [
+    {
+      "id": "cf-eval-01-product-selection",
+      "scenario": "A SaaS engineering team wants to choose the right storage and database products for user profiles, profile pictures, realtime collaborative cursors, and transactional audit logs.",
+      "prompt": "Which Cloudflare storage and database products should I use for: 1. User profiles and metadata, 2. Profile avatars (images), 3. Realtime multiplayer cursor position, and 4. Long-term transactional audit logs?",
+      "expected_output_patterns": [
+        "D1 for user profiles",
+        "R2 for profile avatars",
+        "Durable Objects for realtime multiplayer cursor",
+        "Zero egress fees",
+        "Queues or D1/R2 for audit logs"
+      ],
+      "forbidden_patterns": [
+        "KV for realtime multiplayer cursor",
+        "Pages for backend APIs"
+      ]
+    },
+    {
+      "id": "cf-eval-02-cli-selection",
+      "scenario": "Determining whether to use wrangler or cf CLI on an existing project containing wrangler.jsonc.",
+      "prompt": "We have an existing Worker project with wrangler.jsonc and package.json scripts. Should we switch to the new cf CLI or stay with Wrangler?",
+      "expected_output_patterns": [
+        "stay with Wrangler",
+        "preserve existing configuration",
+        "wrangler.jsonc",
+        "cf is beta"
+      ]
+    },
+    {
+      "id": "cf-eval-03-modern-static-assets",
+      "scenario": "Configuring a single-page application and API backend in a single Worker without using deprecated Pages.",
+      "prompt": "How do I configure wrangler.jsonc to serve a Vite React SPA from ./dist alongside /api routes in a Worker?",
+      "expected_output_patterns": [
+        "assets",
+        "directory",
+        "not_found_handling",
+        "single-page-application",
+        "compatibility_date"
+      ],
+      "forbidden_patterns": [
+        "cloudflare pages deploy"
+      ]
+    },
+    {
+      "id": "cf-eval-04-troubleshoot-524",
+      "scenario": "A user gets Cloudflare Error 524 on their reports export endpoint.",
+      "prompt": "Our reports generation endpoint is returning a Cloudflare Error 524. What does this mean and how do we re-architect it?",
+      "expected_output_patterns": [
+        "100 seconds",
+        "timeout",
+        "origin took too long",
+        "Queues",
+        "Workflows",
+        "asynchronous"
+      ]
+    },
+    {
+      "id": "cf-eval-05-d1-parameterized-queries",
+      "scenario": "Writing secure D1 queries in TypeScript with parameterized statements.",
+      "prompt": "Write a TypeScript function to query a D1 database for a user by email and status safely.",
+      "expected_output_patterns": [
+        "env.DB.prepare",
+        ".bind(",
+        "SELECT",
+        "SQL injection"
+      ],
+      "forbidden_patterns": [
+        "SELECT * FROM users WHERE email = '${email}'"
+      ]
+    }
+  ]
+}

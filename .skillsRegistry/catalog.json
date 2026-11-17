@@ -217,6 +217,15 @@
       "version": "5.x",
       "docs": "https://docs.astro.build",
       "verified_date": "2026-11-17"
+    },
+    {
+      "name": "cloudflare",
+      "taxonomy": "devopsCloud",
+      "path": "skills/devopsCloud/cloudflare",
+      "description": "Master Cloudflare engineering guide. Architect, scaffold, implement, deploy, and troubleshoot applications across the entire Cloudflare ecosystem (Workers, Static Assets, D1, R2, KV, Durable Objects, Queues, Workflows, Hyperdrive, Vectorize, WAF, Tunnels, Workers AI, and Agents SDK). Supports both Wrangler CLI and cf CLI.",
+      "version": "2026.x",
+      "docs": "https://developers.cloudflare.com",
+      "verified_date": "2026-11-17"
     }
   ]
 }

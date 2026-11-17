@@ -20,6 +20,8 @@ SkillFullStack/
 │   │   └── requirementsEngineering/ # /story-format, /moscow-prioritize, /attack-tree
 │   ├── cicdDevops/               # CI/CD delivery pipelines, Docker hardening, & DORA metrics
 │   │   └── cicdPipeline/         # /cicd-pipeline, /dockerfile-audit, /deploy-strategy
+│   ├── devopsCloud/              # Cloudflare edge platform, serverless compute, & anycast infra
+│   │   └── cloudflare/           # /cf-architect, /cf-worker, /cf-database, /cf-storage, /cf-security
 │   ├── github/                   # GitHub Engineering Skills Toolkit (Phase 1)
 │   │   ├── githubAction/         # /github-action, /github-ci, /github-cd
 │   │   ├── githubSetup/          # /github-setup, /github-repository, /github-ruleset
@@ -113,6 +115,11 @@ mkdir -p .agent/skills/astro
 curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/frontend/astro/SKILL.md \
   -o .agent/skills/astro/SKILL.md
 
+# 6. Cloudflare Master Engineering (Workers, D1, R2, KV, DO, Queues, Workflows, WAF)
+mkdir -p .agent/skills/cloudflare
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/devopsCloud/cloudflare/SKILL.md \
+  -o .agent/skills/cloudflare/SKILL.md
+
 # 5. GitHub Actions Production Automation & Security
 mkdir -p .agent/skills/githubAction
 curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/github/githubAction/SKILL.md \
@@ -184,6 +191,7 @@ git clone https://github.com/prasangaramanpokharel/SkillFullStack.git
 | **`backend`** | **`pythonStandard`** | [SKILL.md](skills/backend/pythonStandard/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/pythonStandard/SKILL.md) | Astral `uv` toolchain, `Ruff` linter/formatter, PEP 585/604 modern typing, Pydantic v2 models, and `asyncio.TaskGroup`. |
 | **`backend`** | **`upstash`** | [SKILL.md](skills/backend/upstash/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/upstash/SKILL.md) | Serverless Redis, dynamic ratelimiting, durable workflows, and QStash flow control. |
 | **`backend`** | **`durableBackgroundJobs`**| [SKILL.md](skills/backend/durableBackgroundJobs/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/durableBackgroundJobs/SKILL.md) | Inngest & Trigger.dev v3 step memoization, pauses, and zero-timeout execution. |
+| **`devopsCloud`** | **`cloudflare`** | [SKILL.md](skills/devopsCloud/cloudflare/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/devopsCloud/cloudflare/SKILL.md) | Complete Cloudflare platform: Workers, Static Assets, D1 SQL, R2, KV, Durable Objects, Queues, Workflows, Hyperdrive, Vectorize, WAF, and Tunnels. Supports `wrangler` and `cf` CLI. |
 | **`dataAi`** | **`mcpServerDevelopment`** | [SKILL.md](skills/dataAi/mcpServerDevelopment/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/dataAi/mcpServerDevelopment/SKILL.md) | FastMCP Python & TypeScript SDKs, Tools, Resources, Prompts, and stdio/SSE transports. |
 | **`dataAi`** | **`ragPipelineProduction`** | [SKILL.md](skills/dataAi/ragPipelineProduction/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/dataAi/ragPipelineProduction/SKILL.md) | Dense Vector + BM25 Hybrid Retrieval, Reciprocal Rank Fusion (RRF), and Cohere rerankers. |
 | **`securityQa`** | **`llmSecurityRedteaming`** | [SKILL.md](skills/securityQa/llmSecurityRedteaming/SKILL.md) · [Raw URL](https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/securityQa/llmSecurityRedteaming/SKILL.md) | OWASP LLM Top 10 defenses, data/instruction separation, PII scrubbing, and injection test harnesses. |
