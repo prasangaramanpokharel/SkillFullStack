@@ -286,7 +286,7 @@ Next.js includes a custom TypeScript plugin and type checker, which VSCode and o
 
 You can enable the plugin in VS Code by:
 
-1. Opening the command palette (`Ctrl/âŒ˜` + `Shift` + `P`)
+1. Opening the command palette (`Ctrl/⌘` + `Shift` + `P`)
 2. Searching for "TypeScript: Select TypeScript Version"
 3. Selecting "Use Workspace Version"
 

@@ -131,6 +131,7 @@ Based on the official **Next.js Production Checklist** and verified against Next
 
 ## 4. References & Bundled Utilities
 - **Complete Next.js Feature Map (v16.4.6)**: [references/nextjsFeatureMap.md](references/nextjsFeatureMap.md) — Exhaustive map of all 18 Getting Started modules, 40+ Guides, and 200+ API references with raw documentation URLs.
+- **Offline Getting Started Markdown Library**: [assets/](assets/) — Full offline copy of all 18 official Getting Started modules + App Router index & API references for zero-network AI context retrieval.
 - Comprehensive production audit checklist: [references/productionChecklist.md](references/productionChecklist.md)
 - Security headers and CSP nonce middleware: [references/securityHeadersCsp.md](references/securityHeadersCsp.md)
 - Data Access Layer (DAL) implementation: [references/dataAccessLayer.md](references/dataAccessLayer.md)

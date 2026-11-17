@@ -71,15 +71,15 @@ Folders define URL segments. Nesting folders nests segments. Layouts at any leve
 
 | Path                        | URL pattern     | Notes                         |
 | --------------------------- | --------------- | ----------------------------- |
-| `app/layout.tsx`            | â€”               | Root layout wraps all routes  |
-| `app/blog/layout.tsx`       | â€”               | Wraps `/blog` and descendants |
+| `app/layout.tsx`            | —               | Root layout wraps all routes  |
+| `app/blog/layout.tsx`       | —               | Wraps `/blog` and descendants |
 | `app/page.tsx`              | `/`             | Public route                  |
 | `app/blog/page.tsx`         | `/blog`         | Public route                  |
 | `app/blog/authors/page.tsx` | `/blog/authors` | Public route                  |
 
 ### Dynamic routes
 
-Parameterize segments with square brackets. Use `[segment]` for a single param, `[...segment]` for catchâ€‘all, and `[[...segment]]` for optional catchâ€‘all. Access values via the [`params`](/docs/app/api-reference/file-conventions/page#params-optional) prop.
+Parameterize segments with square brackets. Use `[segment]` for a single param, `[...segment]` for catch‑all, and `[[...segment]]` for optional catch‑all. Access values via the [`params`](/docs/app/api-reference/file-conventions/page#params-optional) prop.
 
 | Path                            | URL pattern                                                          |
 | ------------------------------- | -------------------------------------------------------------------- |
@@ -95,8 +95,8 @@ Organize code without changing URLs with route groups [`(group)`](/docs/app/api-
 | ------------------------------- | ----------- | ----------------------------------------- |
 | `app/(marketing)/page.tsx`      | `/`         | Group omitted from URL                    |
 | `app/(shop)/cart/page.tsx`      | `/cart`     | Share layouts within `(shop)`             |
-| `app/blog/_components/Post.tsx` | â€”           | Not routable; safe place for UI utilities |
-| `app/blog/_lib/data.ts`         | â€”           | Not routable; safe place for utils        |
+| `app/blog/_components/Post.tsx` | —           | Not routable; safe place for UI utilities |
+| `app/blog/_lib/data.ts`         | —           | Not routable; safe place for utils        |
 
 ### Parallel and Intercepted Routes
 
@@ -273,7 +273,7 @@ To apply a [loading skeleton](/docs/app/api-reference/file-conventions/loading) 
 
 ![Folder structure showing a loading.tsx and a page.tsx inside the route group](/docs/light/route-group-loading.png)
 
-Now, the `loading.tsx` file will only apply to your dashboard â†’ overview page instead of all your dashboard pages without affecting the URL path structure.
+Now, the `loading.tsx` file will only apply to your dashboard → overview page instead of all your dashboard pages without affecting the URL path structure.
 
 ### Creating multiple root layouts
 
