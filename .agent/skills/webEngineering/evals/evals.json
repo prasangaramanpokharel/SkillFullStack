@@ -1,0 +1,42 @@
+{
+  "skill": "webEngineering",
+  "version": "2026.x",
+  "evals": [
+    {
+      "id": "eval-web-pre-production-checklist",
+      "prompt": "Enumerate the mandatory legal and security header checks required before launching a web application to production.",
+      "asserts": [
+        "Identifies Privacy Policy, Terms of Service, and GDPR cookie consent",
+        "Specifies HSTS, CSP Level 3, and X-Content-Type-Options: nosniff",
+        "Includes accessibility statement and error monitoring"
+      ]
+    },
+    {
+      "id": "eval-web-agent-seo",
+      "prompt": "Explain how to structure an llms.txt file and configure robots.txt for AI agents and search crawlers.",
+      "asserts": [
+        "Specifies llms.txt structure with H1 title, blockquote summary, and clean markdown links",
+        "Differentiates search crawlers from AI search bots and training scrapers in robots.txt",
+        "Mentions llms-full.txt digest"
+      ]
+    },
+    {
+      "id": "eval-web-performance-cwv",
+      "prompt": "Detail the Core Web Vitals thresholds and explain how to optimize Largest Contentful Paint (LCP) and Interaction to Next Paint (INP).",
+      "asserts": [
+        "Specifies LCP <= 2.5s and INP <= 200ms",
+        "Recommends fetchpriority='high' and preloading hero images for LCP",
+        "Recommends task chunking and breaking long tasks for INP"
+      ]
+    },
+    {
+      "id": "eval-web-api-standards",
+      "prompt": "Show the RFC 9457 Problem Details error response format and explain how to enforce API latency SLOs.",
+      "asserts": [
+        "Returns application/problem+json with type, title, status, and detail",
+        "Mentions p50, p95, and p99 latency budgets",
+        "Includes Idempotency-Key support for mutating endpoints"
+      ]
+    }
+  ]
+}

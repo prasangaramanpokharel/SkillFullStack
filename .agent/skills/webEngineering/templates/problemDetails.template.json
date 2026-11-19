@@ -1,0 +1,19 @@
+{
+  "type": "https://api.example.com/errors/invalid-parameter",
+  "title": "Invalid Request Parameters",
+  "status": 400,
+  "detail": "The request body failed schema validation. 2 fields are missing or malformed.",
+  "instance": "/api/v1/orders/ord_98721634",
+  "invalidParams": [
+    {
+      "name": "quantity",
+      "reason": "Must be an integer greater than 0"
+    },
+    {
+      "name": "currency",
+      "reason": "Unsupported currency code. Must be one of ['USD', 'EUR', 'GBP']"
+    }
+  ],
+  "traceId": "00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01",
+  "timestamp": "2026-11-19T16:30:00Z"
+}

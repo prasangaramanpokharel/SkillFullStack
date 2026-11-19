@@ -42,7 +42,8 @@ SkillFullStack/
 │   │   ├── astro/                # Astro 5.x Islands architecture, Server Islands, & Actions
 │   │   ├── shadcn-ui/            # shadcn v4 primitives, blocks, & AI elements
 │   │   ├── generativeUi/         # Streaming interactive React UI via Vercel AI SDK
-│   │   └── tsxReactStandard/     # React 19, discriminated unions, strict TypeScript
+│   │   ├── tsxReactStandard/     # React 19, discriminated unions, strict TypeScript
+│   │   └── webEngineering/       # /web-checklist, /web-seo, /web-performance, /web-testing, /web-api, /web-audit
 │   ├── backend/
 │   │   ├── upstash/              # Serverless Redis, Vector, QStash, & Workflows
 │   │   ├── durableBackgroundJobs/# Inngest & Trigger.dev v3 zero-timeout step functions

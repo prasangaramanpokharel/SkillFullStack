@@ -271,6 +271,15 @@
       "version": "2026.x",
       "docs": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
       "verified_date": "2026-11-19"
+    },
+    {
+      "name": "webEngineering",
+      "taxonomy": "frontend",
+      "path": "skills/frontend/webEngineering",
+      "description": "Complete web engineering and pre-flight production checklist skill. Covers exhaustive launch readiness (Legal, GDPR cookie consent, security headers, observability), modern technical SEO and AI agent discovery (llms.txt, AI crawler robots.txt, JSON-LD, Open Graph), Core Web Vitals optimization (LCP <= 2.5s, INP <= 200ms, CLS <= 0.1, caching hierarchies), automated testing (WCAG 2.2 AA accessibility, Playwright E2E), and production API latency/contract standards (RFC 9457 Problem Details, p95/p99 latency budgets, idempotency keys).",
+      "version": "2026.x",
+      "docs": "https://web.dev",
+      "verified_date": "2026-11-19"
     }
   ]
 }

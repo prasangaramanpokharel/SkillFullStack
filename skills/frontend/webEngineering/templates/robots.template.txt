@@ -1,0 +1,42 @@
+# robots.txt — Production Search Engine & AI Agent Directives
+# Specification: RFC 9309
+
+# ─── STANDARD SEARCH ENGINE CRAWLERS (INDEXING ENABLED) ───
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: DuckDuckBot
+User-agent: Slurp
+User-agent: Baiduspider
+User-agent: YandexBot
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /checkout/
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+Allow: /
+
+# ─── AI SEARCH AGENTS (DISCOVERY & SYNTHESIS ENABLED) ───
+User-agent: PerplexityBot
+User-agent: ChatGPT-User
+User-agent: Claude-Web
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Allow: /
+
+# ─── BULK AI TRAINING SCRAPERS (OPTIONAL: ALLOW OR DISALLOW) ───
+# To opt out of model pre-training while permitting search synthesis, block training bots:
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: CCBot
+User-agent: anthropic-ai
+User-agent: Omgilibot
+Disallow: /
+
+# ─── SITEMAP & AI DISCOVERY ENDPOINTS ───
+Sitemap: https://{YOUR_DOMAIN}/sitemap.xml
+# AI Agents and LLMs clean context index:
+# See: https://{YOUR_DOMAIN}/llms.txt
+# See: https://{YOUR_DOMAIN}/llms-full.txt

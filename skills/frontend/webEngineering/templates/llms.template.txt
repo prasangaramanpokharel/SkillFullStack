@@ -1,0 +1,18 @@
+# {PROJECT_NAME}
+
+> {PROJECT_ONE_SENTENCE_SUMMARY_AND_VALUE_PROPOSITION}
+
+## Overview
+{DETAILED_OVERVIEW_OF_PLATFORM_CAPABILITIES_FOR_AI_AGENTS}
+
+## Core Documentation
+- [{DOC_1_TITLE}]({DOC_1_MARKDOWN_URL}): {DOC_1_DESCRIPTION}
+- [{DOC_2_TITLE}]({DOC_2_MARKDOWN_URL}): {DOC_2_DESCRIPTION}
+- [{API_REFERENCE_TITLE}]({API_REFERENCE_MARKDOWN_URL}): {API_REFERENCE_DESCRIPTION}
+
+## Architecture & Conventions
+- [Project Architecture]({ARCHITECTURE_DOC_URL}): System design, state boundaries, and dataflows.
+- [Security Guidelines]({SECURITY_DOC_URL}): Authentication models, tokens, and authorization.
+
+## Optional & Deep Dive References
+- [Full Documentation Digest]({LLMS_FULL_URL}): Complete un-truncated markdown bundle for context ingestion.
