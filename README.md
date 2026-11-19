@@ -53,7 +53,8 @@ SkillFullStack/
 │   │   ├── mcpServerDevelopment/ # Model Context Protocol (FastMCP & TypeScript SDK)
 │   │   └── ragPipelineProduction/# BM25 + Dense hybrid search, RRF, & Cohere reranking
 │   ├── securityQa/
-│   │   └── llmSecurityRedteaming/# OWASP Top 10 for LLMs, prompt injection, & guardrails
+│   │   ├── llmSecurityRedteaming/# OWASP Top 10 for LLMs, prompt injection, & guardrails
+│   │   └── vulnerabilityScanner/ # /vuln-scan, /vuln-loop, /vuln-memory, /vuln-cwe, /vuln-report, /vuln-remediate, /vuln-audit
 │   └── foundation/
 │       └── promptEvalTesting/    # Promptfoo & DeepEval CI/CD regression suites
 └── scripts/

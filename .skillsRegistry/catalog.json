@@ -253,6 +253,15 @@
       "version": "2026.x",
       "docs": "https://neon.com/docs",
       "verified_date": "2026-11-19"
+    },
+    {
+      "name": "vulnerabilityScanner",
+      "taxonomy": "securityQa",
+      "path": "skills/securityQa/vulnerabilityScanner",
+      "description": "Ultra-powerful polyglot vulnerability scanner & static application security testing (SAST) skill. Detects memory corruption (Use-After-Free, buffer overflows, integer overflows, dangling pointers) across C/C++, Rust, and Go, plus application injection flaws (CWE Top 25, SQLi, RCE, SSRF, Deserialization, XSS) across Python, TypeScript, and Java. Features an autonomous multi-pass scan loop (/vuln-loop) and generates standardized defensive dossiers at reports/{vulnerability-name}/hereabout.md with line-level code traces, CVSS v4.0 scores, CWE/CVE mappings, dataflow analysis, and copy-paste secure remediations.",
+      "version": "2026.x",
+      "docs": "https://cwe.mitre.org/top25",
+      "verified_date": "2026-11-19"
     }
   ]
 }
