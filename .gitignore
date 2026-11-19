@@ -18,5 +18,6 @@ Thumbs.db
 
 # Research, drafts, and raw benchmark materials
 .research/
+docs/
 *.tmp
 *.bak
