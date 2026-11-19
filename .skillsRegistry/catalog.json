@@ -262,6 +262,15 @@
       "version": "2026.x",
       "docs": "https://cwe.mitre.org/top25",
       "verified_date": "2026-11-19"
+    },
+    {
+      "name": "compliance",
+      "taxonomy": "foundation",
+      "path": "skills/foundation/compliance",
+      "description": "Universal AI Compliance Engineer skill. Dynamically ingests any target skill from the catalog (e.g. nextjs, astro, apiEngineering, cloudflare, internetComputer, vulnerabilityScanner) or prompts developer input, deconstructs its rules, anti-patterns, and directives into an atomic compliance matrix, and audits the codebase file-by-file and function-by-function. Enforces a zero-stopping continuous verification loop that does not terminate until 100% compliance is reached. Dynamically adapts to execution environments by orchestrating multi-agent swarms in Google Antigravity or running deterministic verification loops in Claude Code, Cursor, and Windsurf, producing certified reports at compliance-report.md.",
+      "version": "2026.x",
+      "docs": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
+      "verified_date": "2026-11-19"
     }
   ]
 }

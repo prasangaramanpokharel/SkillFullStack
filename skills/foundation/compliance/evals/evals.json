@@ -1,0 +1,42 @@
+{
+  "skill": "compliance",
+  "version": "2026.x",
+  "evals": [
+    {
+      "id": "eval-compliance-ingest-skill",
+      "prompt": "Explain how the compliance engineer deconstructs an input skill into a testable compliance verification matrix.",
+      "asserts": [
+        "Identifies anti-patterns table and architectural directives as rule sources",
+        "Breaks down high-level requirements into atomic selectors and constraints",
+        "Generates rule matrix with status tracking (PASS/FAIL)"
+      ]
+    },
+    {
+      "id": "eval-compliance-continuous-loop",
+      "prompt": "Describe the zero-stopping continuous enforcement loop protocol of the compliance skill.",
+      "asserts": [
+        "Outlines cycle: inspect -> check rule -> flag deviation -> patch -> re-verify",
+        "Specifies that audit does not terminate until 100% compliance is reached",
+        "Tracks iteration state in compliance-report.md"
+      ]
+    },
+    {
+      "id": "eval-compliance-swarm-adaptation",
+      "prompt": "How does the compliance engineer adapt when executing in Google Antigravity versus Claude Code or Cursor?",
+      "asserts": [
+        "In Antigravity: uses /compliance-swarm to fan out worker agents across modules",
+        "In Claude Code / Cursor: runs deterministic sequential verification loop",
+        "Aggregates all findings into central compliance-report.md"
+      ]
+    },
+    {
+      "id": "eval-compliance-report-generation",
+      "prompt": "What are the required sections and format of the compliance audit dossier?",
+      "asserts": [
+        "Specifies report path: compliance-report.md",
+        "Includes overall compliance score percentage and rule-by-rule matrix table",
+        "Includes side-by-side git diffs for non-compliant code lines"
+      ]
+    }
+  ]
+}

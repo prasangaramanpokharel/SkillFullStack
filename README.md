@@ -56,7 +56,8 @@ SkillFullStack/
 │   │   ├── llmSecurityRedteaming/# OWASP Top 10 for LLMs, prompt injection, & guardrails
 │   │   └── vulnerabilityScanner/ # /vuln-scan, /vuln-loop, /vuln-memory, /vuln-cwe, /vuln-report, /vuln-remediate, /vuln-audit
 │   └── foundation/
-│       └── promptEvalTesting/    # Promptfoo & DeepEval CI/CD regression suites
+│       ├── promptEvalTesting/    # Promptfoo & DeepEval CI/CD regression suites
+│       └── compliance/           # /compliance-audit, /compliance-fix, /compliance-loop, /compliance-matrix, /compliance-swarm, /compliance-verify
 └── scripts/
     ├── validateSkills.py         # Strict production quality & consistency validator (100/100 score)
     ├── scaffoldSkill.py          # Automated spec-compliant skill generator
