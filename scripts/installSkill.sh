@@ -3,7 +3,7 @@
 # Universal installer to fetch any skill from SkillFullStack into your AI environment.
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/scripts/installSkill.sh | bash -s <skill-name> [agent|target-dir]
+#   curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/scripts/installSkill.sh | bash -s <skill-name> [agent|target-dir]
 #
 # Supported Agents:
 #   antigravity -> .gemini/antigravity/skills/<skill-name>/
@@ -21,7 +21,7 @@ set -euo pipefail
 
 SKILL_NAME="${1:-}"
 TARGET_ARG="${2:-agent}"
-REPO_RAW="https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main"
+REPO_RAW="https://raw.githubusercontent.com/prasangaramanpokharel/skills/main"
 
 if [ -z "$SKILL_NAME" ]; then
   echo "Error: Skill name required."

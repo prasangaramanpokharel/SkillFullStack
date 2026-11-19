@@ -1,0 +1,59 @@
+{
+  "name": "skillfullstack",
+  "version": "1.0.1",
+  "description": "Production AI Agent Skills CLI & library for Claude Code, Cursor, Antigravity, Windsurf, and GitHub Copilot.",
+  "main": "bin/index.js",
+  "type": "module",
+  "bin": {
+    "skillfullstack": "bin/index.js",
+    "sfs": "bin/index.js",
+    "skills": "bin/index.js"
+  },
+  "files": [
+    "bin",
+    ".skillsRegistry/catalog.json",
+    "skills",
+    "README.md",
+    "LICENSE",
+    "AGENTS.md"
+  ],
+  "scripts": {
+    "test": "node bin/index.js --help",
+    "list": "node bin/index.js list",
+    "init": "node bin/index.js init",
+    "prepublishOnly": "node bin/index.js list"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "agent-skills",
+    "skills",
+    "claude-code",
+    "cursor",
+    "antigravity",
+    "windsurf",
+    "github-copilot",
+    "nextjs",
+    "astro",
+    "cloudflare",
+    "shadcn-ui",
+    "database-architecture",
+    "api-engineering"
+  ],
+  "author": "Prasanga Raman Pokharel",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prasangaramanpokharel/skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/prasangaramanpokharel/skills/issues"
+  },
+  "homepage": "https://github.com/prasangaramanpokharel/skills#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

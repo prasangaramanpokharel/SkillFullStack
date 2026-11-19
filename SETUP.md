@@ -26,12 +26,12 @@ Install skills directly inside your project repository so any collaborator using
 ```bash
 # Example: Install Database Architecture skill
 mkdir -p .gemini/antigravity/skills/databaseArchitecture
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/databaseArchitecture/SKILL.md \
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/skills/backend/databaseArchitecture/SKILL.md \
   -o .gemini/antigravity/skills/databaseArchitecture/SKILL.md
 
 # Example: Install Production API Engineering skill
 mkdir -p .gemini/antigravity/skills/apiEngineering
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/apiEngineering/SKILL.md \
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/skills/backend/apiEngineering/SKILL.md \
   -o .gemini/antigravity/skills/apiEngineering/SKILL.md
 ```
 
@@ -39,7 +39,7 @@ curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStac
 To make skills available in every project on your machine:
 ```bash
 mkdir -p ~/.gemini/antigravity/skills/databaseArchitecture
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/databaseArchitecture/SKILL.md \
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/skills/backend/databaseArchitecture/SKILL.md \
   -o ~/.gemini/antigravity/skills/databaseArchitecture/SKILL.md
 ```
 
@@ -64,22 +64,22 @@ Claude Code automatically converts any markdown file inside `.claude/commands/` 
 mkdir -p .claude/commands
 
 # Install /api-engineering command
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/apiEngineering/SKILL.md \
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/skills/backend/apiEngineering/SKILL.md \
   -o .claude/commands/api-engineering.md
 
 # Install /db-architecture command
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/databaseArchitecture/SKILL.md \
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/skills/backend/databaseArchitecture/SKILL.md \
   -o .claude/commands/db-architecture.md
 
 # Install /tdd-cycle command
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/testing/testDrivenDevelopment/SKILL.md \
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/skills/testing/testDrivenDevelopment/SKILL.md \
   -o .claude/commands/tdd-cycle.md
 ```
 
 ### Method B: Claude Code Skills Directory (`.claude/skills/`)
 ```bash
 mkdir -p .claude/skills/databaseArchitecture
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/databaseArchitecture/SKILL.md \
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/skills/backend/databaseArchitecture/SKILL.md \
   -o .claude/skills/databaseArchitecture/SKILL.md
 ```
 
@@ -109,7 +109,7 @@ description: Database architecture, normalization (1NF-BCNF), RLS, and zero-down
 globs: **/*.sql, **/schema.prisma, **/migrations/**
 ---
 EOF
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/databaseArchitecture/SKILL.md \
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/skills/backend/databaseArchitecture/SKILL.md \
   >> .cursor/rules/database-architecture.mdc
 
 # 2. Production API Engineering Rule (triggers on route handlers and OpenAPI specs)
@@ -119,7 +119,7 @@ description: Contract-first OpenAPI 3.2.1, RFC 9457 problem details, and REST AP
 globs: **/routes/**, **/api/**, **/openapi.yaml, **/openapi.json
 ---
 EOF
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/apiEngineering/SKILL.md \
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/skills/backend/apiEngineering/SKILL.md \
   >> .cursor/rules/api-engineering.mdc
 ```
 
@@ -137,10 +137,10 @@ Windsurf uses `.windsurfrules` or `.windsurf/skills/` for workspace-level rules 
 ```bash
 # Append skill guidance directly into .windsurfrules
 echo -e "\n\n# --- Database Architecture Standards ---" >> .windsurfrules
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/databaseArchitecture/SKILL.md >> .windsurfrules
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/skills/backend/databaseArchitecture/SKILL.md >> .windsurfrules
 
 echo -e "\n\n# --- API Engineering Standards ---" >> .windsurfrules
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/skills/backend/apiEngineering/SKILL.md >> .windsurfrules
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/skills/backend/apiEngineering/SKILL.md >> .windsurfrules
 ```
 
 ### How to Invoke in Windsurf:
@@ -157,19 +157,19 @@ Use our bundled installer script [scripts/installSkill.sh](scripts/installSkill.
 
 ```bash
 # Syntax:
-# curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/scripts/installSkill.sh | bash -s <skill-name> [agent]
+# curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/scripts/installSkill.sh | bash -s <skill-name> [agent]
 
 # 1. Install for Antigravity (installs into .gemini/antigravity/skills/):
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/scripts/installSkill.sh | bash -s databaseArchitecture antigravity
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/scripts/installSkill.sh | bash -s databaseArchitecture antigravity
 
 # 2. Install for Claude Code (installs into .claude/commands/ and .claude/skills/):
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/scripts/installSkill.sh | bash -s apiEngineering claude
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/scripts/installSkill.sh | bash -s apiEngineering claude
 
 # 3. Install for Cursor (installs into .cursor/rules/):
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/scripts/installSkill.sh | bash -s testDrivenDevelopment cursor
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/scripts/installSkill.sh | bash -s testDrivenDevelopment cursor
 
 # 4. Install for Universal Agent (installs into .agent/skills/):
-curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/SkillFullStack/main/scripts/installSkill.sh | bash -s githubAction agent
+curl -fsSL https://raw.githubusercontent.com/prasangaramanpokharel/skills/main/scripts/installSkill.sh | bash -s githubAction agent
 ```
 
 ---
