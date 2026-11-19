@@ -22,7 +22,7 @@ SkillFullStack/
 │   │   └── cicdPipeline/         # /cicd-pipeline, /dockerfile-audit, /deploy-strategy
 │   ├── devopsCloud/              # Cloudflare edge platform, serverless compute, & anycast infra
 │   │   ├── cloudflare/           # /cf-architect, /cf-worker, /cf-database, /cf-storage, /cf-security
-│   │   └── internetComputer/     # /icp-canister, /icp-deploy, /icp-security, /icp-storage, /icp-chain-fusion, /icp-test
+│   │   └── internetComputer/     # /icp-canister, /icp-motoko, /icp-rust, /icp-deploy, /icp-security, /icp-storage, /icp-chain-fusion, /icp-test
 │   ├── github/                   # GitHub Engineering Skills Toolkit (Phase 1)
 │   │   ├── githubAction/         # /github-action, /github-ci, /github-cd
 │   │   ├── githubSetup/          # /github-setup, /github-repository, /github-ruleset

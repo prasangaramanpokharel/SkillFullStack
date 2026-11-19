@@ -8,6 +8,12 @@ slash-commands:
   - command: /icp-canister
     description: Scaffold and build canisters in Motoko or Rust with type-safe Candid (.did) interfaces.
     argument-hint: "[--lang=motoko|rust]"
+  - command: /icp-motoko
+    description: Develop, review, and compile Motoko canisters, actor classes, mo:core standard library, orthogonal persistence, and Candid serialization.
+    argument-hint: "[--actor=<name>]"
+  - command: /icp-rust
+    description: Develop, review, and compile Rust canisters using ic-cdk, candid macros, ic-stable-structures zero-copy storage, and pre/post upgrade hooks.
+    argument-hint: "[--crate=<name>]"
   - command: /icp-deploy
     description: Configure dfx.json / icp.yaml and deploy canisters locally or to IC mainnet.
     argument-hint: "[--network=local|ic]"
@@ -42,8 +48,13 @@ Before writing Motoko, Rust `ic-cdk`, or Candid code, agents **MUST** consult bu
 - Candid Interface Definition: [`assets/guides/canister-calls/candid.mdx`](assets/guides/canister-calls/candid.mdx)
 - Inter-Canister Calls & Idempotency: [`assets/guides/canister-calls/idempotency.md`](assets/guides/canister-calls/idempotency.md)
 - Data Persistence & Storage: [`assets/guides/backends/data-persistence.mdx`](assets/guides/backends/data-persistence.mdx)
+- HTTPS Outcalls: [`assets/guides/backends/https-outcalls.mdx`](assets/guides/backends/https-outcalls.mdx)
+- Canister Timers: [`assets/guides/backends/timers.mdx`](assets/guides/backends/timers.mdx)
+- Verifiable Randomness: [`assets/guides/backends/randomness.md`](assets/guides/backends/randomness.md)
+- On-Chain AI Inference: [`assets/guides/backends/ai-inference.mdx`](assets/guides/backends/ai-inference.mdx)
 - Canister Security Guidelines: [`assets/guides/security/overview.md`](assets/guides/security/overview.md)
-- PocketIC Deterministic Testing: [`assets/languages/rust/testing.md`](assets/languages/rust/testing.md)
+- PocketIC Deterministic Testing: [`assets/guides/testing/pocket-ic.md`](assets/guides/testing/pocket-ic.md)
+- AI Coding Agents: [`assets/guides/ai-coding-agents.md`](assets/guides/ai-coding-agents.md)
 
 ---
 
@@ -74,8 +85,8 @@ Canisters are computational units compiling WebAssembly (Wasm) that bundle code 
 
 ## 2. Language Selection: Motoko vs. Rust
 
-### 2.1 Motoko Development (`.mo`)
-Motoko is designed specifically for the Internet Computer with native actor primitives:
+### 2.1 Motoko Development (`/icp-motoko`)
+Motoko is designed specifically for the Internet Computer with native actor primitives, automatic orthogonal persistence, and Candid type system integration:
 
 ```motoko
 import Result "mo:core/Result";
@@ -99,8 +110,12 @@ actor class Bank() = this {
 };
 ```
 
-### 2.2 Rust Development (`ic-cdk`)
-Rust is ideal for enterprise performance, crypto primitives, and high-capacity data structures using `ic-stable-structures`:
+- **Motoko Command (`/icp-motoko`)**: Scaffolds actor classes, compiles with `moc`, validates type compatibility against Candid `.did`, and manages `mo:core` library upgrades.
+- **Deep Reference**: [`references/motokoCanisterPatterns.md`](references/motokoCanisterPatterns.md)
+- **Official Specification**: [`assets/languages/motoko/reference/language-manual.md`](assets/languages/motoko/reference/language-manual.md)
+
+### 2.2 Rust Development (`/icp-rust`)
+Rust is ideal for enterprise performance, crypto primitives, and high-capacity data structures using `ic-cdk` and `ic-stable-structures`:
 
 ```rust
 use ic_cdk_macros::{query, update};
@@ -123,6 +138,10 @@ fn balance_of(owner: Principal) -> u64 {
     0
 }
 ```
+
+- **Rust Command (`/icp-rust`)**: Configures Cargo workspaces for `wasm32-unknown-unknown`, binds Candid services with `candid::export_service!`, implements zero-copy persistence via `ic-stable-structures`, and prevents serialization traps.
+- **Deep Reference**: [`references/rustCanisterPatterns.md`](references/rustCanisterPatterns.md)
+- **Official Specification**: [`assets/languages/rust/index.md`](assets/languages/rust/index.md) and [`assets/languages/rust/stable-structures.md`](assets/languages/rust/stable-structures.md)
 
 ---
 
