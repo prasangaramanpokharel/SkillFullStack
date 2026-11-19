@@ -7,7 +7,7 @@ An enterprise-grade, taxonomy-driven repository for ultra-high-density **Agent S
 ```
 SkillFullStack/
 ├── .skillsRegistry/
-│   ├── catalog.json              # Aggregated machine-readable registry index (23 skills)
+│   ├── catalog.json              # Aggregated machine-readable registry index (27 skills)
 │   └── schema.json               # Frontmatter validation schema
 ├── templates/
 │   └── _skillTemplate/           # Base template with high-yield prompt design
@@ -21,7 +21,8 @@ SkillFullStack/
 │   ├── cicdDevops/               # CI/CD delivery pipelines, Docker hardening, & DORA metrics
 │   │   └── cicdPipeline/         # /cicd-pipeline, /dockerfile-audit, /deploy-strategy
 │   ├── devopsCloud/              # Cloudflare edge platform, serverless compute, & anycast infra
-│   │   └── cloudflare/           # /cf-architect, /cf-worker, /cf-database, /cf-storage, /cf-security
+│   │   ├── cloudflare/           # /cf-architect, /cf-worker, /cf-database, /cf-storage, /cf-security
+│   │   └── internetComputer/     # /icp-canister, /icp-deploy, /icp-security, /icp-storage, /icp-chain-fusion, /icp-test
 │   ├── github/                   # GitHub Engineering Skills Toolkit (Phase 1)
 │   │   ├── githubAction/         # /github-action, /github-ci, /github-cd
 │   │   ├── githubSetup/          # /github-setup, /github-repository, /github-ruleset
@@ -47,6 +48,7 @@ SkillFullStack/
 │   │   ├── golangStandard/       # Go 1.23+, log/slog, context, errgroup, clean domains
 │   │   └── pythonStandard/       # Python 3.12+, uv toolchain, Ruff, Pydantic v2
 │   ├── dataAi/
+│   │   ├── openai/               # /openai-responses, /openai-tools, /openai-state, /openai-evals, /openai-finetuning
 │   │   ├── mcpServerDevelopment/ # Model Context Protocol (FastMCP & TypeScript SDK)
 │   │   └── ragPipelineProduction/# BM25 + Dense hybrid search, RRF, & Cohere reranking
 │   ├── securityQa/

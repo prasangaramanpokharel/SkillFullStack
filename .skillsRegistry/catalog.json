@@ -226,6 +226,24 @@
       "version": "2026.x",
       "docs": "https://developers.cloudflare.com",
       "verified_date": "2026-11-17"
+    },
+    {
+      "name": "openai",
+      "taxonomy": "dataAi",
+      "path": "skills/dataAi/openai",
+      "description": "Production OpenAI engineering master guide. Implements the modern Responses API (/v1/responses), Decisions API, stateful conversations, background mode, built-in tools (web search, file search, computer use, MCP), streaming/WebSockets, mid-turn steering, multi-agent patterns, evals, fine-tuning (DPO, supervised), and Amazon Bedrock/Google Cloud deployments.",
+      "version": "2026.x",
+      "docs": "https://developers.openai.com/api/docs",
+      "verified_date": "2026-11-19"
+    },
+    {
+      "name": "internetComputer",
+      "taxonomy": "devopsCloud",
+      "path": "skills/devopsCloud/internetComputer",
+      "description": "Master Internet Computer Protocol (ICP) engineering guide. Architect, develop, and deploy secure WebAssembly canisters in Motoko and Rust (ic-cdk), define type-safe Candid (.did) interfaces, manage orthogonal persistence and stable memory, conduct PocketIC deterministic testing, cycles management, Internet Identity, and Chain Fusion (ckBTC/EVM).",
+      "version": "2026.x",
+      "docs": "https://docs.internetcomputer.org",
+      "verified_date": "2026-11-19"
     }
   ]
 }

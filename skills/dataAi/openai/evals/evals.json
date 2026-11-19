@@ -1,0 +1,25 @@
+{
+  "skill": "openai",
+  "version": "2026.x",
+  "evals": [
+    {
+      "id": "eval-openai-responses-migration",
+      "prompt": "Refactor this legacy OpenAI Chat Completions call using GPT-4o into the modern Responses API with web search tool and strict JSON schema output.",
+      "asserts": [
+        "Uses client.responses.create instead of chat.completions.create",
+        "Includes web_search_preview tool declaration",
+        "Enforces strict: true in response_format json_schema",
+        "Avoids legacy choices[0].message.content extraction"
+      ]
+    },
+    {
+      "id": "eval-openai-conversation-state",
+      "prompt": "How do you maintain stateful multi-turn context between user queries in the Responses API without re-sending the entire message history?",
+      "asserts": [
+        "References store: true on initial turn",
+        "Extracts and passes conversation_id on subsequent turns",
+        "Mentions automatic prompt prefix caching cost savings"
+      ]
+    }
+  ]
+}
