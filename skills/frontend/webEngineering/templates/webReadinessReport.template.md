@@ -62,5 +62,21 @@
 
 ---
 
-## 3. Remediation Diffs & Fixes
+## 3. Mandatory Production URL Slugs Verification
+
+| Expected Slug | Verified Status | Detected File / Route Location | Compliance Standard |
+| :--- | :---: | :--- | :--- |
+| **`/privacy-policy`** (or `/privacy`) | {STATUS} | `{FILE_PATH_OR_NOT_FOUND}` | GDPR Art. 13 / CCPA |
+| **`/terms-of-service`** (or `/terms`) | {STATUS} | `{FILE_PATH_OR_NOT_FOUND}` | Consumer Protection Law |
+| **`/cookie-policy`** (or `/cookies`) | {STATUS} | `{FILE_PATH_OR_NOT_FOUND}` | EU ePrivacy Directive |
+| **`/.well-known/security.txt`** | {STATUS} | `{FILE_PATH_OR_NOT_FOUND}` | RFC 9116 Vulnerability Disclosure |
+| **`/accessibility`** | {STATUS} | `{FILE_PATH_OR_NOT_FOUND}` | WCAG 2.2 AA / ADA Title III |
+| **`/robots.txt`** | {STATUS} | `{FILE_PATH_OR_NOT_FOUND}` | RFC 9309 Crawler Directives |
+| **`/sitemap.xml`** | {STATUS} | `{FILE_PATH_OR_NOT_FOUND}` | Sitemaps.org XML Protocol |
+| **`/llms.txt`** | {STATUS} | `{FILE_PATH_OR_NOT_FOUND}` | AI Agent Documentation Index |
+| **`/api/health`** (or `/health`) | {STATUS} | `{FILE_PATH_OR_NOT_FOUND}` | Cloud Healthcheck & Uptime |
+
+---
+
+## 4. Remediation Diffs & Fixes
 {REMEDIATION_CODE_DIFFS}

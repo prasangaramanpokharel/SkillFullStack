@@ -20,30 +20,44 @@ CHECKS = [
     {
         "id": "LEG-01",
         "category": "Legal & Privacy",
-        "title": "Privacy Policy Page or Document",
-        "check": lambda p: check_file_or_pattern(p, r'(?:privacy[-_]?policy|privacy\.(?:tsx|jsx|html|md|vue|svelte))'),
-        "fix": "Create a dedicated privacy policy page (e.g. /privacy) detailing data handling and user rights."
+        "title": "Privacy Policy Page (/privacy-policy or /privacy)",
+        "check": lambda p: check_file_or_pattern(p, r'(?:privacy[-_]?policy|privacy\.(?:tsx|jsx|html|md|vue|svelte)|app/privacy)'),
+        "fix": "Create a dedicated privacy policy page at /privacy-policy or /privacy detailing data handling and user rights."
     },
     {
         "id": "LEG-02",
         "category": "Legal & Privacy",
-        "title": "Terms of Service Page or Document",
-        "check": lambda p: check_file_or_pattern(p, r'(?:terms[-_]?(?:of[-_]?service|conditions)|terms\.(?:tsx|jsx|html|md|vue|svelte))'),
-        "fix": "Create a terms of service page (e.g. /terms) defining user obligations and liability limitations."
+        "title": "Terms of Service Page (/terms-of-service or /terms)",
+        "check": lambda p: check_file_or_pattern(p, r'(?:terms[-_]?(?:of[-_]?service|conditions)|terms\.(?:tsx|jsx|html|md|vue|svelte)|app/terms)'),
+        "fix": "Create a terms of service page at /terms-of-service or /terms defining user obligations and liability limitations."
+    },
+    {
+        "id": "LEG-03",
+        "category": "Legal & Privacy",
+        "title": "Cookie Policy & Opt-In Consent (/cookie-policy or /cookies)",
+        "check": lambda p: check_file_or_pattern(p, r'(?:cookie[-_]?policy|cookies\.(?:tsx|jsx|html|md|vue|svelte)|app/cookies)'),
+        "fix": "Provide a cookie policy at /cookie-policy or /cookies detailing tracking technologies and opt-out options."
+    },
+    {
+        "id": "LEG-04",
+        "category": "Legal & Privacy",
+        "title": "Accessibility Statement Page (/accessibility)",
+        "check": lambda p: check_file_or_pattern(p, r'(?:accessibility[-_]?statement|accessibility\.(?:tsx|jsx|html|md|vue|svelte)|app/accessibility)'),
+        "fix": "Provide an accessibility statement at /accessibility documenting WCAG 2.2 AA conformity."
     },
 
     # ─── TECHNICAL SEO & AGENT READINESS ───
     {
         "id": "SEO-01",
         "category": "SEO & Agent Discovery",
-        "title": "RFC 9309 robots.txt with Crawlers Configured",
+        "title": "RFC 9309 robots.txt with Crawlers Configured (/robots.txt)",
         "check": lambda p: check_robots_txt(p),
         "fix": "Provide public/robots.txt with differentiated policies for search engines and AI agents."
     },
     {
         "id": "SEO-02",
         "category": "SEO & Agent Discovery",
-        "title": "AI Agent Documentation Index (llms.txt)",
+        "title": "AI Agent Documentation Index (/llms.txt)",
         "check": lambda p: check_llms_txt(p),
         "fix": "Create public/llms.txt following the Markdown specification to assist AI agents and LLMs."
     },
@@ -61,8 +75,15 @@ CHECKS = [
         "check": lambda p: check_code_patterns(p, [r'rel=["\']canonical["\']', r'canonical:\s*["\']']),
         "fix": "Emit canonical link tags (<link rel='canonical' href='...'>) on all indexable routes."
     },
+    {
+        "id": "SEO-05",
+        "category": "SEO & Agent Discovery",
+        "title": "Sitemap XML Index (/sitemap.xml)",
+        "check": lambda p: check_file_or_pattern(p, r'(?:sitemap\.xml|sitemap\.ts|sitemap\.js)'),
+        "fix": "Generate and register /sitemap.xml listing all canonical, indexable URLs."
+    },
 
-    # ─── SECURITY HEADERS ───
+    # ─── SECURITY HEADERS & DISCLOSURE ───
     {
         "id": "SEC-01",
         "category": "Security Headers",
@@ -83,6 +104,13 @@ CHECKS = [
         "title": "MIME Sniffing & Clickjacking Defense",
         "check": lambda p: check_code_patterns(p, [r'X-Content-Type-Options', r'nosniff']),
         "fix": "Add X-Content-Type-Options: nosniff and X-Frame-Options: DENY response headers."
+    },
+    {
+        "id": "SEC-04",
+        "category": "Security Headers",
+        "title": "RFC 9116 Security Disclosure (/.well-known/security.txt)",
+        "check": lambda p: check_file_or_pattern(p, r'(?:security\.txt|\.well-known/security\.txt)'),
+        "fix": "Provide /.well-known/security.txt documenting vulnerability reporting contact details."
     },
 
     # ─── CORE WEB VITALS & PERFORMANCE ───
@@ -105,9 +133,16 @@ CHECKS = [
     {
         "id": "API-01",
         "category": "Production API Standards",
-        "title": "RFC 9457 Problem Details or Standardized Error Envelope",
+        "title": "RFC 9457 Problem Details Error Envelope",
         "check": lambda p: check_code_patterns(p, [r'application/problem\+json', r'ProblemDetails', r'["\']status["\']:\s*\d+,\s*["\']title["\']']),
         "fix": "Format API errors adhering to RFC 9457 (type, title, status, detail, instance)."
+    },
+    {
+        "id": "API-02",
+        "category": "Production API Standards",
+        "title": "Uptime Probe Endpoint (/api/health or /health)",
+        "check": lambda p: check_file_or_pattern(p, r'(?:healthz?|api/health)'),
+        "fix": "Provide a lightweight /api/health probe endpoint returning HTTP 200 for uptime monitors."
     }
 ]
 

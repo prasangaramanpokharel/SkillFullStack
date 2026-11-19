@@ -61,6 +61,25 @@ Every web release must clear the 6 critical launch gates:
 - **Deep Reference**: [`references/preProductionLaunchChecklist.md`](references/preProductionLaunchChecklist.md)
 - **Launch Template**: [`templates/webReadinessReport.template.md`](templates/webReadinessReport.template.md)
 
+### Mandatory Production Slugs & Route Mapping
+Every web production deployment must map and serve standard technical, legal, and operational routes:
+
+| Category | Recommended Slug | Permitted Aliases | Purpose & Compliance Reference |
+| :--- | :--- | :--- | :--- |
+| **Privacy Policy** | `/privacy-policy` | `/privacy` | GDPR Art. 13/14, CCPA/CPRA, CalOPPA mandatory privacy notice |
+| **Terms of Service** | `/terms-of-service` | `/terms`, `/tos` | User contract, legal terms of use, dispute resolution |
+| **Cookie Policy** | `/cookie-policy` | `/cookies` | EU ePrivacy Directive (Directive 2002/58/EC), tracking consent |
+| **Accessibility Statement** | `/accessibility` | `/a11y` | WCAG 2.2 Level AA, Section 508, European Accessibility Act (EAA) |
+| **Company Impressum** | `/impressum` | `/imprint`, `/legal-notice` | German TMG §5, EU e-Commerce legal business disclosure |
+| **Contact / Support** | `/contact` | `/support`, `/help` | Mandatory customer communication channel and legal entity contact |
+| **Security Disclosure** | `/.well-known/security.txt` | `/security.txt` | RFC 9116 Vulnerability disclosure program contact |
+| **Search Engine Robots** | `/robots.txt` | — | RFC 9309 Search engine & AI crawler directive file |
+| **XML Sitemap** | `/sitemap.xml` | — | Search engine indexation manifest |
+| **AI LLM Index** | `/llms.txt` | — | Clean markdown catalog for AI coding and search agents |
+| **AI LLM Full Corpus** | `/llms-full.txt` | — | Complete raw markdown corpus for AI agent synthesis |
+| **404 Not Found Page** | `/404` | `/not-found` | Branded user-friendly error page with return navigation |
+| **API Health Probe** | `/api/health` | `/healthz`, `/api/healthz` | Synthetic monitoring, container readiness, and uptime probes |
+
 ---
 
 ## 2. Technical SEO & AI Agent Discovery (`/web-seo`)
@@ -88,7 +107,10 @@ Template: [`templates/robots.template.txt`](templates/robots.template.txt).
 ### 2.3 Metadata, Canonical & JSON-LD
 - Explicit `<link rel="canonical" href="...">` on all pages.
 - Social cards: `og:title`, `og:image` (1200x630), `twitter:card="summary_large_image"`.
-- Schema.org structured data via `<script type="application/ld+json">`.
+- Schema.org structured data via `<script type="application/ld+json">` (`WebSite`, `Organization`, `BreadcrumbList`, `FAQPage`).
+- App Icons & Web Manifest: `<link rel="icon" href="/favicon.ico">`, `apple-touch-icon.png` (180x180), and `manifest.webmanifest`.
+- Multilingual SEO: `<link rel="alternate" hreflang="x" href="...">` and `<link rel="alternate" hreflang="x-default" href="...">`.
+- XML Sitemap indexation: `sitemap.xml` linked in `robots.txt` and verified against HTTP 200 responses.
 - Deep Reference: [`references/modernTechnicalSeoAndAgentReadiness.md`](references/modernTechnicalSeoAndAgentReadiness.md).
 
 ---
