@@ -145,4 +145,12 @@ Summarize pipeline stage durations, image layer sizes, and DORA telemetry projec
 ## 4. Helper Scripts & Deep References
 
 - Dockerfile Security Linter: `python3 scripts/auditDockerfileSecurity.py`
-- Reference: [references/cicdDeploymentPatterns.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/cicdDevops/cicdPipeline/references/cicdDeploymentPatterns.md)
+- Reference: [references/cicdDeploymentPatterns.md](references/cicdDeploymentPatterns.md)
+
+## 5. Anti-Patterns & Common Traps
+| Anti-Pattern | Why It Fails | Production Remediation |
+| :--- | :--- | :--- |
+| Running container as root (`USER root`) | Container breakout privilege escalation | Always enforce `USER nonroot` or dedicated UID/GID |
+| Using `:latest` tags for base images | Unpredictable non-deterministic builds | Pin immutable digest (`node:22-alpine@sha256:...`) |
+| Storing secrets in Docker image layers | Secrets leaked in public registry pulls | Use build secrets (`--mount=type=secret`) |
+| Monolithic serial CI pipelines | Long feedback cycles (> 30 minutes) | Implement matrix parallelization and dependency caching |

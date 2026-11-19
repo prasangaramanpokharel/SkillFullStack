@@ -124,5 +124,13 @@ git rebase --continue # or git merge --continue
 - **Official Git & GitHub CLI Offline Assets**: [assets/](assets/) — Official specifications for Git remotes, DAG concepts, credential caching, and full GitHub CLI (`gh`) reference manual.
 - Graph Diagnostics: `python3 scripts/diagnoseGitGraph.py`
 - Conflict Resolver Helper: `python3 scripts/resolveConflictHeuristics.py`
-- Reference: [references/branchingModels.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/gitVersionControl/gitWorkflow/references/branchingModels.md)
-- Reference: [references/gitInternalsDag.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/gitVersionControl/gitWorkflow/references/gitInternalsDag.md)
+- Reference: [references/branchingModels.md](references/branchingModels.md)
+- Reference: [references/gitInternalsDag.md](references/gitInternalsDag.md)
+
+## 5. Anti-Patterns & Common Traps
+| Anti-Pattern | Why It Fails | Production Remediation |
+| :--- | :--- | :--- |
+| Force pushing to shared branches (`git push -f`) | Overwrites colleagues' work permanently | Use `--force-with-lease` or enforce branch protection |
+| Giant mega-PRs (> 800 lines) | High defect rate, review fatigue | Slice into small, self-contained, reviewable units |
+| Committing secrets or build artifacts | Leaked credentials in immutable DAG | Enforce `.gitignore` and pre-commit secret scanning |
+| Orphaned WIP branches without reflog | Lost commits during accidental reset | Use `git reflog` and named backup branches |

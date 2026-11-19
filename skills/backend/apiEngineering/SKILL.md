@@ -67,7 +67,7 @@ flowchart LR
 - Design request/response DTOs:
   - Success Envelope: `{ "data": T, "meta": Meta }`
   - Error Envelope: RFC 9457 `application/problem+json`
-- Select pagination model (see [references/paginationVersioning.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/backend/apiEngineering/references/paginationVersioning.md)).
+- Select pagination model (see [references/paginationVersioning.md](references/paginationVersioning.md)).
 - Conduct OWASP API Security Top 10 threat modeling.
 
 ### Stage 4: Execute
@@ -96,7 +96,15 @@ Produce the final API delivery summary:
 
 | Architectural Layer | Location & Purpose |
 | :--- | :--- |
-| **Policies** | [policies/mandatory.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/backend/apiEngineering/policies/mandatory.md), [policies/security.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/backend/apiEngineering/policies/security.md), [policies/performance.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/backend/apiEngineering/policies/performance.md), [policies/compatibility.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/backend/apiEngineering/policies/compatibility.md) — Enforceable rulebooks. |
-| **Methods & References** | [references/responseStandards.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/backend/apiEngineering/references/responseStandards.md), [references/openApi32Standards.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/backend/apiEngineering/references/openApi32Standards.md), [references/apiSecurityOwasp.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/backend/apiEngineering/references/apiSecurityOwasp.md), [references/paginationVersioning.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/backend/apiEngineering/references/paginationVersioning.md), [references/databaseTransactions.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/backend/apiEngineering/references/databaseTransactions.md), [references/distributedReliability.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/backend/apiEngineering/references/distributedReliability.md), [references/contractCompatibility.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/backend/apiEngineering/references/contractCompatibility.md), [references/multiTenancy.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/backend/apiEngineering/references/multiTenancy.md), [references/apiObservability.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/backend/apiEngineering/references/apiObservability.md) — Implementation guides. |
+| **Policies** | [policies/mandatory.md](policies/mandatory.md), [policies/security.md](policies/security.md), [policies/performance.md](policies/performance.md), [policies/compatibility.md](policies/compatibility.md) — Enforceable rulebooks. |
+| **Methods & References** | [references/responseStandards.md](references/responseStandards.md), [references/openApi32Standards.md](references/openApi32Standards.md), [references/apiSecurityOwasp.md](references/apiSecurityOwasp.md), [references/paginationVersioning.md](references/paginationVersioning.md), [references/databaseTransactions.md](references/databaseTransactions.md), [references/distributedReliability.md](references/distributedReliability.md), [references/contractCompatibility.md](references/contractCompatibility.md), [references/multiTenancy.md](references/multiTenancy.md), [references/apiObservability.md](references/apiObservability.md) — Implementation guides. |
 | **Automation Tooling** | `scripts/auditApiContract.py`, `scripts/generateResponseEnvelope.py`, `scripts/checkBreakingChanges.py` — Deterministic CLI tools. |
 | **Templates** | `templates/openapi.yaml`, `templates/problemDetails.json`, `templates/apiChecklist.md` — Starter blueprints. |
+
+## 4. Anti-Patterns & Common Traps
+| Anti-Pattern | Why It Fails | Production Remediation |
+| :--- | :--- | :--- |
+| Ad-hoc error objects (`{ "error": "msg" }`) | Breaks client parsing consistency | Enforce RFC 9457 `application/problem+json` envelopes |
+| Offset-based pagination on large datasets | Degrades to $O(N)$ scans at high offsets | Use Keyset / Cursor-based pagination (`starting_after`) |
+| Unbounded payload responses | Memory exhaustion and network timeouts | Enforce strict `max_page_size` and partial projection |
+| Mutating endpoints without idempotency | Duplicate charges and double records on retries | Implement IETF `Idempotency-Key` draft-08 header checks |

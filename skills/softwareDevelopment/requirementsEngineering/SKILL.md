@@ -107,4 +107,12 @@ Produce a finalized requirements package ready for engineering sprint planning.
 ## 3. Helper Scripts & Deep References
 
 - Story Quality Linter: `python3 scripts/validateUserStories.py`
-- Reference: [references/requirementsAnalysisModels.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/softwareDevelopment/requirementsEngineering/references/requirementsAnalysisModels.md)
+- Reference: [references/requirementsAnalysisModels.md](references/requirementsAnalysisModels.md)
+
+## 4. Anti-Patterns & Common Traps
+| Anti-Pattern | Why It Fails | Production Remediation |
+| :--- | :--- | :--- |
+| Subjective acceptance criteria ("Make it fast") | Non-testable, leads to scope disputes | Quantify metrics ("p95 latency < 200ms at 1000 RPS") |
+| Skipping negative/edge scenarios | System crashes on unexpected input | Author explicit Given/When/Then negative test cases |
+| Treating MoSCoW "Could-haves" as commitments | Sprint deadline blowouts | Ruthlessly scope down to Must-Haves for initial MVP |
+| Functional requirements without threat modeling | Security vulnerabilities discovered post-release | Generate STRIDE / Attack Trees during story refinement |

@@ -4,6 +4,17 @@ description: Production serverless Redis, Vector, QStash messaging, durable Work
 version: 2026.x
 last-verified: 2026-11-15
 compatibility: Node.js 18+, Vercel Edge / Serverless, Cloudflare Workers, Next.js, Python 3.10+
+slash-commands:
+  - command: /upstash-redis
+    description: Configure low-latency serverless Redis operations and pipelines
+    argument-hint: "[--pipeline=true]"
+  - command: /upstash-ratelimit
+    description: Implement dynamic sliding window rate limiting
+    argument-hint: "[--limit=10] [--window=10s]"
+  - command: /upstash-workflow
+    description: Design serverless QStash durable workflows
+    argument-hint: "[--step=Name]"
+
 ---
 
 # Upstash Serverless Engineering Guide

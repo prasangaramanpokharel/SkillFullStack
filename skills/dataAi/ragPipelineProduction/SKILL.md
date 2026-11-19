@@ -4,6 +4,17 @@ description: Production-grade RAG pipeline implementing BM25 and dense vector hy
 version: 2.x
 last-verified: 2026-11-15
 compatibility: Python 3.10+, LangChain, LlamaIndex, Qdrant/pgvector, Cohere API
+slash-commands:
+  - command: /rag-pipeline
+    description: Design production hybrid RAG search architecture
+    argument-hint: "[--vector-db=pinecone|vectorize|qdrant]"
+  - command: /rag-hybrid
+    description: Implement BM25 lexical + dense vector retrieval with RRF fusion
+    argument-hint: "[--k=60]"
+  - command: /rag-rerank
+    description: Apply cross-encoder and Cohere rerankers for top-k precision
+    argument-hint: "[--model=cohere|bge]"
+
 ---
 
 # Production RAG Pipeline Engineering Guide

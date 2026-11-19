@@ -4,6 +4,17 @@ description: Modern production Python engineering standards with Astral uv toolc
 version: 3.12+
 last-verified: 2026-11-16
 compatibility: Python 3.11, Python 3.12, Python 3.13, uv, ruff, pydantic 2.x
+slash-commands:
+  - command: /python-standard
+    description: Enforce modern Python standards with uv, Ruff, and Pydantic v2
+    argument-hint: "[--strict=true]"
+  - command: /python-uv
+    description: Manage virtual environments and dependency locking with Astral uv
+    argument-hint: "[--add=package]"
+  - command: /python-typing
+    description: Apply strict PEP 585/604 type hints and TaskGroup concurrency
+    argument-hint: "[--async=true]"
+
 ---
 
 # Modern Production Python Engineering Guide

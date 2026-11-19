@@ -119,4 +119,12 @@ Generate test summary including assertion count, execution time, and coverage de
 ## 4. Helper Scripts & Deep References
 
 - Test Pyramid Auditor: `python3 scripts/auditTestPyramid.py`
-- Reference: [references/testPyramidDoubles.md](file:///Users/prasangaramanpokharel/projects/SkillFullStack/skills/testing/testDrivenDevelopment/references/testPyramidDoubles.md)
+- Reference: [references/testPyramidDoubles.md](references/testPyramidDoubles.md)
+
+## 5. Anti-Patterns & Common Traps
+| Anti-Pattern | Why It Fails | Production Remediation |
+| :--- | :--- | :--- |
+| Testing implementation details instead of behavior | Tests break on refactor despite working behavior | Assert public inputs/outputs, avoid mocking private state |
+| Inverted Test Pyramid (Ice cream cone) | Slow, brittle, flaky end-to-end test suites | 70% Unit tests, 20% Integration tests, 10% E2E tests |
+| Tests sharing mutable global state | Random failures dependent on test execution order | Isolate tests with fresh fixtures and in-memory databases |
+| Mocking everything blindly | Tests pass but production integration fails | Use Fakes for storage/DB, reserve Mocks for RPC boundaries |

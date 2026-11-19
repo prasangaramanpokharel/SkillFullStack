@@ -4,6 +4,17 @@ description: Build Model Context Protocol (MCP) servers exposing tools, resource
 version: 1.x
 last-verified: 2026-11-15
 compatibility: Node.js 18+, Python 3.10+, uv, TypeScript 5+
+slash-commands:
+  - command: /mcp-server
+    description: Scaffold production Model Context Protocol server in FastMCP Python or TypeScript
+    argument-hint: "[--lang=ts|py]"
+  - command: /mcp-tool
+    description: Define type-safe MCP tools with Zod or Pydantic validation
+    argument-hint: "[--tool=Name]"
+  - command: /mcp-resource
+    description: Expose dynamic and static MCP context resources
+    argument-hint: "[--uri=schema://resource]"
+
 ---
 
 # MCP Server Development Engineering Guide

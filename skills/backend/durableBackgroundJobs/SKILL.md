@@ -4,6 +4,17 @@ description: Durable background execution, long-running agent workflows, and zer
 version: 3.x
 last-verified: 2026-11-15
 compatibility: Next.js, Node.js 18+, Python 3.10+, Inngest SDK, Trigger.dev v3
+slash-commands:
+  - command: /jobs-workflow
+    description: Design durable multi-step workflows with Inngest or Trigger.dev
+    argument-hint: "[--engine=inngest|triggerdev]"
+  - command: /jobs-step
+    description: Implement zero-timeout step function with automatic retries
+    argument-hint: "[--step=Name]"
+  - command: /jobs-cron
+    description: Configure scheduled background cron jobs with jitter
+    argument-hint: "[--schedule='*/5 * * * *']"
+
 ---
 
 # Durable Background Jobs & Workflows Engineering Guide

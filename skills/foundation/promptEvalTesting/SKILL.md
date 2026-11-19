@@ -4,6 +4,14 @@ description: CI/CD prompt regression testing, evaluation harnesses, and LLM-as-a
 version: latest
 last-verified: 2026-11-15
 compatibility: Node.js 18+, Python 3.10+, pytest, GitHub Actions, GitLab CI
+slash-commands:
+  - command: /prompt-eval
+    description: Design CI/CD regression evaluation harness with Promptfoo and DeepEval
+    argument-hint: "[--tool=promptfoo|deepeval]"
+  - command: /prompt-judge
+    description: Configure LLM-as-a-judge scoring metrics and assert criteria
+    argument-hint: "[--metric=semantic-similarity|g-eval]"
+
 ---
 
 # Prompt Evaluation & Regression Testing Engineering Guide

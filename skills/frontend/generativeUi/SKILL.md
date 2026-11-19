@@ -4,6 +4,14 @@ description: Stream interactive React components from LLMs using Vercel AI SDK, 
 version: v4
 last-verified: 2026-11-15
 compatibility: Next.js 14/15, React 18/19, Vercel AI SDK v4+
+slash-commands:
+  - command: /genui-stream
+    description: Stream interactive React components from LLMs via Vercel AI SDK
+    argument-hint: "[--transport=createDataStreamResponse]"
+  - command: /genui-tool
+    description: Map generative AI tool executions to interactive client components
+    argument-hint: "[--component=Name]"
+
 ---
 
 # Generative UI Engineering Guide

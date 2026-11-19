@@ -54,6 +54,7 @@ SkillFullStack/
 │   └── foundation/
 │       └── promptEvalTesting/    # Promptfoo & DeepEval CI/CD regression suites
 └── scripts/
+    ├── validateSkills.py         # Strict production quality & consistency validator (100/100 score)
     ├── scaffoldSkill.py          # Automated spec-compliant skill generator
     └── installSkill.sh           # One-liner skill installer via raw GitHub URL
 ```

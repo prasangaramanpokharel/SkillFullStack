@@ -4,6 +4,14 @@ description: Modern TypeScript and React 19 production engineering standards. Im
 version: React 19 / TS 5+
 last-verified: 2026-11-16
 compatibility: React 19, TypeScript 5.0+, Next.js 15, Vite
+slash-commands:
+  - command: /react-standard
+    description: Enforce strict React 19 standards, ref props, and clean hooks
+    argument-hint: "[--strict=true]"
+  - command: /react-action
+    description: Implement type-safe Server Actions with useActionState
+    argument-hint: "[--action=Name]"
+
 ---
 
 # Modern TypeScript & React 19 Engineering Guide

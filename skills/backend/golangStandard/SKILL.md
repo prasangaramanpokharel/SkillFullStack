@@ -4,6 +4,17 @@ description: Production-grade Go engineering standards. Implements log/slog stru
 version: 1.23+
 last-verified: 2026-11-16
 compatibility: Go 1.22+, Go 1.23+, Go 1.24+
+slash-commands:
+  - command: /go-standard
+    description: Enforce production Go architecture, clean domain layout, and error wrapping
+    argument-hint: "[--domain=order|user]"
+  - command: /go-slog
+    description: Configure structured logging with log/slog and context propagation
+    argument-hint: "[--format=json|text]"
+  - command: /go-concurrency
+    description: Design structured concurrency with errgroup and context cancellation
+    argument-hint: "[--workers=10]"
+
 ---
 
 # Production Go Engineering Guide

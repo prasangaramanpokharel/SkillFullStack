@@ -18,10 +18,11 @@
     "AGENTS.md"
   ],
   "scripts": {
-    "test": "node bin/index.js --help",
+    "test": "python3 scripts/validateSkills.py --strict && node bin/index.js --help",
+    "validate": "python3 scripts/validateSkills.py --strict",
     "list": "node bin/index.js list",
     "init": "node bin/index.js init",
-    "prepublishOnly": "node bin/index.js list"
+    "prepublishOnly": "python3 scripts/validateSkills.py --strict && node bin/index.js list"
   },
   "keywords": [
     "ai",

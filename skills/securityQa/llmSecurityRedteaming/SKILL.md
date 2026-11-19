@@ -4,6 +4,14 @@ description: Defend and red-team LLM applications against OWASP Top 10 vulnerabi
 version: 2026.x
 last-verified: 2026-11-15
 compatibility: All LLM runtimes, LangChain, LlamaIndex, OpenAI, Anthropic, Gemini
+slash-commands:
+  - command: /llm-redteam
+    description: Audit and defend LLM prompts against OWASP Top 10 for LLMs
+    argument-hint: "[--threat=injection|extraction]"
+  - command: /llm-jailbreak
+    description: Run automated jailbreak and indirect prompt injection simulations
+    argument-hint: "[--model=Name]"
+
 ---
 
 # LLM Security & Red Teaming Engineering Guide
