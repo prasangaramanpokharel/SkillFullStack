@@ -6,13 +6,15 @@ This guide explains how to install, configure, and invoke skills from **SkillFul
 
 ## Quick Reference: Skill Directories & Slash Command Support
 
-| AI Environment | Recommended Skill Path | Slash Command Mechanism | Native Auto-Complete |
+| AI Environment | Recommended Skill Path | Slash Command / Rule Mechanism | Native Auto-Complete |
 | :--- | :--- | :--- | :---: |
-| **Google Antigravity** | `.gemini/antigravity/skills/<name>/SKILL.md`<br>*(or `~/.gemini/antigravity/skills/<name>/`)* | Reads `SKILL.md` frontmatter & registered triggers |  Native (`/<command>`) |
-| **Claude Code** | `.claude/skills/<name>/SKILL.md`<br>*(or `.claude/commands/<command>.md`)* | Custom commands in `.claude/commands/` or `.claude/skills/` |  Native (`/<command>`) |
-| **Cursor** | `.cursor/rules/<name>.mdc`<br>*(or `.cursor/skills/<name>/SKILL.md`)* | `@skills/<name>` or rule triggers |  Via `@` or Prompt |
-| **Windsurf** | `.windsurfrules`<br>*(or `.windsurf/skills/<name>/SKILL.md`)* | System prompt ingestion & `@mention` |  Via `@` or Rules |
-| **Universal / Copilot** | `.agent/skills/<name>/SKILL.md` | System prompt instruction mapping |  Via Prompt / Reference |
+| **Google Antigravity / Gemini** | `.gemini/antigravity/skills/<name>/SKILL.md`<br>*(or `.agent/skills/<name>/`)* | Reads `SKILL.md` frontmatter & registered triggers | Native (`/<command>`) |
+| **Claude Code** | `.claude/skills/<name>/SKILL.md`<br>*(and `.claude/commands/<command>.md`)* | Custom commands in `.claude/commands/` | Native (`/<command>`) |
+| **Cursor** | `.cursor/skills/<name>/SKILL.md`<br>*(and `.cursor/rules/<name>.mdc`)* | Auto-trigger rules & `@skills/<name>` | Via `@`, Rules, or Prompt |
+| **OpenCode / OpenAI Codex** | `.opencode/skills/<name>/SKILL.md`<br>*(or `.agent/skills/<name>/`)* | Agent capability loading | Via Prompt / Slash Command |
+| **Windsurf (Cascade)** | `.windsurf/skills/<name>/SKILL.md`<br>*(and `.windsurf/rules/<name>.md`)* | System prompt rules & `@mention` | Via `@` or Rules |
+| **GitHub Copilot** | `.github/skills/<name>/SKILL.md` | Workspace instructions | Via Prompt / Reference |
+| **Universal Agent Standard** | `.agent/skills/<name>/SKILL.md` | Open `agentskills.io` standard | Universal |
 
 ---
 

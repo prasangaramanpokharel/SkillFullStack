@@ -56,11 +56,11 @@ fi
 
 # Determine target directory and file based on agent target
 case "$TARGET_ARG" in
-  antigravity)
+  antigravity|gemini|google)
     TARGET_DIR=".gemini/antigravity/skills/${SKILL_NAME}"
     TARGET_FILE="${TARGET_DIR}/SKILL.md"
     ;;
-  claude)
+  claude|claude-code|claudecode)
     TARGET_DIR=".claude/skills/${SKILL_NAME}"
     TARGET_FILE="${TARGET_DIR}/SKILL.md"
     CMD_DIR=".claude/commands"
@@ -68,14 +68,24 @@ case "$TARGET_ARG" in
     mkdir -p "$CMD_DIR"
     ;;
   cursor)
-    TARGET_DIR=".cursor/rules"
-    TARGET_FILE="${TARGET_DIR}/${SKILL_NAME}.mdc"
+    TARGET_DIR=".cursor/skills/${SKILL_NAME}"
+    TARGET_FILE="${TARGET_DIR}/SKILL.md"
+    RULE_DIR=".cursor/rules"
+    mkdir -p "$RULE_DIR"
     ;;
-  windsurf)
+  opencode|codex|openai)
+    TARGET_DIR=".opencode/skills/${SKILL_NAME}"
+    TARGET_FILE="${TARGET_DIR}/SKILL.md"
+    ;;
+  windsurf|codeium)
     TARGET_DIR=".windsurf/skills/${SKILL_NAME}"
     TARGET_FILE="${TARGET_DIR}/SKILL.md"
     ;;
-  agent|"")
+  copilot|github)
+    TARGET_DIR=".github/skills/${SKILL_NAME}"
+    TARGET_FILE="${TARGET_DIR}/SKILL.md"
+    ;;
+  agent|agents|universal|"")
     TARGET_DIR=".agent/skills/${SKILL_NAME}"
     TARGET_FILE="${TARGET_DIR}/SKILL.md"
     ;;

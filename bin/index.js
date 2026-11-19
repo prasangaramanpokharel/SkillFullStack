@@ -49,12 +49,29 @@ function loadCatalog() {
 function detectAgents() {
   const detected = [];
   const cwd = process.cwd();
-  if (fs.existsSync(path.join(cwd, '.claude')) || fs.existsSync(path.join(cwd, '.claude.json'))) detected.push('claude');
-  if (fs.existsSync(path.join(cwd, '.cursor')) || fs.existsSync(path.join(cwd, '.cursorrules'))) detected.push('cursor');
+  if (fs.existsSync(path.join(cwd, '.claude')) || fs.existsSync(path.join(cwd, '.claude.json')) || fs.existsSync(path.join(cwd, 'CLAUDE.md'))) detected.push('claude');
+  if (fs.existsSync(path.join(cwd, '.cursor')) || fs.existsSync(path.join(cwd, '.cursorrules')) || fs.existsSync(path.join(cwd, '.cursor/rules'))) detected.push('cursor');
   if (fs.existsSync(path.join(cwd, '.gemini')) || fs.existsSync(path.join(cwd, '.gemini/antigravity'))) detected.push('antigravity');
-  if (fs.existsSync(path.join(cwd, '.windsurf'))) detected.push('windsurf');
-  if (fs.existsSync(path.join(cwd, '.github'))) detected.push('copilot');
+  if (fs.existsSync(path.join(cwd, '.opencode')) || fs.existsSync(path.join(cwd, 'opencode.json')) || fs.existsSync(path.join(cwd, '.codex'))) detected.push('opencode');
+  if (fs.existsSync(path.join(cwd, '.windsurf')) || fs.existsSync(path.join(cwd, '.windsurfrules')) || fs.existsSync(path.join(cwd, '.codeium'))) detected.push('windsurf');
+  if (fs.existsSync(path.join(cwd, '.github')) || fs.existsSync(path.join(cwd, '.github/copilot-instructions.md'))) detected.push('copilot');
+  if (fs.existsSync(path.join(cwd, '.agent')) || fs.existsSync(path.join(cwd, '.agents'))) detected.push('agent');
   return detected;
+}
+
+// Normalize agent name aliases
+function normalizeAgentName(raw) {
+  if (!raw) return 'agent';
+  const name = raw.toLowerCase().trim();
+  if (['claude', 'claude-code', 'claudecode', 'anthropic'].includes(name)) return 'claude';
+  if (['cursor'].includes(name)) return 'cursor';
+  if (['gemini', 'antigravity', 'google'].includes(name)) return 'antigravity';
+  if (['opencode', 'codex', 'openai', 'interpreter'].includes(name)) return 'opencode';
+  if (['windsurf', 'codeium', 'cascade'].includes(name)) return 'windsurf';
+  if (['copilot', 'github', 'gh-copilot'].includes(name)) return 'copilot';
+  if (['agent', 'agents', 'universal', 'openagent'].includes(name)) return 'agent';
+  if (name === 'all') return 'all';
+  return name;
 }
 
 function resolveInstallTarget(skillName, agent, customDir = null) {
@@ -67,7 +84,9 @@ function resolveInstallTarget(skillName, agent, customDir = null) {
     };
   }
 
-  switch (agent) {
+  const normalized = normalizeAgentName(agent);
+
+  switch (normalized) {
     case 'antigravity':
       return {
         targetDir: path.join(cwd, '.gemini/antigravity/skills', skillName),
@@ -90,10 +109,18 @@ function resolveInstallTarget(skillName, agent, customDir = null) {
         ruleFile: path.join(cwd, '.cursor/rules', `${skillName}.mdc`),
         agent: 'cursor',
       };
+    case 'opencode':
+      return {
+        targetDir: path.join(cwd, '.opencode/skills', skillName),
+        targetFile: path.join(cwd, '.opencode/skills', skillName, 'SKILL.md'),
+        agent: 'opencode',
+      };
     case 'windsurf':
       return {
         targetDir: path.join(cwd, '.windsurf/skills', skillName),
         targetFile: path.join(cwd, '.windsurf/skills', skillName, 'SKILL.md'),
+        ruleDir: path.join(cwd, '.windsurf/rules'),
+        ruleFile: path.join(cwd, '.windsurf/rules', `${skillName}.md`),
         agent: 'windsurf',
       };
     case 'copilot':
@@ -211,9 +238,9 @@ async function installSingleSkill(skillName, catalog, options = {}) {
 
   const agentsToInstall = [];
   if (options.agent === 'all') {
-    agentsToInstall.push('agent', 'claude', 'cursor', 'antigravity', 'windsurf', 'copilot');
+    agentsToInstall.push('claude', 'cursor', 'antigravity', 'opencode', 'windsurf', 'copilot', 'agent');
   } else if (options.agent) {
-    agentsToInstall.push(options.agent);
+    agentsToInstall.push(normalizeAgentName(options.agent));
   } else {
     const detected = detectAgents();
     if (detected.length > 0) {
@@ -250,7 +277,7 @@ async function installSingleSkill(skillName, catalog, options = {}) {
     }
 
     // 3. Special handling for Cursor: also create .mdc rule file
-    if (target.ruleFile && target.ruleDir) {
+    if (target.ruleFile && target.ruleDir && target.agent === 'cursor') {
       await fsp.mkdir(target.ruleDir, { recursive: true });
       const skillMdContent = await fsp.readFile(path.join(target.targetDir, 'SKILL.md'), 'utf8');
       const cursorContent = `---
@@ -261,6 +288,13 @@ alwaysApply: false
 
 ${skillMdContent}`;
       await fsp.writeFile(target.ruleFile, cursorContent, 'utf8');
+    }
+
+    // 4. Special handling for Windsurf: also create rule file
+    if (target.ruleFile && target.ruleDir && target.agent === 'windsurf') {
+      await fsp.mkdir(target.ruleDir, { recursive: true });
+      const skillMdContent = await fsp.readFile(path.join(target.targetDir, 'SKILL.md'), 'utf8');
+      await fsp.writeFile(target.ruleFile, skillMdContent, 'utf8');
     }
 
     // List installed subdirectories for transparency
@@ -277,7 +311,7 @@ ${skillMdContent}`;
       console.log(`    ${c.gray}→ Slash command: ${path.relative(process.cwd(), target.cmdFile)} (/${skill.name})${c.reset}`);
     }
     if (target.ruleFile) {
-      console.log(`    ${c.gray}→ Cursor rule: ${path.relative(process.cwd(), target.ruleFile)}${c.reset}`);
+      console.log(`    ${c.gray}→ ${target.agent === 'cursor' ? 'Cursor rule' : 'Windsurf rule'}: ${path.relative(process.cwd(), target.ruleFile)}${c.reset}`);
     }
   }
 }
@@ -379,7 +413,7 @@ ${c.bold}COMMANDS${c.reset}
   ${c.green}init${c.reset}                       Inspect repository and recommend skills for your stack
 
 ${c.bold}OPTIONS${c.reset}
-  ${c.yellow}-a, --agent <name>${c.reset}        Target agent: ${c.dim}claude, cursor, antigravity, windsurf, copilot, agent, all${c.reset}
+  ${c.yellow}-a, --agent <name>${c.reset}        Target agent: ${c.dim}claude, cursor, gemini, antigravity, opencode, codex, windsurf, copilot, agent, all${c.reset}
   ${c.yellow}-d, --dir <path>${c.reset}          Custom destination folder
   ${c.yellow}-t, --taxonomy <name>${c.reset}     Filter list by category (frontend, backend, github, etc.)
   ${c.yellow}--json${c.reset}                    Output catalog as JSON
@@ -388,8 +422,10 @@ ${c.bold}OPTIONS${c.reset}
 
 ${c.bold}EXAMPLES${c.reset}
   $ ${c.cyan}npx skillfullstack add nextjs${c.reset}
-  $ ${c.cyan}npx skillfullstack add astro cloudflare --agent=cursor${c.reset}
-  $ ${c.cyan}npx skillfullstack add databaseArchitecture --agent=claude${c.reset}
+  $ ${c.cyan}npx skillfullstack add nextjs --agent=cursor${c.reset}
+  $ ${c.cyan}npx skillfullstack add nextjs --agent=gemini${c.reset}
+  $ ${c.cyan}npx skillfullstack add nextjs --agent=opencode${c.reset}
+  $ ${c.cyan}npx skillfullstack add astro cloudflare --agent=all${c.reset}
   $ ${c.cyan}npx skillfullstack list --taxonomy frontend${c.reset}
   $ ${c.cyan}npx skillfullstack search graphql${c.reset}
   $ ${c.cyan}npx skillfullstack init${c.reset}
