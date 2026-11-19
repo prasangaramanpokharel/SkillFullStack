@@ -244,6 +244,15 @@
       "version": "2026.x",
       "docs": "https://docs.internetcomputer.org",
       "verified_date": "2026-11-19"
+    },
+    {
+      "name": "neon",
+      "taxonomy": "backend",
+      "path": "skills/backend/neon",
+      "description": "Master Neon serverless Postgres engineering guide. Implements Lakebase Postgres, instant database branching, scale-to-zero, autoscaling, connection pooling via @neondatabase/serverless, Managed Better Auth, Neon Realtime reactive sync, neon.ts backend declaration, and framework integrations (Next.js, Astro, Node, Bun, Django).",
+      "version": "2026.x",
+      "docs": "https://neon.com/docs",
+      "verified_date": "2026-11-19"
     }
   ]
 }

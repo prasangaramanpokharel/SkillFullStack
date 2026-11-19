@@ -7,7 +7,7 @@ An enterprise-grade, taxonomy-driven repository for ultra-high-density **Agent S
 ```
 SkillFullStack/
 ├── .skillsRegistry/
-│   ├── catalog.json              # Aggregated machine-readable registry index (27 skills)
+│   ├── catalog.json              # Aggregated machine-readable registry index (28 skills)
 │   └── schema.json               # Frontmatter validation schema
 ├── templates/
 │   └── _skillTemplate/           # Base template with high-yield prompt design
@@ -31,6 +31,7 @@ SkillFullStack/
 │   │   └── githubTeam/           # /github-team, /github-team-onboarding, /github-team-roles
 │   ├── backend/
 │   │   ├── databaseArchitecture/ # /db-architecture, /db-design, /db-normalize, /db-scale, /db-audit
+│   │   ├── neon/                 # /neon-branch, /neon-connect, /neon-auth, /neon-realtime, /neon-scale, /neon-cli
 │   │   ├── apiEngineering/       # /api-engineering, /api-design, /api-crud, /api-audit, /api-security
 │   │   ├── golangStandard/       # Go 1.23+, log/slog, context, errgroup, clean domains
 │   │   ├── pythonStandard/       # Python 3.12+, uv toolchain, Ruff, Pydantic v2

@@ -365,6 +365,8 @@ async function cmdInit(catalog) {
       if (deps['ai'] || deps['@ai-sdk/react']) recommendedSkills.add('generativeUi');
       if (deps['@cloudflare/workers-types'] || deps['wrangler'] || deps['@cloudflare/config']) recommendedSkills.add('cloudflare');
       if (deps['@upstash/redis'] || deps['@upstash/ratelimit']) recommendedSkills.add('upstash');
+      if (deps['@neondatabase/serverless'] || deps['@neondatabase/react'] || deps['neon']) recommendedSkills.add('neon');
+      if (deps['openai'] || deps['@ai-sdk/openai']) recommendedSkills.add('openai');
       if (deps['inngest'] || deps['@trigger.dev/sdk']) recommendedSkills.add('durableBackgroundJobs');
       if (deps['typescript'] || deps['react']) recommendedSkills.add('tsxReactStandard');
     } catch (e) {
@@ -372,6 +374,7 @@ async function cmdInit(catalog) {
     }
   }
 
+  if (fs.existsSync(path.join(cwd, 'dfx.json')) || fs.existsSync(path.join(cwd, 'icp.yaml'))) recommendedSkills.add('internetComputer');
   if (fs.existsSync(path.join(cwd, 'go.mod'))) recommendedSkills.add('golangStandard');
   if (fs.existsSync(path.join(cwd, 'pyproject.toml')) || fs.existsSync(path.join(cwd, 'requirements.txt'))) recommendedSkills.add('pythonStandard');
   if (fs.existsSync(path.join(cwd, '.github'))) {

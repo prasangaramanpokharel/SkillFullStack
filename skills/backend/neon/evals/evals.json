@@ -1,0 +1,24 @@
+{
+  "skill": "neon",
+  "version": "2026.x",
+  "evals": [
+    {
+      "id": "eval-neon-connection-pooling",
+      "prompt": "How should database connection strings be configured for a Next.js App Router project deployed to Vercel with Drizzle ORM and Neon migrations?",
+      "asserts": [
+        "Recommends pooled connection string for application runtime queries",
+        "Specifies direct non-pooler connection string for drizzle-kit migrations",
+        "References @neondatabase/serverless driver"
+      ]
+    },
+    {
+      "id": "eval-neon-branching-cicd",
+      "prompt": "Explain how to automate ephemeral database branches in GitHub Actions for pull requests using Neon.",
+      "asserts": [
+        "Mentions create-branch-action or neonctl",
+        "Explains copy-on-write zero storage overhead",
+        "Includes step to clean up and delete branch on PR closure"
+      ]
+    }
+  ]
+}
