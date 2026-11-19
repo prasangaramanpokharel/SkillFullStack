@@ -12,7 +12,6 @@ import fs from 'fs';
 import { promises as fsp } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import readline from 'readline';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -44,18 +43,6 @@ function loadCatalog() {
     }
   }
   return { skills: [] };
-}
-
-async function fetchRemoteCatalog() {
-  try {
-    const res = await fetch(`${REPO_RAW}/.skillsRegistry/catalog.json`);
-    if (res.ok) {
-      return await res.json();
-    }
-  } catch (err) {
-    // Ignore
-  }
-  return loadCatalog();
 }
 
 // Auto-detect project environment
@@ -97,8 +84,10 @@ function resolveInstallTarget(skillName, agent, customDir = null) {
       };
     case 'cursor':
       return {
-        targetDir: path.join(cwd, '.cursor/rules'),
-        targetFile: path.join(cwd, '.cursor/rules', `${skillName}.mdc`),
+        targetDir: path.join(cwd, '.cursor/skills', skillName),
+        targetFile: path.join(cwd, '.cursor/skills', skillName, 'SKILL.md'),
+        ruleDir: path.join(cwd, '.cursor/rules'),
+        ruleFile: path.join(cwd, '.cursor/rules', `${skillName}.mdc`),
         agent: 'cursor',
       };
     case 'windsurf':
@@ -120,20 +109,6 @@ function resolveInstallTarget(skillName, agent, customDir = null) {
         targetFile: path.join(cwd, '.agent/skills', skillName, 'SKILL.md'),
         agent: 'agent',
       };
-  }
-}
-
-async function copyDirRecursive(src, dest) {
-  await fsp.mkdir(dest, { recursive: true });
-  const entries = await fsp.readdir(src, { withFileTypes: true });
-  for (const entry of entries) {
-    const srcPath = path.join(src, entry.name);
-    const destPath = path.join(dest, entry.name);
-    if (entry.isDirectory()) {
-      await copyDirRecursive(srcPath, destPath);
-    } else {
-      await fsp.copyFile(srcPath, destPath);
-    }
   }
 }
 
@@ -222,7 +197,6 @@ async function cmdInfo(skillName, catalog) {
   console.log(`  ${c.bold}Official Docs:${c.reset}  ${skill.docs || 'N/A'}`);
   console.log(`\n  ${c.bold}Description:${c.reset}\n  ${skill.description}\n`);
 
-  // Check if offline assets exist
   const localAssetDir = path.join(PKG_ROOT, skill.path, 'assets');
   const hasAssets = fs.existsSync(localAssetDir);
   console.log(`  ${c.bold}Offline Assets:${c.reset} ${hasAssets ? c.green + '✓ Bundled (High-Accuracy)' : c.gray + 'Remote only'}${c.reset}`);
@@ -249,58 +223,61 @@ async function installSingleSkill(skillName, catalog, options = {}) {
     }
   }
 
-  // 1. Get content (local or remote)
-  let content = null;
-  const localFile = path.join(PKG_ROOT, skill.path, 'SKILL.md');
-  if (fs.existsSync(localFile)) {
-    content = await fsp.readFile(localFile, 'utf8');
-  } else {
-    const remoteUrl = `${REPO_RAW}/${skill.path}/SKILL.md`;
-    const res = await fetch(remoteUrl);
-    if (!res.ok) throw new Error(`Failed to fetch ${remoteUrl} (HTTP ${res.status})`);
-    content = await res.text();
-  }
+  const localSkillDir = path.join(PKG_ROOT, skill.path);
+  const hasLocalDir = fs.existsSync(localSkillDir);
 
-  // 2. Install to targets
   for (const agent of agentsToInstall) {
     const target = resolveInstallTarget(skill.name, agent, options.dir);
     await fsp.mkdir(target.targetDir, { recursive: true });
-    await fsp.writeFile(target.targetFile, content, 'utf8');
 
-    // Special handling for Claude Code slash command
-    if (target.cmdFile && target.cmdDir) {
-      await fsp.mkdir(target.cmdDir, { recursive: true });
-      await fsp.writeFile(target.cmdFile, content, 'utf8');
+    if (hasLocalDir) {
+      // 1. Copy the ENTIRE skill folder (SKILL.md, references/, assets/, scripts/, evals/, policies/, templates/)
+      await fsp.cp(localSkillDir, target.targetDir, { recursive: true });
+    } else {
+      // Remote fallback: Fetch SKILL.md
+      const remoteUrl = `${REPO_RAW}/${skill.path}/SKILL.md`;
+      const res = await fetch(remoteUrl);
+      if (!res.ok) throw new Error(`Failed to fetch ${remoteUrl} (HTTP ${res.status})`);
+      const content = await res.text();
+      await fsp.writeFile(target.targetFile, content, 'utf8');
     }
 
-    // Special handling for Cursor: Add header if .mdc
-    if (target.targetFile.endsWith('.mdc')) {
+    // 2. Special handling for Claude Code: also register slash command
+    if (target.cmdFile && target.cmdDir) {
+      await fsp.mkdir(target.cmdDir, { recursive: true });
+      const skillMdContent = await fsp.readFile(path.join(target.targetDir, 'SKILL.md'), 'utf8');
+      await fsp.writeFile(target.cmdFile, skillMdContent, 'utf8');
+    }
+
+    // 3. Special handling for Cursor: also create .mdc rule file
+    if (target.ruleFile && target.ruleDir) {
+      await fsp.mkdir(target.ruleDir, { recursive: true });
+      const skillMdContent = await fsp.readFile(path.join(target.targetDir, 'SKILL.md'), 'utf8');
       const cursorContent = `---
 description: ${skill.description}
 globs: *
 alwaysApply: false
 ---
 
-${content}`;
-      await fsp.writeFile(target.targetFile, cursorContent, 'utf8');
+${skillMdContent}`;
+      await fsp.writeFile(target.ruleFile, cursorContent, 'utf8');
     }
 
-    // Handle --with-assets
-    if (options.withAssets) {
-      const localAssets = path.join(PKG_ROOT, skill.path, 'assets');
-      const localRefs = path.join(PKG_ROOT, skill.path, 'references');
-      if (fs.existsSync(localAssets)) {
-        await copyDirRecursive(localAssets, path.join(target.targetDir, 'assets'));
-      }
-      if (fs.existsSync(localRefs)) {
-        await copyDirRecursive(localRefs, path.join(target.targetDir, 'references'));
-      }
-    }
+    // List installed subdirectories for transparency
+    const installedItems = ['SKILL.md'];
+    if (fs.existsSync(path.join(target.targetDir, 'references'))) installedItems.push('references/');
+    if (fs.existsSync(path.join(target.targetDir, 'assets'))) installedItems.push('assets/');
+    if (fs.existsSync(path.join(target.targetDir, 'scripts'))) installedItems.push('scripts/');
+    if (fs.existsSync(path.join(target.targetDir, 'evals'))) installedItems.push('evals/');
+    if (fs.existsSync(path.join(target.targetDir, 'policies'))) installedItems.push('policies/');
 
     console.log(`  ${c.green}✓${c.reset} Installed ${c.bold}${skill.name}${c.reset} for ${c.cyan}${agent}${c.reset}`);
-    console.log(`    ${c.gray}→ ${path.relative(process.cwd(), target.targetFile)}${c.reset}`);
+    console.log(`    ${c.gray}→ ${path.relative(process.cwd(), target.targetDir)}/ [${installedItems.join(', ')}]${c.reset}`);
     if (target.cmdFile) {
       console.log(`    ${c.gray}→ Slash command: ${path.relative(process.cwd(), target.cmdFile)} (/${skill.name})${c.reset}`);
+    }
+    if (target.ruleFile) {
+      console.log(`    ${c.gray}→ Cursor rule: ${path.relative(process.cwd(), target.ruleFile)}${c.reset}`);
     }
   }
 }
@@ -395,7 +372,7 @@ ${c.bold}USAGE${c.reset}
   $ ${c.cyan}sfs${c.reset} <command> [options]
 
 ${c.bold}COMMANDS${c.reset}
-  ${c.green}add, install${c.reset} <skill...>    Install one or more skills into your project
+  ${c.green}add, install${c.reset} <skill...>    Install one or more skills (copies SKILL.md, references, assets, etc.)
   ${c.green}list, ls${c.reset}                   List all 25+ verified skills across all domains
   ${c.green}search${c.reset} <query>             Search skills by keyword, framework, or capability
   ${c.green}info${c.reset} <skill>               Show detailed documentation, slash commands, & metadata
@@ -404,7 +381,6 @@ ${c.bold}COMMANDS${c.reset}
 ${c.bold}OPTIONS${c.reset}
   ${c.yellow}-a, --agent <name>${c.reset}        Target agent: ${c.dim}claude, cursor, antigravity, windsurf, copilot, agent, all${c.reset}
   ${c.yellow}-d, --dir <path>${c.reset}          Custom destination folder
-  ${c.yellow}--with-assets${c.reset}             Download complete offline documentation assets
   ${c.yellow}-t, --taxonomy <name>${c.reset}     Filter list by category (frontend, backend, github, etc.)
   ${c.yellow}--json${c.reset}                    Output catalog as JSON
   ${c.yellow}-h, --help${c.reset}                Display help guide
@@ -414,7 +390,6 @@ ${c.bold}EXAMPLES${c.reset}
   $ ${c.cyan}npx skillfullstack add nextjs${c.reset}
   $ ${c.cyan}npx skillfullstack add astro cloudflare --agent=cursor${c.reset}
   $ ${c.cyan}npx skillfullstack add databaseArchitecture --agent=claude${c.reset}
-  $ ${c.cyan}npx skillfullstack add nextjs --with-assets${c.reset}
   $ ${c.cyan}npx skillfullstack list --taxonomy frontend${c.reset}
   $ ${c.cyan}npx skillfullstack search graphql${c.reset}
   $ ${c.cyan}npx skillfullstack init${c.reset}
@@ -442,11 +417,9 @@ async function main() {
 
   const catalog = loadCatalog();
 
-  // Parse simple flags
   const options = {
     agent: null,
     dir: null,
-    withAssets: false,
     taxonomy: null,
     json: false,
   };
@@ -462,9 +435,7 @@ async function main() {
       options.dir = arg.split('=')[1];
     } else if (arg === '-d' || arg === '--dir') {
       options.dir = rawArgs[++i];
-    } else if (arg === '--with-assets') {
-      options.withAssets = true;
-    } else if (arg.startsWith('--taxonomy=')|| arg.startsWith('-t=')) {
+    } else if (arg.startsWith('--taxonomy=') || arg.startsWith('-t=')) {
       options.taxonomy = arg.split('=')[1];
     } else if (arg === '-t' || arg === '--taxonomy') {
       options.taxonomy = rawArgs[++i];
