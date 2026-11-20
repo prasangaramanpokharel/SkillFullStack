@@ -170,6 +170,9 @@ async function cmdList(args, catalog) {
     for (const item of list) {
       console.log(`  ${c.green}${item.name.padEnd(26)}${c.reset} ${c.dim}${item.version || 'latest'}${c.reset}`);
       console.log(`  ${c.gray}${item.description.slice(0, 85)}...${c.reset}`);
+      if (item.commands && item.commands.length > 0) {
+        console.log(`  ${c.yellow}Commands:${c.reset} ${c.gray}${item.commands.join(' ')}${c.reset}`);
+      }
     }
     console.log('');
   }
@@ -188,7 +191,8 @@ async function cmdSearch(query, catalog) {
     (s) =>
       s.name.toLowerCase().includes(q) ||
       s.taxonomy.toLowerCase().includes(q) ||
-      s.description.toLowerCase().includes(q)
+      s.description.toLowerCase().includes(q) ||
+      (s.commands && s.commands.some((cmd) => cmd.toLowerCase().includes(q)))
   );
 
   console.log(`\n${c.bold}🔍 Search results for "${query}" (${matches.length} found):${c.reset}\n`);
@@ -200,7 +204,11 @@ async function cmdSearch(query, catalog) {
 
   for (const s of matches) {
     console.log(`  • ${c.green}${c.bold}${s.name}${c.reset} ${c.gray}[${s.taxonomy}] (${s.version || 'latest'})${c.reset}`);
-    console.log(`    ${s.description}\n`);
+    console.log(`    ${s.description}`);
+    if (s.commands && s.commands.length > 0) {
+      console.log(`    ${c.yellow}Commands:${c.reset} ${c.gray}${s.commands.join(' ')}${c.reset}`);
+    }
+    console.log('');
   }
 }
 
@@ -222,6 +230,9 @@ async function cmdInfo(skillName, catalog) {
   console.log(`  ${c.bold}Path:${c.reset}           ${skill.path}`);
   console.log(`  ${c.bold}Verified Date:${c.reset}  ${skill.verified_date || 'N/A'}`);
   console.log(`  ${c.bold}Official Docs:${c.reset}  ${skill.docs || 'N/A'}`);
+  if (skill.commands && skill.commands.length > 0) {
+    console.log(`  ${c.bold}Slash Commands:${c.reset} ${c.yellow}${skill.commands.join(', ')}${c.reset}`);
+  }
   console.log(`\n  ${c.bold}Description:${c.reset}\n  ${skill.description}\n`);
 
   const localAssetDir = path.join(PKG_ROOT, skill.path, 'assets');

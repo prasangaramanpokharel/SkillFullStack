@@ -97,7 +97,8 @@ High-leverage, battle-tested patterns for {title}. Verified against current offi
         "description": description,
         "version": version,
         "docs": docs_url,
-        "verified_date": today
+        "verified_date": today,
+        "commands": [f"/{name}-action"]
     })
 
     with open(catalog_path, "w", encoding="utf-8") as f:

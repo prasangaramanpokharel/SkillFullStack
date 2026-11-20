@@ -9,7 +9,13 @@
       "description": "High-density guide and automation for shadcn/ui v4. Supports adding atomic primitives, complex blocks, direct component MDX retrieval, and CVA composition. Use when building or styling UI with React, Next.js, and Tailwind CSS.",
       "version": "v4",
       "docs": "https://ui.shadcn.com/docs",
-      "verified_date": "2026-11-15"
+      "verified_date": "2026-11-15",
+      "commands": [
+        "/shadcn-add",
+        "/shadcn-ai",
+        "/shadcn-theme",
+        "/shadcn-diff"
+      ]
     },
     {
       "name": "upstash",
@@ -18,7 +24,12 @@
       "description": "Production serverless Redis, Vector, QStash messaging, durable Workflows, and Ratelimit. Use when implementing serverless caching, rate limiting LLM APIs, queuing asynchronous background tasks, or building durable step-function workflows.",
       "version": "2026.x",
       "docs": "https://upstash.com/docs",
-      "verified_date": "2026-11-15"
+      "verified_date": "2026-11-15",
+      "commands": [
+        "/upstash-redis",
+        "/upstash-ratelimit",
+        "/upstash-workflow"
+      ]
     },
     {
       "name": "mcpServerDevelopment",
@@ -27,7 +38,12 @@
       "description": "Build Model Context Protocol (MCP) servers exposing tools, resources, and prompt templates to AI agents. Use when connecting Claude, Cursor, or custom agents to databases, APIs, and local services via stdio or SSE.",
       "version": "1.x",
       "docs": "https://modelcontextprotocol.io",
-      "verified_date": "2026-11-15"
+      "verified_date": "2026-11-15",
+      "commands": [
+        "/mcp-server",
+        "/mcp-tool",
+        "/mcp-resource"
+      ]
     },
     {
       "name": "ragPipelineProduction",
@@ -36,7 +52,12 @@
       "description": "Production-grade RAG pipeline implementing BM25 and dense vector hybrid search, Reciprocal Rank Fusion (RRF), cross-encoder reranking (Cohere/BGE), and semantic caching. Use when building reliable, hallucination-resistant retrieval systems.",
       "version": "2.x",
       "docs": "https://docs.cohere.com/docs/reranking",
-      "verified_date": "2026-11-15"
+      "verified_date": "2026-11-15",
+      "commands": [
+        "/rag-pipeline",
+        "/rag-hybrid",
+        "/rag-rerank"
+      ]
     },
     {
       "name": "generativeUi",
@@ -45,7 +66,11 @@
       "description": "Stream interactive React components from LLMs using Vercel AI SDK, tool invocations, and createDataStreamResponse. Use when replacing text-only chat with dynamic charts, cards, confirmation forms, and interactive UI widgets.",
       "version": "v4",
       "docs": "https://sdk.vercel.ai/docs",
-      "verified_date": "2026-11-15"
+      "verified_date": "2026-11-15",
+      "commands": [
+        "/genui-stream",
+        "/genui-tool"
+      ]
     },
     {
       "name": "durableBackgroundJobs",
@@ -54,7 +79,12 @@
       "description": "Durable background execution, long-running agent workflows, and zero-timeout event orchestration with Inngest, Trigger.dev v3, and Upstash Workflow. Use when running multi-step AI tasks, retries, and sleep delays in serverless environments.",
       "version": "3.x",
       "docs": "https://www.inngest.com/docs",
-      "verified_date": "2026-11-15"
+      "verified_date": "2026-11-15",
+      "commands": [
+        "/jobs-workflow",
+        "/jobs-step",
+        "/jobs-cron"
+      ]
     },
     {
       "name": "llmSecurityRedteaming",
@@ -63,7 +93,11 @@
       "description": "Defend and red-team LLM applications against OWASP Top 10 vulnerabilities, direct/indirect prompt injection, excessive agency (LLM03), PII leakage, and data exfiltration. Use when hardening agentic tool calling and user prompts in production.",
       "version": "2026.x",
       "docs": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
-      "verified_date": "2026-11-15"
+      "verified_date": "2026-11-15",
+      "commands": [
+        "/llm-redteam",
+        "/llm-jailbreak"
+      ]
     },
     {
       "name": "promptEvalTesting",
@@ -72,7 +106,11 @@
       "description": "CI/CD prompt regression testing, evaluation harnesses, and LLM-as-a-judge metrics with Promptfoo and DeepEval. Use when testing prompt changes, preventing regressions, and asserting accuracy before merging.",
       "version": "latest",
       "docs": "https://www.promptfoo.dev/docs",
-      "verified_date": "2026-11-15"
+      "verified_date": "2026-11-15",
+      "commands": [
+        "/prompt-eval",
+        "/prompt-judge"
+      ]
     },
     {
       "name": "golangStandard",
@@ -81,7 +119,12 @@
       "description": "Production-grade Go engineering standards. Implements log/slog structured logging, context propagation, explicit error wrapping with %w, errgroup structured concurrency, and clean internal domain layouts.",
       "version": "1.23+",
       "docs": "https://go.dev/doc/",
-      "verified_date": "2026-11-16"
+      "verified_date": "2026-11-16",
+      "commands": [
+        "/go-standard",
+        "/go-slog",
+        "/go-concurrency"
+      ]
     },
     {
       "name": "pythonStandard",
@@ -90,7 +133,12 @@
       "description": "Modern production Python engineering standards with Astral uv toolchain, Ruff linter/formatter, Pydantic v2 core models, strict mypy type checking, and asyncio.TaskGroup structured concurrency.",
       "version": "3.12+",
       "docs": "https://docs.astral.sh/uv/",
-      "verified_date": "2026-11-16"
+      "verified_date": "2026-11-16",
+      "commands": [
+        "/python-standard",
+        "/python-uv",
+        "/python-typing"
+      ]
     },
     {
       "name": "tsxReactStandard",
@@ -99,7 +147,11 @@
       "description": "Modern TypeScript and React 19 production engineering standards. Implements strict discriminated unions for state, native ref props (no forwardRef), Server Actions, strict tsconfig rules, and discards React.FC and TS enums.",
       "version": "React 19 / TS 5+",
       "docs": "https://react.dev/",
-      "verified_date": "2026-11-16"
+      "verified_date": "2026-11-16",
+      "commands": [
+        "/react-standard",
+        "/react-action"
+      ]
     },
     {
       "name": "nextjs",
@@ -108,7 +160,15 @@
       "description": "Production Next.js App Router engineering and readiness checklist. Covers Server Components vs Client boundaries, Data Access Layer (DAL), taint APIs, CSP security headers, metadata SEO, OpenTelemetry, bundle optimization, and standalone Docker deployment.",
       "version": "16.x",
       "docs": "https://nextjs.org/docs/app",
-      "verified_date": "2026-11-17"
+      "verified_date": "2026-11-17",
+      "commands": [
+        "/nextjs-production",
+        "/nextjs-rsc",
+        "/nextjs-dal",
+        "/nextjs-security",
+        "/nextjs-metadata",
+        "/nextjs-features"
+      ]
     },
     {
       "name": "githubAction",
@@ -117,7 +177,12 @@
       "description": "Design and implement production GitHub Actions CI/CD workflows. Supports matrix builds, concurrency cancelation, dependency caching, least-privilege permissions, and commit SHA action pinning. Commands: /github-action, /github-ci, /github-cd.",
       "version": "v2",
       "docs": "https://docs.github.com/en/actions",
-      "verified_date": "2026-11-16"
+      "verified_date": "2026-11-16",
+      "commands": [
+        "/github-action",
+        "/github-ci",
+        "/github-cd"
+      ]
     },
     {
       "name": "githubSetup",
@@ -126,7 +191,12 @@
       "description": "Audit, initialize, and configure GitHub repositories, modern rulesets, branch protections, and organization foundations. Commands: /github-setup, /github-repository, /github-ruleset.",
       "version": "v2",
       "docs": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets",
-      "verified_date": "2026-11-16"
+      "verified_date": "2026-11-16",
+      "commands": [
+        "/github-setup",
+        "/github-repository",
+        "/github-ruleset"
+      ]
     },
     {
       "name": "githubSecurity",
@@ -135,7 +205,13 @@
       "description": "Secure repositories and software supply chains. Automates Dependabot grouping, CodeQL static analysis matrix, secret scanning push protection, and security advisories. Commands: /github-security, /github-codeql, /github-dependabot, /github-secrets.",
       "version": "v2",
       "docs": "https://docs.github.com/en/code-security",
-      "verified_date": "2026-11-16"
+      "verified_date": "2026-11-16",
+      "commands": [
+        "/github-security",
+        "/github-codeql",
+        "/github-dependabot",
+        "/github-secrets"
+      ]
     },
     {
       "name": "githubQuality",
@@ -144,7 +220,12 @@
       "description": "Enforce engineering quality, pull request standards, structured code reviews, and CODEOWNERS rules. Commands: /github-quality, /github-pr, /github-codeowners.",
       "version": "v2",
       "docs": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners",
-      "verified_date": "2026-11-16"
+      "verified_date": "2026-11-16",
+      "commands": [
+        "/github-quality",
+        "/github-pr",
+        "/github-codeowners"
+      ]
     },
     {
       "name": "githubTeam",
@@ -153,7 +234,12 @@
       "description": "Design and manage professional engineering team structures, permission hierarchies, onboarding checklists, and automated code review routing. Commands: /github-team, /github-team-onboarding, /github-team-roles.",
       "version": "v2",
       "docs": "https://docs.github.com/en/organizations/organizing-members-into-teams/about-teams",
-      "verified_date": "2026-11-16"
+      "verified_date": "2026-11-16",
+      "commands": [
+        "/github-team",
+        "/github-team-onboarding",
+        "/github-team-roles"
+      ]
     },
     {
       "name": "gitWorkflow",
@@ -162,7 +248,13 @@
       "description": "Universal Git workflows, DAG manipulation, branching strategies, interactive rebasing, bisect, and conflict resolution",
       "version": "latest",
       "docs": "",
-      "verified_date": "2026-11-16"
+      "verified_date": "2026-11-16",
+      "commands": [
+        "/git-workflow",
+        "/git-rebase",
+        "/git-bisect",
+        "/git-conflict"
+      ]
     },
     {
       "name": "testDrivenDevelopment",
@@ -171,7 +263,13 @@
       "description": "Production Test-Driven Development, test pyramid design, test doubles (mocks/stubs/fakes), and boundary value analysis",
       "version": "latest",
       "docs": "",
-      "verified_date": "2026-11-16"
+      "verified_date": "2026-11-16",
+      "commands": [
+        "/tdd-cycle",
+        "/test-pyramid",
+        "/test-doubles",
+        "/test-boundary"
+      ]
     },
     {
       "name": "requirementsEngineering",
@@ -180,7 +278,13 @@
       "description": "User story derivation (INVEST), BDD acceptance criteria (Given/When/Then), MoSCoW prioritization, and attack trees",
       "version": "latest",
       "docs": "",
-      "verified_date": "2026-11-16"
+      "verified_date": "2026-11-16",
+      "commands": [
+        "/story-format",
+        "/moscow-prioritize",
+        "/attack-tree",
+        "/kano-analysis"
+      ]
     },
     {
       "name": "cicdPipeline",
@@ -189,7 +293,13 @@
       "description": "Production CI/CD pipelines, containerization, build/test matrices, and zero-downtime deployment strategies",
       "version": "latest",
       "docs": "",
-      "verified_date": "2026-11-16"
+      "verified_date": "2026-11-16",
+      "commands": [
+        "/cicd-pipeline",
+        "/dockerfile-audit",
+        "/deploy-strategy",
+        "/dora-metrics"
+      ]
     },
     {
       "name": "apiEngineering",
@@ -198,7 +308,15 @@
       "description": "Enterprise API engineering framework covering contract-first OpenAPI 3.2.1, RFC 9457 errors, IETF Idempotency-Key, OWASP API Top 10, and breaking-change detection",
       "version": "latest",
       "docs": "",
-      "verified_date": "2026-11-16"
+      "verified_date": "2026-11-16",
+      "commands": [
+        "/api-engineering",
+        "/api-design",
+        "/api-crud",
+        "/api-audit",
+        "/api-security",
+        "/api-breaking"
+      ]
     },
     {
       "name": "databaseArchitecture",
@@ -207,7 +325,16 @@
       "description": "Universal database architecture system: relational normalization, NoSQL/OLAP selection, sharding, ACID concurrency, and zero-downtime schema migrations",
       "version": "latest",
       "docs": "",
-      "verified_date": "2026-11-16"
+      "verified_date": "2026-11-16",
+      "commands": [
+        "/db-architecture",
+        "/db-design",
+        "/db-normalize",
+        "/db-select",
+        "/db-scale",
+        "/db-audit",
+        "/db-migration"
+      ]
     },
     {
       "name": "astro",
@@ -216,7 +343,14 @@
       "description": "High-performance Astro 5.x engineering guide. Covers Islands architecture, Server Islands, Content Collections, Astro Actions, View Transitions, SSR/Hybrid routing, and Zero-JS baseline.",
       "version": "5.x",
       "docs": "https://docs.astro.build",
-      "verified_date": "2026-11-17"
+      "verified_date": "2026-11-17",
+      "commands": [
+        "/astro-production",
+        "/astro-island",
+        "/astro-server-island",
+        "/astro-content",
+        "/astro-action"
+      ]
     },
     {
       "name": "cloudflare",
@@ -225,7 +359,16 @@
       "description": "Master Cloudflare engineering guide. Architect, scaffold, implement, deploy, and troubleshoot applications across the entire Cloudflare ecosystem (Workers, Static Assets, D1, R2, KV, Durable Objects, Queues, Workflows, Hyperdrive, Vectorize, WAF, Tunnels, Workers AI, and Agents SDK). Supports both Wrangler CLI and cf CLI.",
       "version": "2026.x",
       "docs": "https://developers.cloudflare.com",
-      "verified_date": "2026-11-17"
+      "verified_date": "2026-11-17",
+      "commands": [
+        "/cf-architect",
+        "/cf-worker",
+        "/cf-database",
+        "/cf-storage",
+        "/cf-security",
+        "/cf-ai",
+        "/cf-troubleshoot"
+      ]
     },
     {
       "name": "openai",
@@ -234,7 +377,15 @@
       "description": "Production OpenAI engineering master guide. Implements the modern Responses API (/v1/responses), Decisions API, stateful conversations, background mode, built-in tools (web search, file search, computer use, MCP), streaming/WebSockets, mid-turn steering, multi-agent patterns, evals, fine-tuning (DPO, supervised), and Amazon Bedrock/Google Cloud deployments.",
       "version": "2026.x",
       "docs": "https://developers.openai.com/api/docs",
-      "verified_date": "2026-11-19"
+      "verified_date": "2026-11-19",
+      "commands": [
+        "/openai-responses",
+        "/openai-tools",
+        "/openai-state",
+        "/openai-evals",
+        "/openai-finetuning",
+        "/openai-cloud"
+      ]
     },
     {
       "name": "internetComputer",
@@ -243,7 +394,17 @@
       "description": "Master Internet Computer Protocol (ICP) engineering guide. Architect, develop, and deploy secure WebAssembly canisters in Motoko and Rust (ic-cdk), define type-safe Candid (.did) interfaces, manage orthogonal persistence and stable memory, conduct PocketIC deterministic testing, cycles management, Internet Identity, and Chain Fusion (ckBTC/EVM).",
       "version": "2026.x",
       "docs": "https://docs.internetcomputer.org",
-      "verified_date": "2026-11-19"
+      "verified_date": "2026-11-19",
+      "commands": [
+        "/icp-canister",
+        "/icp-motoko",
+        "/icp-rust",
+        "/icp-deploy",
+        "/icp-security",
+        "/icp-storage",
+        "/icp-chain-fusion",
+        "/icp-test"
+      ]
     },
     {
       "name": "neon",
@@ -252,7 +413,15 @@
       "description": "Master Neon serverless Postgres engineering guide. Implements Lakebase Postgres, instant database branching, scale-to-zero, autoscaling, connection pooling via @neondatabase/serverless, Managed Better Auth, Neon Realtime reactive sync, neon.ts backend declaration, and framework integrations (Next.js, Astro, Node, Bun, Django).",
       "version": "2026.x",
       "docs": "https://neon.com/docs",
-      "verified_date": "2026-11-19"
+      "verified_date": "2026-11-19",
+      "commands": [
+        "/neon-branch",
+        "/neon-connect",
+        "/neon-auth",
+        "/neon-realtime",
+        "/neon-scale",
+        "/neon-cli"
+      ]
     },
     {
       "name": "vulnerabilityScanner",
@@ -261,7 +430,16 @@
       "description": "Ultra-powerful polyglot vulnerability scanner & static application security testing (SAST) skill. Detects memory corruption (Use-After-Free, buffer overflows, integer overflows, dangling pointers) across C/C++, Rust, and Go, plus application injection flaws (CWE Top 25, SQLi, RCE, SSRF, Deserialization, XSS) across Python, TypeScript, and Java. Features an autonomous multi-pass scan loop (/vuln-loop) and generates standardized defensive dossiers at reports/{vulnerability-name}/hereabout.md with line-level code traces, CVSS v4.0 scores, CWE/CVE mappings, dataflow analysis, and copy-paste secure remediations.",
       "version": "2026.x",
       "docs": "https://cwe.mitre.org/top25",
-      "verified_date": "2026-11-19"
+      "verified_date": "2026-11-19",
+      "commands": [
+        "/vuln-scan",
+        "/vuln-loop",
+        "/vuln-memory",
+        "/vuln-cwe",
+        "/vuln-report",
+        "/vuln-remediate",
+        "/vuln-audit"
+      ]
     },
     {
       "name": "compliance",
@@ -270,7 +448,15 @@
       "description": "Universal AI Compliance Engineer skill. Dynamically ingests any target skill from the catalog (e.g. nextjs, astro, apiEngineering, cloudflare, internetComputer, vulnerabilityScanner) or prompts developer input, deconstructs its rules, anti-patterns, and directives into an atomic compliance matrix, and audits the codebase file-by-file and function-by-function. Enforces a zero-stopping continuous verification loop that does not terminate until 100% compliance is reached. Dynamically adapts to execution environments by orchestrating multi-agent swarms in Google Antigravity or running deterministic verification loops in Claude Code, Cursor, and Windsurf, producing certified reports at compliance-report.md.",
       "version": "2026.x",
       "docs": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
-      "verified_date": "2026-11-19"
+      "verified_date": "2026-11-19",
+      "commands": [
+        "/compliance-audit",
+        "/compliance-fix",
+        "/compliance-loop",
+        "/compliance-matrix",
+        "/compliance-swarm",
+        "/compliance-verify"
+      ]
     },
     {
       "name": "webEngineering",
@@ -279,7 +465,15 @@
       "description": "Complete web engineering and pre-flight production checklist skill. Covers exhaustive launch readiness (Legal, GDPR cookie consent, security headers, observability), modern technical SEO and AI agent discovery (llms.txt, AI crawler robots.txt, JSON-LD, Open Graph), Core Web Vitals optimization (LCP <= 2.5s, INP <= 200ms, CLS <= 0.1, caching hierarchies), automated testing (WCAG 2.2 AA accessibility, Playwright E2E), and production API latency/contract standards (RFC 9457 Problem Details, p95/p99 latency budgets, idempotency keys).",
       "version": "2026.x",
       "docs": "https://web.dev",
-      "verified_date": "2026-11-19"
+      "verified_date": "2026-11-19",
+      "commands": [
+        "/web-checklist",
+        "/web-seo",
+        "/web-performance",
+        "/web-testing",
+        "/web-api",
+        "/web-audit"
+      ]
     }
   ]
 }
