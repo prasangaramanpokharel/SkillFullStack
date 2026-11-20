@@ -13,6 +13,7 @@ from datetime import datetime
 VALID_TAXONOMIES = [
     "foundation",
     "frontend",
+    "design",
     "backend",
     "dataAi",
     "devopsCloud",

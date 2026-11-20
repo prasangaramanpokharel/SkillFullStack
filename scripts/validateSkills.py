@@ -36,6 +36,7 @@ class Colors:
 VALID_TAXONOMIES = [
     "foundation",
     "frontend",
+    "design",
     "backend",
     "dataAi",
     "devopsCloud",

@@ -18,6 +18,24 @@
       ]
     },
     {
+      "name": "canva",
+      "taxonomy": "design",
+      "path": "skills/design/canva",
+      "description": "Master Canva design automation and programmatic creative skill. Covers CLI workflows, brand kit audits, CSV bulk creation, safe transactional design editing, visual feedback critique, comment resolution, and multi-channel social media resizing.",
+      "version": "2026.x",
+      "docs": "https://www.canva.dev/docs",
+      "verified_date": "2026-11-20",
+      "commands": [
+        "/canva-cli",
+        "/canva-brand-check",
+        "/canva-bulk-create",
+        "/canva-edit",
+        "/canva-feedback",
+        "/canva-implement",
+        "/canva-resize"
+      ]
+    },
+    {
       "name": "upstash",
       "taxonomy": "backend",
       "path": "skills/backend/upstash",

@@ -1,0 +1,56 @@
+{
+  "skill": "canva",
+  "version": "2026.x",
+  "evals": [
+    {
+      "id": "eval-canva-transaction-safety",
+      "prompt": "Explain the atomic transaction protocol for editing a Canva design, including how to handle responsive pages and what happens if the user rejects a preview.",
+      "asserts": [
+        "Enforces start-editing-transaction -> perform-editing-operations -> commit-editing-transaction sequence",
+        "Specifies that cancel-editing-transaction must be called to safely discard drafts upon rejection",
+        "Identifies restricted operations on responsive pages where is_responsive is true",
+        "Enforces explicit user visual approval before executing commit"
+      ]
+    },
+    {
+      "id": "eval-canva-brand-verification",
+      "prompt": "How does the brand checker handle the data gap when Canva:list-brand-kits returns only names and thumbnails without machine-readable hex colors or fonts?",
+      "asserts": [
+        "Identifies that brand kits often omit machine-readable hex codes and font families",
+        "Falls back to visual comparison of thumbnails and prompts user for explicit brand values",
+        "Uses the three-state verdict: On brand, Off brand, and Can't verify",
+        "Distinguishes API-fixable properties from manual editor constraints"
+      ]
+    },
+    {
+      "id": "eval-canva-bulk-autofill",
+      "prompt": "Describe the three patterns for handling image fields during CSV bulk creation with Canva Brand Templates.",
+      "asserts": [
+        "Specifies Pattern A for pre-existing Canva asset IDs",
+        "Specifies Pattern B for remote image URLs requiring upload-asset-from-url pre-flight",
+        "Specifies Pattern C for missing image columns where placeholder is skipped or retained",
+        "Emphasizes sequential row-by-row execution rather than concurrent unthrottled calls"
+      ]
+    },
+    {
+      "id": "eval-canva-social-resize",
+      "prompt": "When a user asks to resize a Canva presentation for all social media channels without specifying dimensions, how should dimensions be resolved?",
+      "asserts": [
+        "Applies the default channel set: 1080x1920 (Stories/Reels/TikTok/Shorts), 1080x1350 (Feed portrait), 1200x627 (LinkedIn/X/FB link), 1920x1080 (YouTube)",
+        "Deduplicates near-identical landscape canvases (1200x627, 1200x628, 1200x630) into 1200x627",
+        "Executes resize-design for each unique canvas and returns direct Canva edit links",
+        "Does not prompt for placement clarification when all channels are generically requested"
+      ]
+    },
+    {
+      "id": "eval-canva-feedback-triage",
+      "prompt": "How should an AI agent triage 15 reviewer comments on a Canva deck, and when should the user be prompted for approval?",
+      "asserts": [
+        "Categorizes feedback into Actionable, Requires Manual Action, and Resolved",
+        "Classifies font family and new text box requests under Requires Manual Action",
+        "Prompts the user for approval exactly ONE time on the unified plan",
+        "Automatically commits approved edits and replies to comment threads without secondary approval prompts"
+      ]
+    }
+  ]
+}
